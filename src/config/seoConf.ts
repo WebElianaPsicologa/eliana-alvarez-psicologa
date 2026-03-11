@@ -6,18 +6,13 @@
 import type { SEOProps } from "astro-seo";
 import { services, type Service } from "./services";
 import { allFAQs, type FAQItem } from "./faqs";
-import {
-  AUTHORS,
-  DEFAULT_AUTHOR,
-  getAuthorByName,
-  type Author,
-} from "./authorBio";
+import { AUTHORS, getAuthorByName, type Author } from "./authorBio";
 
 // Re-export for convenience
 export { services, type Service };
 export { allFAQs, type FAQItem };
 export { generalFAQs, pricingFAQs, getFAQsByCategory } from "./faqs";
-export { AUTHORS, DEFAULT_AUTHOR, getAuthorByName, type Author };
+export { AUTHORS, getAuthorByName, type Author };
 
 // =============================================================================
 // 1. TYPE DEFINITIONS
@@ -436,9 +431,52 @@ export const BLOG_SCHEMA: JSONLDSchema = {
 /**
  * Generate BlogPosting Schema
  * Automatically resolves author to full Person schema for E-E-A-T
+ *
+ * HOW IT WORKS WITH CMS:
+ * - CMS only needs to provide: post.author = "Eliana Álvarez" (just the name string)
+ * - This function automatically looks up full author data from authorBio.ts
+ * - Generates complete author schema with credentials, bio, social media
+ * - Result: Rich E-E-A-T signals for better SEO & AI citations
+ *
+ * @param post - Blog post data from CMS (only needs author name)
+ * @returns Complete BlogPosting schema with full author Person schema
  */
 export function generateBlogPostSchema(post: BlogPost): JSONLDSchema {
+  // Resolve author name from CMS to full author data
   const author = getAuthorByName(post.author ?? "");
+
+  // Build social media array for author
+  const authorSameAs = [];
+  if (author.socialMedia?.linkedin) authorSameAs.push(author.socialMedia.linkedin);
+  if (author.socialMedia?.instagram) authorSameAs.push(author.socialMedia.instagram);
+  if (author.socialMedia?.twitter) authorSameAs.push(author.socialMedia.twitter);
+  if (author.socialMedia?.facebook) authorSameAs.push(author.socialMedia.facebook);
+
+  // Create rich author schema for E-E-A-T
+  const authorSchema: Record<string, unknown> = {
+    "@type": "Person",
+    "@id": `${COMPANY_INFO.url}/about#${author.name.toLowerCase().replace(/\s+/g, "-")}`,
+    name: author.name,
+    description: author.bio,
+    jobTitle: author.role,
+    knowsAbout: author.credentials,
+    ...(author.image && { image: `${COMPANY_INFO.url}${author.image}` }),
+    ...(author.url && { url: `${COMPANY_INFO.url}${author.url}` }),
+    ...(authorSameAs.length > 0 && { sameAs: authorSameAs }),
+  };
+
+  // Add E-E-A-T enhancements
+  if (author.yearsOfExperience) {
+    authorSchema.yearsOfExperience = author.yearsOfExperience;
+  }
+
+  if (author.certifications && author.certifications.length > 0) {
+    authorSchema.hasCredential = author.certifications.map(cert => ({
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "Professional Certification",
+      name: cert,
+    }));
+  }
 
   return {
     "@context": "https://schema.org",
@@ -449,15 +487,7 @@ export function generateBlogPostSchema(post: BlogPost): JSONLDSchema {
     url: `${COMPANY_INFO.url}/blog/${post.id}`,
     datePublished: post.publishDate.toISOString(),
     dateModified: (post.modifiedDate ?? post.publishDate).toISOString(),
-    author: {
-      "@type": "Person",
-      "@id": `${COMPANY_INFO.url}/about#${author.name.toLowerCase().replace(/\s+/g, "-")}`,
-      name: author.name,
-      description: author.bio,
-      jobTitle: author.role,
-      ...(author.image && { image: `${COMPANY_INFO.url}${author.image}` }),
-      ...(author.url && { url: `${COMPANY_INFO.url}${author.url}` }),
-    },
+    author: authorSchema,
     publisher: {
       "@id": `${COMPANY_INFO.url}#organization`,
     },
@@ -541,20 +571,21 @@ export function generateServiceSchema(service: Service): JSONLDSchema {
         url: `${COMPANY_INFO.url}${service.image}`,
       },
     }),
-    ...(service.benefits && service.benefits.length > 0 && {
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: `${service.title} - Beneficios`,
-        itemListElement: service.benefits.map((benefit, index) => ({
-          "@type": "Offer",
-          position: index + 1,
-          itemOffered: {
-            "@type": "Service",
-            name: benefit,
-          },
-        })),
-      },
-    }),
+    ...(service.benefits &&
+      service.benefits.length > 0 && {
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: `${service.title} - Beneficios`,
+          itemListElement: service.benefits.map((benefit, index) => ({
+            "@type": "Offer",
+            position: index + 1,
+            itemOffered: {
+              "@type": "Service",
+              name: benefit,
+            },
+          })),
+        },
+      }),
     offers: {
       "@type": "Offer",
       availability: "https://schema.org/InStock",
@@ -609,14 +640,22 @@ export const LOCAL_BUSINESS_SCHEMA: JSONLDSchema = {
 /**
  * Generate Author/Person Schema for E-E-A-T
  * Use for blog posts and about page
+ *
+ * CRITICAL FOR SEO & AI CITATIONS:
+ * - Establishes author expertise (E-E-A-T)
+ * - Helps ChatGPT/Perplexity identify authoritative sources
+ * - Links author to organization for trust signals
+ * - Includes credentials and social proof
  */
 export function generateAuthorSchema(author: Author): JSONLDSchema {
+  // Collect all social media profiles for authority signals
   const sameAs = [];
   if (author.socialMedia?.linkedin) sameAs.push(author.socialMedia.linkedin);
   if (author.socialMedia?.instagram) sameAs.push(author.socialMedia.instagram);
   if (author.socialMedia?.twitter) sameAs.push(author.socialMedia.twitter);
+  if (author.socialMedia?.facebook) sameAs.push(author.socialMedia.facebook);
 
-  return {
+  const schema: JSONLDSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
     "@id": `${COMPANY_INFO.url}/about#${author.name.toLowerCase().replace(/\s+/g, "-")}`,
@@ -631,6 +670,21 @@ export function generateAuthorSchema(author: Author): JSONLDSchema {
     knowsAbout: author.credentials,
     ...(sameAs.length > 0 && { sameAs }),
   };
+
+  // Add optional E-E-A-T enhancements if available
+  if (author.yearsOfExperience) {
+    schema.yearsOfExperience = author.yearsOfExperience;
+  }
+
+  if (author.certifications && author.certifications.length > 0) {
+    schema.hasCredential = author.certifications.map(cert => ({
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "Professional Certification",
+      name: cert,
+    }));
+  }
+
+  return schema;
 }
 
 /**
