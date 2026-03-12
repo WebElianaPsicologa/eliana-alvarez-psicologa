@@ -1,9 +1,247 @@
 ---
+import { navigation, servicesNavigation } from "@/utils/navigation";
+import { Image } from "astro:assets";
+import MobileMenuIcon from "@/assets/icons/mobileMenu.svg";
+import CloseMenuIcon from "@/assets/icons/closeMenu.svg";
+import LogoBlackLetters from "@/assets/images/logowhite256x128.png";
+import ChevronDown from "@/assets/icons/servicesDown.svg";
 
+const pathname = Astro.url.pathname;
+const currentPath =
+  pathname.endsWith("/") && pathname.length > 1
+    ? pathname.slice(0, -1)
+    : pathname;
 ---
 
-<header>
-  <nav>
-    <h1>Mente Equilibrada</h1>
+<header class="nav-container fixed top-4 z-50 mx-auto w-full px-4 md:px-6">
+  <nav
+    id="navbar"
+    class="nav-content bg-purple-accent/95 border-purple-dark mx-auto flex max-w-7xl items-center justify-between rounded-4xl border shadow-lg backdrop-blur-sm"
+  >
+    <!-- Logo -->
+    <div id="logo-container" class="flex items-center pl-8">
+      <a href="/" aria-label="inicio">
+        <Image
+          id="logo"
+          src={LogoBlackLetters}
+          alt="Logo Eliana Alvarez Psicologa"
+          class="w-36 md:w-44"
+          priority
+        />
+      </a>
+    </div>
+    <!-- end Logo -->
+
+    <!-- Right side navigation -->
+    <div class="flex items-center gap-6 pr-2 md:pr-8">
+      <!-- Desktop links (hidden on mobile) -->
+      <div id="desktop-nav" class="hidden items-center gap-6 md:flex">
+        {
+          navigation
+            .filter(
+              (item) => item.path !== "/contacto" && item.path !== "/servicios",
+            )
+            .map((item) => (
+              <a
+                href={item.path}
+                class={`nav-link hover:text-soft-bg/70 text-lg transition-colors duration-200 ${
+                  currentPath === item.path ? "text-olive" : "text-soft-bg"
+                }`}
+                aria-current={item.path === currentPath ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            ))
+        }
+
+        <!-- Services dropdown -->
+        <details class="group relative" id="services-dropdown">
+          <summary
+            class="text-soft-bg hover:text-soft-bg/70 flex cursor-pointer list-none items-center gap-1.5 text-lg transition-colors duration-200 focus:outline-none [&::-webkit-details-marker]:hidden"
+          >
+            Servicios
+            <ChevronDown
+              class="h-4 w-4 transition-transform duration-300 group-open:rotate-180"
+            />
+          </summary>
+
+          <!-- Dropdown Panel -->
+          <div
+            class="absolute top-full right-0 z-50 w-96 origin-top scale-95 pt-2 opacity-0 transition-all duration-200 ease-out group-open:scale-100 group-open:opacity-100"
+          >
+            <!-- Dropdown content -->
+            <div
+              class="bg-olive/90 border-purple-dark shadow-purple-dark/50 relative overflow-hidden rounded-2xl border shadow-2xl backdrop-blur-2xl"
+            >
+              <!-- Header -->
+              <div
+                class="border-purple-dark flex items-center justify-between border-b px-5 py-4"
+              >
+                <span class="text-purple-dark text-sm font-semibold"
+                  >Mis servicios</span
+                >
+              </div>
+
+              <!-- Services list -->
+              <ul class="list-none border-none py-2">
+                {
+                  servicesNavigation.map((item, index) => (
+                    <li>
+                      <a
+                        href={item.path}
+                        class={`hover:bg-gray-lavender flex items-center justify-between px-5 py-3 transition-all duration-200 outline-none focus:outline-none ${
+                          currentPath === item.path
+                            ? "text-purple-accent font-medium underline underline-offset-2"
+                            : "text-purple-dark"
+                        }`}
+                        aria-current={
+                          item.path === currentPath ? "page" : undefined
+                        }
+                      >
+                        <span class="flex items-center gap-3 text-sm">
+                          <span class="bg-purple-accent h-1 w-1 rounded-full" />
+                          {item.name}
+                        </span>
+                      </a>
+                      {index < servicesNavigation.length - 1 && (
+                        <div class="mx-5" />
+                      )}
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </div>
+        </details>
+        <!-- end Services dropdown -->
+      </div>
+      <!-- end Desktop links -->
+
+      <!-- Contacto link (always visible) -->
+      <div class="flex items-center gap-1">
+        <a
+          href="/contacto"
+          class="nav-link text-purple-dark bg-olive hover:bg-olive/80 rounded-full px-4 py-2 font-semibold transition-colors duration-300"
+          >Contacto</a
+        >
+
+        <!-- Burger menu (mobile only) -->
+        <button
+          id="mobile-menu-toggle"
+          class="border-soft-bg/30 hover:bg-soft-bg/10 text-soft-bg flex size-9 items-center justify-center rounded-full border text-sm transition-colors duration-300 disabled:pointer-events-none disabled:opacity-50 md:hidden"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Abrir menú"
+        >
+          <MobileMenuIcon id="menu-icon-open" class="h-4 w-4" />
+          <CloseMenuIcon id="menu-icon-close" class="hidden h-4 w-4" />
+        </button>
+      </div>
+    </div>
+    <!-- end Right side navigation -->
   </nav>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="bg-purple-accent border-purple-dark pointer-events-none fixed inset-x-0 top-0 z-40 flex max-h-[85vh] -translate-y-full transform flex-col overflow-hidden rounded-b-3xl border-b shadow-2xl transition-all duration-300 ease-out md:hidden"
+  >
+    <!-- Header -->
+    <div
+      class="border-purple-dark flex shrink-0 items-center justify-between border-b px-6 py-5"
+    >
+      <a href="/" aria-label="inicio" data-menu-link>
+        <Image
+          src={LogoBlackLetters}
+          alt="Logo Eliana Alvarez Psicologa"
+          class="w-36"
+          priority
+        />
+      </a>
+      <div class="flex items-center gap-3">
+        <a
+          href="/contacto"
+          class="text-purple-dark bg-olive hover:bg-olive/80 rounded-full px-2 py-1 text-sm font-semibold transition-colors active:scale-95"
+          data-menu-link
+        >
+          Contacto
+        </a>
+        <button
+          id="mobile-menu-close"
+          class="bg-soft-bg/5 text-soft-bg hover:bg-soft-bg/10 flex size-10 items-center justify-center rounded-full transition-all active:scale-95"
+          aria-label="Cerrar menú"
+        >
+          <CloseMenuIcon class="h-5 w-5" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Links -->
+    <div class="flex-1 overflow-y-auto overscroll-contain px-6 py-4">
+      {
+        navigation
+          .filter((item) => item.path !== "/contacto")
+          .map((item) => (
+            <a
+              href={item.path}
+              class={`mb-1 block rounded-lg px-3 py-3.5 text-base transition-all duration-200 ${
+                currentPath === item.path
+                  ? "bg-olive/20 text-olive font-medium"
+                  : "text-soft-bg/90 hover:bg-soft-bg/5 hover:text-soft-bg"
+              }`}
+              aria-current={item.path === currentPath ? "page" : undefined}
+              data-menu-link
+            >
+              {item.label}
+            </a>
+          ))
+      }
+
+      <!-- Services Accordion -->
+      <div class="py-2">
+        <button
+          id="mobile-services-toggle"
+          class="text-soft-bg/90 hover:bg-soft-bg/5 hover:text-soft-bg flex w-full items-center justify-between rounded-lg px-3 py-3.5 text-base transition-all duration-200"
+          aria-expanded="false"
+        >
+          <span>Servicios</span>
+          <ChevronDown
+            id="mobile-services-chevron"
+            class="h-4 w-4 transition-transform duration-300"
+          />
+        </button>
+        <div
+          id="mobile-services-submenu"
+          class="max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-out"
+        >
+          <div class="space-y-1 pt-2 pl-3">
+            {
+              servicesNavigation.map((item) => (
+                <a
+                  href={item.path}
+                  class={`block rounded-lg px-3 py-2.5 text-sm transition-all duration-200 ${
+                    currentPath === item.path
+                      ? "bg-olive/20 text-olive font-medium"
+                      : "text-soft-bg/70 hover:bg-soft-bg/5 hover:text-soft-bg"
+                  }`}
+                  aria-current={item.path === currentPath ? "page" : undefined}
+                  data-menu-link
+                >
+                  <span class="flex items-center gap-2">
+                    <span class="bg-olive/60 h-1.5 w-1.5 rounded-full" />
+                    {item.name}
+                  </span>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
+
+<script>
+  import { navbarAnimations } from "@/utils/animations/global/navbar.Animations.js";
+  navbarAnimations();
+</script>

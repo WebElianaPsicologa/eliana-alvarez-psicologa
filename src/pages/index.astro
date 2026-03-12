@@ -1,8 +1,13 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import Hero from "@/components/landing/Hero.astro";
+import Hero from "@/components/perpage/home/Hero.astro";
 ---
 
-<MainLayout>
+<MainLayout
+  seoProps={{
+    title: "Home",
+    description: "Home",
+  }}
+>
   <Hero />
 </MainLayout>
