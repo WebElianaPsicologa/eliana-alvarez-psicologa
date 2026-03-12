@@ -10,56 +10,47 @@ export interface Service {
   seoDescription: string;
   image?: string;
   icon?: string;
+  duration?: string;
+  tag?: string;
+  cta?: string;
   benefits?: string[];
 }
 
 export const services: Service[] = [
   {
-    slug: "web-design",
-    title: "Web Design",
+    slug: "asesoria-psicologica",
+    title: "Asesoría Psicológica",
     description:
-      "We create stunning, conversion-focused websites that reflect your brand identity and engage your audience.",
+      "Orientación puntual para crisis o decisiones inmediatas. Una intervención de corto plazo diseñada para quienes necesitan herramientas concretas, dirección clara y estrategias efectivas para avanzar.",
     seoDescription:
-      "Strategic web design that converts visitors into customers.",
-    image: "/images/services/web-design.jpg",
-    icon: "palette",
+      "Asesoría psicológica online de corto plazo: orientación psicológica, vocacional y entrenamiento en habilidades en 3 a 8 sesiones.",
+    icon: "compass",
+    duration: "Corto plazo · 3 a 8 sesiones",
+    tag: "Enfoque Focalizado | 100% Online",
+    cta: "Necesito orientación hoy",
     benefits: [
-      "Custom responsive design",
-      "SEO optimized structure",
-      "Fast loading speed",
-      "User-friendly navigation",
+      "Orientación psicológica para conflictos puntuales",
+      "Orientación vocacional y profesional",
+      "Entrenamiento en habilidades sociales y emocionales",
+      "Plan de acción personalizado",
     ],
   },
   {
-    slug: "digital-marketing",
-    title: "Digital Marketing",
+    slug: "proceso-psicologico-integral",
+    title: "Proceso Psicológico Integral",
     description:
-      "Authentic digital marketing strategies that connect with your audience and drive real results.",
+      "Un viaje de autoconocimiento para sanar raíces y cambiar patrones de conducta. Proceso terapéutico de mediano o largo plazo que combina psicoterapia y entrenamiento en habilidades para una transformación sostenible.",
     seoDescription:
-      "Authentic digital marketing strategies that connect with your audience.",
-    image: "/images/services/digital-marketing.jpg",
-    icon: "megaphone",
+      "Proceso psicoterapéutico integral online: terapia profunda con enfoque pluralista (TCC, Humanismo y Sistémica) para transformación duradera.",
+    icon: "sprout",
+    duration: "Mediano o largo plazo",
+    tag: "Psicoterapia + Entrenamiento en Habilidades",
+    cta: "Quiero iniciar mi proceso",
     benefits: [
-      "Social media management",
-      "Content strategy",
-      "Email marketing",
-      "Analytics & reporting",
-    ],
-  },
-  {
-    slug: "seo-optimization",
-    title: "SEO Optimization",
-    description:
-      "Technical and content SEO to improve your visibility in search engines and attract organic traffic.",
-    seoDescription:
-      "Technical SEO to improve your visibility in search engines.",
-    image: "/images/services/seo.jpg",
-    icon: "search",
-    benefits: [
-      "Keyword research",
-      "On-page optimization",
-      "Technical SEO audit",
-      "Link building strategy",
+      "Psicoeducación: entiende cómo funciona tu mente",
+      "Modelado y práctica guiada en sesión",
+      "Herramientas para comunicación, límites y crianza",
+      "Retroalimentación constructiva a tu ritmo",
     ],
   },
 ];

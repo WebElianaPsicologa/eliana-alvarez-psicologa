@@ -1,9 +1,45 @@
 ---
-
+import { navigation } from "@/utils/navigation";
+import { Image } from "astro:assets";
+import MobileMenuIcon from "@/assets/icons/mobileMenu.svg";
+import LogoBlackLetters from "@/assets/images/logowhite256x128.png";
 ---
 
-<header>
-  <nav>
-    <h1>Mente Equilibrada</h1>
+<header class="nav-container fixed top-4 z-50 mx-auto w-full">
+  <nav
+    class="nav-content bg-purple-accent border-purple-dark relative mx-auto flex max-w-7xl items-center justify-between rounded-4xl border px-5 py-1"
+  >
+    <div class="logo-container">
+      <a href="/" aria-label="inicio">
+        <Image
+          src={LogoBlackLetters}
+          alt="Logo Eliana Alvarez Psicologa"
+          class="h-auto w-36 object-contain"
+          priority
+        />
+      </a>
+    </div>
+    <!-- Desktop menu -->
+    <div class="menu">
+      <ul class="hidden items-center justify-around gap-4 lg:flex">
+        {
+          navigation.map((item) => (
+            <li
+              class="nav-item text-soft-bg text-lg transition-colors duration-300"
+              aria-label={item.label}
+            >
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="mobile-menu lg:hidden">
+      <button
+        class="border-soft-bg/50 hover:bg-soft-bg text-soft-bg hover:text-purple-accent rounded-full border p-2 transition-colors duration-300"
+      >
+        <MobileMenuIcon class="h-8 w-8" />
+      </button>
+    </div>
   </nav>
 </header>
