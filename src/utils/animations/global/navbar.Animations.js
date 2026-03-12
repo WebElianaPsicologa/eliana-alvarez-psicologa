@@ -13,11 +13,21 @@ export const navbarAnimations = () => {
       start: "top top",
       end: "bottom top",
       toggleActions: "play none none reverse",
-      markers: true,
+      markers: false,
     },
     width: "50%",
     ease: "linear",
     duration: 0.5,
+  });
+
+  // dropdown menu animation
+  const details = document.querySelector("#services-dropdown");
+  if (!details) return;
+
+  // Hover to open/close
+  details.addEventListener("mouseenter", () => (details.open = true));
+  details.addEventListener("mouseleave", () => {
+    details.open = false;
   });
 
   // Mobile menu toggle
