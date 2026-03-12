@@ -23,7 +23,7 @@ export const services: Service[] = [
     description:
       "Orientación puntual para crisis o decisiones inmediatas. Una intervención de corto plazo diseñada para quienes necesitan herramientas concretas, dirección clara y estrategias efectivas para avanzar.",
     seoDescription:
-      "Asesoría psicológica online de corto plazo: orientación psicológica, vocacional y entrenamiento en habilidades en 3 a 8 sesiones.",
+      "Asesoría psicológica online de corto plazo: orientación psicológica, vocacional y entrenamiento en habilidades (3 a 8 sesiones).",
     icon: "compass",
     duration: "Corto plazo · 3 a 8 sesiones",
     tag: "Enfoque Focalizado | 100% Online",
