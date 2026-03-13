@@ -7,17 +7,21 @@ export const navbarAnimations = () => {
   const navContainer = document.querySelector("#navbar");
   const logo = document.querySelector("#logo");
 
-  gsap.to(logo, {
-    scrollTrigger: {
-      trigger: navContainer,
-      start: "top top",
-      end: "bottom top",
-      toggleActions: "play none none reverse",
-      markers: false,
-    },
-    width: "50%",
-    ease: "linear",
-    duration: 0.5,
+  let mm = gsap.matchMedia();
+
+  mm.add("(min-width: 1023px)", () => {
+    gsap.to(logo, {
+      scrollTrigger: {
+        trigger: navContainer,
+        start: "top top",
+        end: "bottom top",
+        toggleActions: "play none none reverse",
+        markers: false,
+      },
+      width: "50%",
+      ease: "linear",
+      duration: 0.5,
+    });
   });
 
   // dropdown menu animation

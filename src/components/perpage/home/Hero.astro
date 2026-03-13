@@ -21,62 +21,64 @@ import ShieldIcon from "@/assets/icons/shield.svg";
     <div
       class="relative z-10 col-span-1 flex flex-col justify-center px-8 pt-24 pb-24 md:col-span-7 md:pt-40 lg:px-16 xl:px-24"
     >
-      <!-- Kicker -->
-      <div class="hero-kicker mb-7 flex items-center gap-3">
-        <div class="bg-gray-lavender/60 h-px w-10 shrink-0"></div>
-        <span
-          class="font-nunito text-gray-lavender text-xs font-semibold tracking-widest uppercase"
-        >
-          El primer paso hacia tu bienestar
-        </span>
-      </div>
+      <div class="mx-auto w-full max-w-2xl">
+        <!-- Kicker -->
+        <div class="hero-kicker mb-7 flex items-center gap-3 opacity-0">
+          <div class="bg-gray-lavender/60 h-px w-10 shrink-0"></div>
+          <span
+            class="font-nunito text-gray-lavender text-xs font-semibold tracking-widest uppercase"
+          >
+            El primer paso hacia tu bienestar
+          </span>
+        </div>
 
-      <!-- H1 -->
-      <h1
-        class="hero-title font-jakarta text-purple-accent mb-6 text-4xl leading-tight font-black tracking-tight md:text-5xl xl:text-6xl"
-      >
-        <span class="block">Sana tu historia</span>
-        <span class="text-purple-dark block font-extrabold"
-          >para vivir un presente</span
+        <!-- H1 -->
+        <h1
+          class="hero-title text-purple-accent mb-6 text-4xl leading-tight font-black tracking-tight opacity-0 md:text-5xl xl:text-6xl"
         >
-        <span class="block">con libertad emocional.</span>
-      </h1>
+          <span class="block">Sana tu historia</span>
+          <span class="text-purple-dark block font-extrabold"
+            >para vivir un presente</span
+          >
+          <span class="block">con libertad emocional.</span>
+        </h1>
 
-      <!-- Subtitle -->
-      <p
-        class="hero-subtitle font-nunito text-purple-dark/75 mb-10 max-w-lg text-base leading-relaxed lg:text-lg"
-      >
-        Más de 20 años acompañando a mujeres, adolescentes y familias a sanar la
-        ansiedad, superar duelos y reconstruir vínculos mediante una terapia
-        integral, humana y sin fronteras.
-      </p>
-
-      <!-- CTAs -->
-      <div class="hero-ctas flex flex-wrap items-center gap-4">
-        <a
-          href="/contacto"
-          class="font-nunito group bg-purple-accent hover:bg-purple-dark inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:shadow-md lg:text-base"
+        <!-- Subtitle -->
+        <p
+          class="hero-subtitle text-purple-dark/75 mb-10 max-w-lg text-base leading-relaxed opacity-0 lg:text-lg"
         >
-          Agendar mi sesión de valoración
-          <ArrowRightIcon
-            class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
-          />
-        </a>
+          Más de 20 años acompañando a mujeres, adolescentes y familias a sanar
+          la ansiedad, superar duelos y reconstruir vínculos mediante una
+          terapia integral, humana y sin fronteras.
+        </p>
 
-        <a
-          href="/sobre-mi"
-          class="font-nunito border-purple-accent/30 text-purple-accent hover:border-purple-accent hover:bg-purple-accent/5 inline-flex items-center rounded-full border px-7 py-3.5 text-sm font-semibold transition-all duration-300 lg:text-base"
-        >
-          Conoce mi enfoque clínico
-        </a>
-      </div>
+        <!-- CTAs -->
+        <div class="hero-ctas flex flex-wrap items-center gap-4 opacity-0">
+          <a
+            href="/contacto"
+            class="group bg-purple-accent hover:bg-purple-dark inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:shadow-md lg:text-base"
+          >
+            Agendar <span class="hidden md:flex">mi</span> sesión de valoración
+            <ArrowRightIcon
+              class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
+            />
+          </a>
 
-      <!-- Microcopy -->
-      <div class="hero-microcopy mt-5 flex items-center gap-2">
-        <ShieldIcon class="text-gray-lavender h-3.5 w-3.5 shrink-0" />
-        <span class="font-nunito text-gray-lavender text-xs"
-          >Atención confidencial vía Zoom/Meet.</span
-        >
+          <a
+            href="/sobre-mi"
+            class="border-purple-accent/30 text-purple-accent hover:border-purple-accent hover:bg-purple-accent/5 inline-flex items-center rounded-full border px-7 py-3.5 text-sm font-semibold transition-all duration-300 lg:text-base"
+          >
+            Conoce mi enfoque clínico
+          </a>
+        </div>
+
+        <!-- Microcopy -->
+        <div class="hero-microcopy mt-5 flex items-center gap-2 opacity-0">
+          <ShieldIcon class="text-gray-lavender h-3.5 w-3.5 shrink-0" />
+          <span class="font-nunito text-gray-lavender text-xs"
+            >Atención confidencial vía Zoom/Meet.</span
+          >
+        </div>
       </div>
     </div>
 
@@ -128,7 +130,7 @@ import ShieldIcon from "@/assets/icons/shield.svg";
         >
       </div>
       <p
-        class="font-nunito text-purple-dark/65 relative text-xs leading-snug font-semibold tracking-wider uppercase"
+        class="text-purple-dark/65 relative text-xs leading-snug font-semibold tracking-wider uppercase"
       >
         <span class="block">Años de</span>
         <span class="block">experiencia clínica</span>

@@ -1,0 +1,140 @@
+---
+import BrainIcon from "@/assets/icons/brain.svg";
+import HeartBrokenIcon from "@/assets/icons/heart-broken.svg";
+import LockIcon from "@/assets/icons/lock.svg";
+import ArrowRightIcon from "@/assets/icons/arrow-right.svg";
+
+const tabs = [
+  {
+    id: "anxiety",
+    title: "La Ansiedad te domina",
+    icon: BrainIcon,
+    content:
+      "Tu mente no para, sientes un vacío en el pecho y el futuro te genera miedo constante. Es agotador vivir en estado de alerta permanente. Aprenderemos a entender qué te está pidiendo tu ansiedad y a darle calma a tu sistema nervioso.",
+  },
+  {
+    id: "bonds",
+    title: "Los Vínculos duelen",
+    icon: HeartBrokenIcon,
+    content:
+      "Atraviesas una ruptura amorosa, un duelo migratorio (dejar atrás tu país, tu gente) o sientes que la comunicación con tu hijo adolescente se ha roto. Trabajaremos en resignificar esas pérdidas y reconstruir relaciones desde un lugar más sano.",
+  },
+  {
+    id: "stuck",
+    title: "Te sientes estancado",
+    icon: LockIcon,
+    content:
+      "Repites patrones que te hacen daño y, aunque quieres cambiar, no sabes por dónde empezar. Sientes que la historia se repite. Juntos exploraremos las raíces de esos patrones para que puedas tomar decisiones con verdadera libertad emocional.",
+  },
+];
+---
+
+<section class="empathy-tabs-section relative overflow-hidden py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-12">
+    <!-- Header -->
+    <div
+      id="empathy-header"
+      class="mx-auto mb-12 max-w-4xl text-center opacity-0 lg:mb-16"
+    >
+      <h2
+        class="empathy-tabs-title text-purple-dark mb-4 text-3xl leading-tight font-bold tracking-tight md:text-4xl lg:text-5xl"
+      >
+        No tienes que poder con todo tú solo
+      </h2>
+
+      <p
+        class="empathy-tabs-subtitle text-purple-dark/90 mx-auto max-w-3xl text-base leading-relaxed md:text-lg"
+      >
+        El propósito de este espacio es ayudarte a identificar qué es lo que más
+        te duele hoy. A veces, la fortaleza no es aguantar más, sino saber pedir
+        ayuda. <span class="text-purple-dark font-semibold"
+          >Haz clic sobre cada opción</span
+        > para explorar cómo podemos abordarlo juntos.
+      </p>
+    </div>
+
+    <!-- Tabbed Interface -->
+    <div class="tabs-container mb-12 grid gap-0 md:grid-cols-5">
+      <!-- Left Tabs -->
+      <div
+        id="empathy-left"
+        class="bg-olive/10 sm:border-purple-dark/20 col-span-2 flex flex-col gap-4 rounded-2xl p-8 opacity-0 sm:rounded-none sm:rounded-ss-2xl sm:rounded-es-2xl sm:border-r-2"
+      >
+        {
+          tabs.map((tab, index) => (
+            <article
+              class:list={[
+                "tab-item",
+                "flex cursor-pointer items-center gap-4 rounded-lg p-4 transition-all duration-300",
+                index === 0
+                  ? "active sm:bg-soft-bg sm:border-purple-accent sm:border-l-2"
+                  : "hover:bg-olive/20 sm:border-l-2 sm:border-transparent",
+              ]}
+              data-tab-id={tab.id}
+            >
+              <div class="flex flex-col items-center gap-8 md:flex-row">
+                <tab.icon class="tab-icon bg-gray-lavender/70 text-soft-bg h-10 w-10 rounded-lg p-0.5 transition-transform duration-300" />
+                <h3 class="tab-title text-purple-dark text-base font-medium md:text-lg">
+                  {tab.title}
+                </h3>
+                <p class="text-purple-dark text-center text-base leading-relaxed md:hidden lg:text-xl">
+                  {tab.content}
+                </p>
+                <div class="bg-gray-lavender/60 h-px w-full shrink-0 md:hidden" />
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <!-- Right Content -->
+      <div
+        id="empathy-right"
+        class="bg-soft-bg col-span-3 hidden items-center justify-center rounded-e-2xl p-8 opacity-0 md:flex md:p-12"
+      >
+        <div class="content-wrapper relative w-full">
+          {
+            tabs.map((tab, index) => (
+              <div
+                class:list={[
+                  "tab-content",
+                  "pointer-events-none absolute inset-0 flex items-center justify-center opacity-0",
+                  index === 0 ? "active" : "",
+                ]}
+                data-content-id={tab.id}
+              >
+                <p class="text-purple-dark text-base leading-relaxed md:text-lg lg:text-xl">
+                  {tab.content}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    <div class="group mx-auto flex items-center justify-center">
+      <a
+        href="/contacto"
+        class="text-purple-accent flex items-center gap-2 text-center transition-all duration-300 group-hover:underline group-hover:underline-offset-4"
+      >
+        Si te identificas con alguna de estas situaciones, hablemos
+        <ArrowRightIcon
+          class="hidden transition-all duration-300 group-hover:translate-x-1 md:block"
+        />
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { empathyTabsAnimations } from "@/utils/animations/home/empathyTabs.Animations.js";
+
+  empathyTabsAnimations();
+</script>
+
+<style>
+  .tab-content.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>
