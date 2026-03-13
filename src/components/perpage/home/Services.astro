@@ -1,7 +1,152 @@
 ---
-
+import CompassIcon from "@/assets/icons/compass.svg";
+import DeepBrainIcon from "@/assets/icons/deepbrain.svg";
+import ArrowRightIcon from "@/assets/icons/arrow-right.svg";
 ---
 
-<section>
-  <h1 class="text-6xl font-bold">Services</h1>
+<section
+  class="bg-soft-beige relative overflow-hidden px-6 py-24 md:px-12 lg:px-20 lg:py-32"
+>
+  <!-- Section Header -->
+  <div class="mx-auto mb-16 max-w-4xl text-center lg:mb-24">
+    <h2
+      class="text-purple-accent mb-12 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl"
+    >
+      ¿Cómo podemos trabajar juntos/as?
+    </h2>
+    <div class="bg-olive mx-auto h-1 w-24 rounded-full"></div>
+  </div>
+
+  <!-- Cards Grid - Even Layout -->
+  <div
+    id="services-wrapper"
+    class="mx-auto grid max-w-7xl grid-rows-1 gap-8 md:grid-cols-2 md:gap-12 lg:gap-16"
+  >
+    <!-- Card 1 - Asesoría Psicológica -->
+    <article
+      id="services-1"
+      class="group border-purple-accent/10 bg-soft-bg hover:border-purple-accent/30 relative flex h-full flex-col overflow-hidden rounded-3xl border-2 shadow-lg transition-all duration-500 hover:shadow-2xl"
+    >
+      <!-- Card Header with Icon -->
+      <div class="bg-blue-mist/30 relative px-8 pt-10 pb-12">
+        <!-- Decorative Circle Background -->
+        <div
+          class="bg-purple-accent/5 absolute -top-8 -right-8 h-40 w-40 rounded-full transition-transform duration-700 group-hover:scale-125"
+        >
+        </div>
+
+        <!-- Icon Container -->
+        <div
+          class="bg-purple-accent relative mb-6 inline-flex h-20 w-20 items-center justify-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
+        >
+          <CompassIcon class="text-soft-bg h-10 w-10" />
+        </div>
+
+        <!-- Duration Tag -->
+        <span
+          class="bg-olive/90 text-purple-dark inline-block rounded-full px-4 py-2 text-sm font-semibold tracking-wide"
+        >
+          Corto plazo
+        </span>
+      </div>
+
+      <!-- Card Content -->
+      <div class="flex grow flex-col px-8 pt-8 pb-10">
+        <h3 class="text-purple-accent mb-4 text-3xl font-bold">
+          Asesoría Psicológica
+        </h3>
+
+        <p class="text-purple-dark mb-8 grow text-lg leading-relaxed">
+          Orientación puntual para crisis o decisiones <span class="block"
+            >inmediatas.</span
+          >
+        </p>
+
+        <!-- CTA Button -->
+        <a
+          href="/servicios/asesoria-psicologica"
+          class="group/btn bg-purple-accent text-soft-bg hover:bg-purple-dark inline-flex items-center justify-center gap-3 rounded-full px-8 py-4 font-semibold shadow-md transition-all duration-300 hover:gap-5 hover:shadow-xl"
+        >
+          <span>Conoce el proceso</span>
+          <ArrowRightIcon
+            class="h-5 w-5 transition-transform duration-300 group-hover/btn:translate-x-1"
+          />
+        </a>
+      </div>
+
+      <!-- Decorative Bottom Accent -->
+      <div class="from-purple-accent to-gray-lavender h-2 bg-linear-to-r"></div>
+    </article>
+
+    <!-- Card 2 - Proceso Psicoterapéutico Profundo -->
+    <article
+      id="services-2"
+      class="group border-purple-accent/10 bg-soft-bg hover:border-purple-accent/30 relative flex h-full flex-col overflow-hidden rounded-3xl border-2 shadow-lg transition-all duration-500 hover:shadow-2xl"
+    >
+      <!-- Card Header with Icon -->
+      <div class="bg-gray-lavender/20 relative px-8 pt-10 pb-12">
+        <!-- Decorative Circle Background -->
+        <div
+          class="bg-olive/10 absolute -top-8 -right-8 h-40 w-40 rounded-full transition-transform duration-700 group-hover:scale-125"
+        >
+        </div>
+
+        <!-- Icon Container -->
+        <div
+          class="bg-olive relative mb-6 inline-flex h-20 w-20 items-center justify-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6"
+        >
+          <DeepBrainIcon class="text-purple-accent h-10 w-10" />
+        </div>
+
+        <!-- Duration Tag -->
+        <span
+          class="bg-purple-accent/10 text-purple-accent inline-block rounded-full px-4 py-2 text-sm font-semibold tracking-wide"
+        >
+          Mediano plazo
+        </span>
+      </div>
+
+      <!-- Card Content -->
+      <div class="flex grow flex-col px-8 pt-8 pb-10">
+        <h3 class="text-purple-accent mb-4 text-3xl font-bold">
+          Proceso Psicoterapéutico Profundo
+        </h3>
+
+        <p class="text-purple-dark mb-8 grow text-lg leading-relaxed">
+          Un viaje de autoconocimiento para sanar raíces y cambiar patrones de
+          conducta.
+        </p>
+
+        <!-- CTA Button -->
+        <a
+          href="/servicios/proceso-psicologico-integral"
+          class="group/btn border-purple-accent text-purple-accent hover:border-purple-dark hover:bg-purple-accent hover:text-soft-bg inline-flex items-center justify-center gap-3 rounded-full border-2 bg-transparent px-8 py-4 font-semibold shadow-md transition-all duration-300 hover:gap-5 hover:shadow-xl"
+        >
+          <span>Conoce el proceso</span>
+          <ArrowRightIcon
+            class="h-5 w-5 transition-transform duration-300 group-hover/btn:translate-x-1"
+          />
+        </a>
+      </div>
+
+      <!-- Decorative Bottom Accent -->
+      <div class="from-olive to-blue-mist h-2 bg-linear-to-r"></div>
+    </article>
+  </div>
+
+  <!-- Background Decorative Elements -->
+  <div
+    class="bg-purple-accent/5 pointer-events-none absolute bottom-20 -left-20 h-96 w-96 rounded-full blur-3xl"
+  >
+  </div>
+  <div
+    class="bg-olive/10 pointer-events-none absolute top-20 -right-20 h-96 w-96 rounded-full blur-3xl"
+  >
+  </div>
 </section>
+
+<script>
+  import servicesAnimation from "@/utils/animations/home/servicesAnimation";
+
+  servicesAnimation();
+</script>
