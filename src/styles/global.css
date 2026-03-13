@@ -19,26 +19,26 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: var(--color-soft-bg);
+    background-color: var(--color-soft-beige);
   }
 
   h1 {
-    font-family: var(--font-montserrat);
+    font-family: var(--font-jakarta);
   }
   h2 {
-    font-family: var(--font-montserrat);
+    font-family: var(--font-jakarta);
   }
   h3 {
-    font-family: var(--font-montserrat);
+    font-family: var(--font-jakarta);
   }
   p {
-    font-family: var(--font-lora);
+    font-family: var(--font-nunito);
   }
   button {
-    font-family: var(--font-lora);
+    font-family: var(--font-nunito);
   }
   a {
-    font-family: var(--font-lora);
+    font-family: var(--font-nunito);
   }
 
   /* Prevent browser autofill from overriding custom styles */
@@ -84,7 +84,8 @@
 }
 
 @theme {
-  --color-soft-bg: oklch(0.973 0.007 68);
+  --color-soft-bg: oklch(1 0 0);
+  --color-soft-beige: oklch(0.9655 0.0119 101.48);
   --color-purple-accent: oklch(46.2% 0.066 315);
   --color-purple-dark: oklch(36.9% 0.051 316);
   --color-gray-lavender: oklch(67.3% 0.061 316);
