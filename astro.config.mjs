@@ -9,6 +9,8 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://soft-bavarois-cdfa88.netlify.app",
+
   security: { csp: true },
 
   vite: {
