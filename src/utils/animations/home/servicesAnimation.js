@@ -21,7 +21,7 @@ export default function servicesAnimation() {
           start: "top 80%",
           end: "bottom 20%",
           toggleActions: "play none none reverse",
-          markers: true,
+          markers: false,
         },
       })
       .to(service1, { opacity: 1, y: 0, duration: 0.8, ease: "power4.out" })
