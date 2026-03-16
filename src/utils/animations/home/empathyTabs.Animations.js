@@ -78,7 +78,7 @@ export const empathyTabsAnimations = () => {
         trigger: empathySection,
         start: "top 50%",
         end: "bottom 20%",
-        toggleActions: "play none none reverse",
+        toggleActions: "play none none none",
         markers: false,
       },
     })
