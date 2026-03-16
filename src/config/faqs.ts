@@ -39,13 +39,13 @@ export const onlineTherapyFAQs: FAQItem[] = [
   {
     question: "¿Qué plataforma se utiliza para la conexión y si es segura?",
     answer:
-      "Las sesiones se realizan a través de Microsoft Teams, una plataforma líder que garantiza el cifrado de extremo a extremo. No se necesita instalar nada complejo; puede unirse desde su navegador o la aplicación, asegurando que nuestra conversación sea totalmente privada.",
-    note: "Si la conexión es desde el móvil, se recomienda descargar la app gratuita de Microsoft Teams para una conexión más estable, aunque desde el ordenador funciona perfecto directamente en el navegador.",
+      "Las sesiones se realizan a través de Microsoft Teams, una plataforma líder que garantiza el cifrado de extremo a extremo. No necesitas instalar nada complejo; puedes unirte desde tu navegador o la aplicación, asegurando que nuestra conversación sea totalmente privada.",
+    note: "Si te conectas desde el móvil, te recomiendo descargar la app gratuita de Microsoft Teams para una conexión más estable, aunque desde el ordenador funciona perfecto directamente en el navegador.",
   },
   {
     question: "¿Qué necesito para mi primera sesión por Teams?",
     answer:
-      "Solo se necesita un dispositivo con cámara y micrófono (ordenador, tablet o móvil) y una conexión a internet estable. Recibirá un enlace de acceso por correo electrónico antes de cada sesión. Recuerde buscar un espacio tranquilo donde pueda hablar con libertad y privacidad.",
+      "Solo necesitas un dispositivo con cámara y micrófono (ordenador, tablet o móvil) y una conexión a internet estable. Recibirás un enlace de acceso por correo electrónico antes de cada sesión. Recuerda buscar un espacio tranquilo donde puedas hablar con libertad y privacidad.",
   },
 ];
 

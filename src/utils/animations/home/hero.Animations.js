@@ -13,34 +13,34 @@ export const heroAnimations = () => {
 
   gsap.set(
     [heroKicker, heroTitle, heroSubtitle, heroCtas, heroMicrocopy, heroBadge],
-    { opacity: 1 },
+    { autoAlpha: 1 },
   );
 
   gsap.timeline({ defaults: { ease: "power3.out" } });
 
   // Kicker slides in from left
-  gsap.from(heroKicker, { opacity: 0, x: -20, duration: 0.65 }, 0.2);
+  gsap.from(heroKicker, { autoAlpha: 0, x: -20, duration: 0.65 }, 0.2);
 
   // H1 rises
   gsap.from(
     heroTitle,
-    { opacity: 0, y: 44, duration: 0.85, ease: "power4.out" },
+    { autoAlpha: 0, y: 44, duration: 0.85, ease: "power4.out" },
     0.45,
   );
 
   // Subtitle follows
-  gsap.from(heroSubtitle, { opacity: 0, y: 28, duration: 0.7 }, 0.75);
+  gsap.from(heroSubtitle, { autoAlpha: 0, y: 28, duration: 0.7 }, 0.75);
 
   // CTAs stagger in
-  gsap.from(heroCtas, { opacity: 0, y: 20, duration: 0.6 }, 0.95);
+  gsap.from(heroCtas, { autoAlpha: 0, y: 20, duration: 0.6 }, 0.95);
 
   // Microcopy fades
-  gsap.from(heroMicrocopy, { opacity: 0, duration: 0.5 }, 1.1);
+  gsap.from(heroMicrocopy, { autoAlpha: 0, duration: 0.5 }, 1.1);
 
   // Badge pops in with slight scale
   gsap.from(
     heroBadge,
-    { opacity: 0, scale: 0.75, y: 10, duration: 0.5, ease: "back.out(1.8)" },
+    { autoAlpha: 0, scale: 0.75, y: 10, duration: 0.5, ease: "back.out(1.8)" },
     1.2,
   );
 };
