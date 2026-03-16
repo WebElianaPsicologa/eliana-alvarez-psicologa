@@ -11,7 +11,7 @@ import { AUTHORS, getAuthorByName, type Author } from "./authorBio";
 // Re-export for convenience
 export { services, type Service };
 export { allFAQs, type FAQItem };
-export { generalFAQs, pricingFAQs, getFAQsByCategory } from "./faqs";
+export { generalFAQs } from "./faqs";
 export { AUTHORS, getAuthorByName, type Author };
 
 // =============================================================================
@@ -83,7 +83,7 @@ export type JSONLDSchema = Record<string, unknown>;
 // =============================================================================
 
 export const COMPANY_INFO: CompanyInfo = {
-  name: "Your Company Name",
+  name: "Eliana Alvarez Psicologa",
   description:
     "Your company description optimized for SEO. Include main keywords naturally.",
   url: "https://yourwebsite.com",
@@ -447,10 +447,14 @@ export function generateBlogPostSchema(post: BlogPost): JSONLDSchema {
 
   // Build social media array for author
   const authorSameAs = [];
-  if (author.socialMedia?.linkedin) authorSameAs.push(author.socialMedia.linkedin);
-  if (author.socialMedia?.instagram) authorSameAs.push(author.socialMedia.instagram);
-  if (author.socialMedia?.twitter) authorSameAs.push(author.socialMedia.twitter);
-  if (author.socialMedia?.facebook) authorSameAs.push(author.socialMedia.facebook);
+  if (author.socialMedia?.linkedin)
+    authorSameAs.push(author.socialMedia.linkedin);
+  if (author.socialMedia?.instagram)
+    authorSameAs.push(author.socialMedia.instagram);
+  if (author.socialMedia?.twitter)
+    authorSameAs.push(author.socialMedia.twitter);
+  if (author.socialMedia?.facebook)
+    authorSameAs.push(author.socialMedia.facebook);
 
   // Create rich author schema for E-E-A-T
   const authorSchema: Record<string, unknown> = {
@@ -471,7 +475,7 @@ export function generateBlogPostSchema(post: BlogPost): JSONLDSchema {
   }
 
   if (author.certifications && author.certifications.length > 0) {
-    authorSchema.hasCredential = author.certifications.map(cert => ({
+    authorSchema.hasCredential = author.certifications.map((cert) => ({
       "@type": "EducationalOccupationalCredential",
       credentialCategory: "Professional Certification",
       name: cert,
@@ -677,7 +681,7 @@ export function generateAuthorSchema(author: Author): JSONLDSchema {
   }
 
   if (author.certifications && author.certifications.length > 0) {
-    schema.hasCredential = author.certifications.map(cert => ({
+    schema.hasCredential = author.certifications.map((cert) => ({
       "@type": "EducationalOccupationalCredential",
       credentialCategory: "Professional Certification",
       name: cert,

@@ -20,7 +20,7 @@ export default function servicesAnimation() {
           trigger: servicesWrapper,
           start: "top 80%",
           end: "bottom 20%",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
           markers: false,
         },
       })

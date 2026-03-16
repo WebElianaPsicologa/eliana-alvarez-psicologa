@@ -6,7 +6,7 @@ import CheckmarkIcon from "@/assets/icons/checkmark.svg";
 import BrainIcon from "@/assets/icons/brain.svg";
 ---
 
-<section class="about-hero bg-soft-beige py-16 lg:py-24">
+<section class="about-hero bg-soft-bg py-16 lg:py-24">
   <div class="container mx-auto max-w-7xl px-6 lg:px-12">
     <h1
       class="text-purple-dark mb-8 text-center text-3xl font-bold md:text-5xl"
@@ -27,21 +27,23 @@ import BrainIcon from "@/assets/icons/brain.svg";
       </div>
       <!-- Content - below image on mobile, 3 columns starting at col 3 on desktop -->
       <div
-        class="bg-soft-bg py-8 lg:col-span-3 lg:col-start-3 lg:row-span-4 lg:pr-8"
+        class="bg-soft-beige py-8 lg:col-span-3 lg:col-start-3 lg:row-span-4 lg:pr-8"
       >
         <!-- Content -->
         <div
           id="content-about-me"
-          class="group border-purple-dark relative flex flex-col items-center justify-center space-y-8 overflow-hidden border-l-0 px-4 lg:rounded-r-2xl lg:border-y-2 lg:border-r-2 lg:px-8 lg:pt-16"
+          class="group border-purple-dark/30 relative flex flex-col items-center justify-center space-y-8 overflow-hidden border-l-0 px-4 lg:rounded-r-2xl lg:border-y-2 lg:border-r-2 lg:px-8 lg:pt-16"
         >
           <!-- Decorative element -->
           <div
             class="bg-soft-beige absolute -top-14 -right-16 h-40 w-40 rounded-full transition-all duration-300 ease-in-out group-hover:scale-110"
           >
           </div>
-          <h1 id="title-name" class="text-4xl font-bold md:text-7xl">
-            Eliana <span class="font-light italic">Álvarez</span>
-          </h1>
+          <div class="title-wrapper">
+            <h1 id="title-name" class="text-4xl font-bold md:text-7xl">
+              Eliana <span class="font-light italic">Álvarez</span>
+            </h1>
+          </div>
           <p class="text-gray-lavender text-center text-base md:text-lg">
             Más de 20 años acompañando procesos de transformación.
           </p>

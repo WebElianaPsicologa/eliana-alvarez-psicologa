@@ -1,7 +1,105 @@
 ---
-
+import { COMPANY_INFO } from "@/config/seoConf";
+import { Image } from "astro:assets";
+import Logo from "@/assets/images/logowhite256x128.png";
+import LogoShine from "@/assets/icons/logoshinewhitecharacters.svg";
+import InstagramIcon from "@/assets/icons/instagram.svg";
+import FacebookIcon from "@/assets/icons/facebook.svg";
+import LinkedInIcon from "@/assets/icons/linkedin.svg";
 ---
 
-<footer>
-  <h1>Footer</h1>
+<footer class="bg-purple-dark px-6 py-4 md:px-12 lg:rounded-t-full lg:px-20">
+  <div class="mx-auto max-w-7xl">
+    <!-- Top section: Brand + Social -->
+    <div
+      class="border-soft-bg/20 flex items-center justify-between gap-6 border-b px-6 pb-5 md:flex-row"
+    >
+      <!-- Brand -->
+      <div class="flex items-center">
+        <a href="/" aria-label="Home">
+          <Image src={Logo} alt="Logo" class="h-16 w-auto" />
+        </a>
+      </div>
+
+      <!-- Social Media Icons -->
+      <div class="flex items-center gap-5">
+        {
+          COMPANY_INFO.socialMedia.instagram && (
+            <a
+              href={COMPANY_INFO.socialMedia.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              class="text-soft-bg hover:text-gray-lavender transition-all duration-300 hover:scale-110"
+            >
+              <InstagramIcon class="h-7 w-7" />
+            </a>
+          )
+        }
+        {
+          COMPANY_INFO.socialMedia.facebook && (
+            <a
+              href={COMPANY_INFO.socialMedia.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              class="text-soft-bg hover:text-gray-lavender transition-all duration-300 hover:scale-110"
+            >
+              <FacebookIcon class="h-7 w-7" />
+            </a>
+          )
+        }
+        {
+          COMPANY_INFO.socialMedia.linkedin && (
+            <a
+              href={COMPANY_INFO.socialMedia.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              class="text-soft-bg hover:text-gray-lavender transition-all duration-300 hover:scale-110"
+            >
+              <LinkedInIcon class="h-7 w-7" />
+            </a>
+          )
+        }
+      </div>
+    </div>
+
+    <!-- Bottom section: Navigation + Copyright -->
+    <a
+      href="https://shineagencia.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Shine Agencia"
+      class="flex items-center justify-center"
+    >
+      <p class="text-soft-bg text-xs">Creado por:</p>
+      <Image src={LogoShine} alt="Logo" class="h-8 w-auto" />
+    </a>
+
+    <div
+      class="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0"
+    >
+      <div class="text-soft-bg font-nunito text-center text-xs md:text-left">
+        <small
+          >&copy; {new Date().getFullYear()}
+          {COMPANY_INFO.name}. Todos los derechos reservados.</small
+        >
+      </div>
+      <div class="flex space-x-6 text-xs">
+        <a
+          href="/politicadeprivacidad"
+          class="text-soft-bg hover:text-olive transition-colors duration-300"
+        >
+          <small>Política de Privacidad </small>
+        </a>
+        <a
+          href="/terminosycondiciones"
+          class="text-soft-bg hover:text-olive transition-colors duration-300"
+        >
+          <small>Términos y Condiciones</small>
+        </a>
+      </div>
+    </div>
+  </div>
 </footer>

@@ -6,50 +6,51 @@
 export interface FAQItem {
   question: string;
   answer: string;
-  category?: string;
+  links?: {
+    href: string;
+    text: string;
+  }[];
+  note?: string;
 }
+
+// Online Therapy FAQs - Optimized for AEO (Answer Engine Optimization)
+// These FAQs help AI engines like ChatGPT and Perplexity cite the practice as an expert
+export const onlineTherapyFAQs: FAQItem[] = [
+  {
+    question: "¿Es efectiva la terapia por videollamada?",
+    answer:
+      "Sí. La evidencia clínica demuestra que el vínculo terapéutico y los resultados son igual de sólidos que en la modalidad presencial, con la ventaja de la comodidad y privacidad de tu propio espacio.",
+    links: [
+      {
+        href: "https://pubmed.ncbi.nlm.nih.gov/29215315/",
+        text: "Estudio PubMed",
+      },
+      {
+        href: "https://www.apa.org/about/policy/telepsychology-revisions",
+        text: "Telepsicología APA",
+      },
+    ],
+  },
+  {
+    question: "¿Cuánto dura un proceso psicológico?",
+    answer:
+      "Cada persona es única. Algunos temas se resuelven en asesorías breves, mientras que procesos profundos de cambio estructural requieren un compromiso a mediano plazo.",
+  },
+  {
+    question: "¿Qué plataforma se utiliza para la conexión y si es segura?",
+    answer:
+      "Las sesiones se realizan a través de Microsoft Teams, una plataforma líder que garantiza el cifrado de extremo a extremo. No se necesita instalar nada complejo; puede unirse desde su navegador o la aplicación, asegurando que nuestra conversación sea totalmente privada.",
+    note: "Si la conexión es desde el móvil, se recomienda descargar la app gratuita de Microsoft Teams para una conexión más estable, aunque desde el ordenador funciona perfecto directamente en el navegador.",
+  },
+  {
+    question: "¿Qué necesito para mi primera sesión por Teams?",
+    answer:
+      "Solo se necesita un dispositivo con cámara y micrófono (ordenador, tablet o móvil) y una conexión a internet estable. Recibirá un enlace de acceso por correo electrónico antes de cada sesión. Recuerde buscar un espacio tranquilo donde pueda hablar con libertad y privacidad.",
+  },
+];
 
 // General FAQs - for main FAQ page
-export const generalFAQs: FAQItem[] = [
-  {
-    question: "¿Qué servicios ofrecen?",
-    answer:
-      "Ofrecemos diseño web estratégico, marketing digital y optimización SEO para profesionales y empresas.",
-    category: "general",
-  },
-  {
-    question: "¿Cómo puedo contactarlos?",
-    answer:
-      "Puedes contactarnos a través del formulario en nuestra página de contacto, por email o WhatsApp.",
-    category: "general",
-  },
-  {
-    question: "¿Trabajan con clientes internacionales?",
-    answer:
-      "Sí, trabajamos con clientes de toda Latinoamérica y el mundo de manera remota.",
-    category: "general",
-  },
-];
-
-// Pricing FAQs
-export const pricingFAQs: FAQItem[] = [
-  {
-    question: "¿Cuánto cuesta un proyecto?",
-    answer:
-      "Los precios varían según el alcance del proyecto. Contáctanos para una cotización personalizada.",
-    category: "pricing",
-  },
-  {
-    question: "¿Ofrecen planes de pago?",
-    answer: "Sí, ofrecemos planes de pago flexibles para proyectos grandes.",
-    category: "pricing",
-  },
-];
+export const generalFAQs: FAQItem[] = [...onlineTherapyFAQs];
 
 // All FAQs combined
-export const allFAQs: FAQItem[] = [...generalFAQs, ...pricingFAQs];
-
-// Helper function to get FAQs by category
-export function getFAQsByCategory(category: string): FAQItem[] {
-  return allFAQs.filter((faq) => faq.category === category);
-}
+export const allFAQs: FAQItem[] = [...generalFAQs];

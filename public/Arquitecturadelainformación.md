@@ -217,8 +217,14 @@ _Esta sección ayuda a que ChatGPT o Gemini te citen como experta._
 - **Titular (H2):** Dudas frecuentes sobre la terapia online.
 - **Pregunta 1: ¿Es efectiva la terapia por videollamada?**
   - _Respuesta:_ Sí. La evidencia clínica demuestra que el vínculo terapéutico y los resultados son igual de sólidos que en la modalidad presencial, con la ventaja de la comodidad y privacidad de tu propio espacio.
+  - _vinculo1:_ https://pubmed.ncbi.nlm.nih.gov/29215315/
+  - _vinculo2:_ https://www.apa.org/about/policy/telepsychology-revisions
 - **Pregunta 2: ¿Cuánto dura un proceso psicológico?**
   - _Respuesta:_ Cada persona es única. Algunos temas se resuelven en asesorías breves, mientras que procesos profundos de cambio estructural requieren un compromiso a mediano plazo.
+- **Pregunta 3: ¿Qué plataforma se utiliza para la conexión y si es segura?**
+  - _Respuesta:_ Las sesiones se realizan a través de Microsoft Teams, una plataforma líder que garantiza el cifrado de extremo a extremo. No se necesita instalar nada complejo; puede unirse desde su navegador o la aplicación, asegurando que nuestra conversación sea totalmente privada. -_Nota:_ Si la conexión es desde el móvil, se recomienda descargar la app gratuita de Microsoft Teams para una conexión más estable, aunque desde el ordenador funciona perfecto directamente en el navegador.
+- **Pregunta 4: ¿Qué necesito para mi primera sesión por Teams?**
+  - _Respuesta:_ Solo se necesita un dispositivo con cámara y micrófono (ordenador, tablet o móvil) y una conexión a internet estable. Recibirá un enlace de acceso por correo electrónico antes de cada sesión. Recuerde buscar un espacio tranquilo donde pueda hablar con libertad y privacidad.
 
 ---
 
@@ -226,6 +232,8 @@ _Esta sección ayuda a que ChatGPT o Gemini te citen como experta._
 
 - **Frase de cierre:** "El primer paso para sanar es permitirte ser escuchado/a."
 - **Botón final:** \[Quiero empezar mi proceso hoy\]
+
+---
 
 ## **Sobre Mí \- Eliana Alvarez** {#sobre-mí---eliana-alvarez}
 
