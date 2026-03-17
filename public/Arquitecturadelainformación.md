@@ -235,7 +235,7 @@ _Esta sección ayuda a que ChatGPT o Gemini te citen como experta._
 
 ---
 
-## **Sobre Mí \- Eliana Alvarez** {#sobre-mí---eliana-alvarez}
+## **Sobre Mí Page \- Eliana Alvarez** {#sobre-mí---eliana-alvarez}
 
 - **Titular (H1):** Más allá del diván: soy la psicóloga que te acompaña a reescribir tu historia.
 - **Subtítulo:** Mi vocación nació en la infancia, pero mi experiencia se forjó en más de 20 años de práctica clínica, cambios de país y cientos de historias de superación.
