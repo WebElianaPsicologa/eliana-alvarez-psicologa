@@ -1,0 +1,34 @@
+---
+import PlusIcon from "@/assets/icons/plus.svg";
+
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+}
+
+const { id, title, description } = Astro.props;
+---
+
+<div
+  class="wrapper group border-purple-accent bg-soft-beige md:hover:bg-olive/80 rounded-2xl border p-4 shadow-2xl transition-all duration-300 md:hover:border"
+>
+  <div class="stage flex h-full w-full flex-col">
+    <div class="mb-8 flex items-center justify-between gap-2">
+      <PlusIcon class="text-purple-dark h-10 w-10" />
+      <p
+        class="text-gray-lavender/50 group-hover:text-purple-accent text-4xl font-extrabold"
+      >
+        {id}
+      </p>
+    </div>
+    <div class="flex flex-col gap-4">
+      <h2
+        class="text-purple-accent group-hover:text-purple-dark text-xl font-bold"
+      >
+        {title}
+      </h2>
+      <p class="text-purple-dark text-lg">{description}</p>
+    </div>
+  </div>
+</div>
