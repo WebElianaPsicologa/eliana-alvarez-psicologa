@@ -1,17 +1,51 @@
 ---
-
+import { Image } from "astro:assets";
+import aboutImg from "@/assets/images/about.webp";
 ---
 
-<section>
-  <div class="container">
-    <div class="content">
-      <h1>Sobre mí</h1>
-      <p>
-        Soy Eliana Álvarez, psicóloga con experiencia en el acompañamiento de
-        personas en diferentes etapas de su vida. Mi enfoque se centra en crear
-        un espacio seguro y de confianza donde puedas explorar tus pensamientos,
-        emociones y desafíos.
-      </p>
+<section
+  class="about-hero-section bg-soft-beige relative min-h-screen overflow-hidden"
+>
+  <!-- ── TEXT: full width, top of section ─────────────────────── -->
+  <div class="relative z-10 w-full px-6 pt-32 pb-0 lg:px-16">
+    <div class="mx-auto max-w-7xl">
+      <!-- Kicker -->
+      <div class="about-kicker invisible mb-6 flex items-center gap-3">
+        <div class="bg-gray-lavender/50 h-px w-8 shrink-0"></div>
+        <span
+          class="font-nunito text-gray-lavender text-xs font-semibold tracking-widest uppercase"
+        >
+          Sobre mí
+        </span>
+      </div>
+
+      <!-- H1 — SplitText target, full width -->
+      <h1
+        class="about-hero-title text-purple-accent invisible w-full text-center text-4xl leading-tight font-extrabold tracking-tight md:text-5xl xl:text-6xl"
+      >
+        <span class="block">Hola, soy Eliana Álvarez,</span>
+        <span class=""
+          >Más allá del diván: soy la psicóloga que te acompaña a</span
+        >
+        <span class="text-purple-dark"> reescribir tu historia. </span>
+      </h1>
     </div>
   </div>
+
+  <!-- ── IMAGE: bottom-anchored, full width, behind nothing ────── -->
+  <div class="about-image-wrapper relative z-0 w-full">
+    <Image
+      src={aboutImg}
+      alt="Eliana Álvarez, psicóloga clínica con más de 20 años de experiencia, sentada en un sofá con expresión cálida y cercana"
+      class="about-image invisible mx-auto block w-full object-contain"
+      loading="eager"
+      decoding="sync"
+      fetchpriority="high"
+    />
+  </div>
 </section>
+
+<script>
+  import { aboutHeroAnimations } from "@/utils/animations/about/aboutHero.Animations.js";
+  aboutHeroAnimations();
+</script>
