@@ -1,45 +1,50 @@
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const ourFocusAboutAnimation = () => {
-  // On mobile, descriptions are always visible
-  gsap.set(".stage p", { opacity: 1, y: 0 });
+  const cards = gsap.utils.toArray(".stages-grid .wrapper");
+  const title = document.querySelector(".focus-title");
 
-  const mm = gsap.matchMedia();
+  gsap.set(".top-rule-focus", { scaleX: 0, transformOrigin: "left center" });
+  gsap.to(".top-rule-focus", {
+    scaleX: 1,
+    duration: 1.3,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".our-focus-section",
+      start: "top 80%",
+    },
+  });
 
-  mm.add("(min-width: 768px)", () => {
-    const stages = gsap.utils.toArray(".stage");
+  gsap.set([title, ...cards], { autoAlpha: 0, y: 80 });
 
-    // Batch all DOM reads first, before any writes
-    const measurements = stages.map((stage) => {
-      const firstSpan = stage.querySelector(".headings span:first-child");
-      return firstSpan.offsetHeight;
-    });
+  gsap.to(
+    [title, ...cards],
+    {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power2.out",
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: ".stages-grid",
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    },
+    "<0.5",
+  );
 
-    // Now do all writes + setup
-    stages.forEach((stage, i) => {
-      const heading = stage.querySelector(".heading");
-      const headings = stage.querySelector(".headings");
-      const spanHeight = measurements[i];
-
-      gsap.set(heading, { height: spanHeight });
-      gsap.set(stage.querySelector("p"), { opacity: 0 });
-
-      const tl = gsap
-        .timeline({ defaults: { ease: "power2.inOut" }, paused: true })
-        .to(headings, { y: -spanHeight })
-        .fromTo(stage.querySelector("p"), { y: 10, opacity: 0 }, { y: 0, opacity: 1 }, 0);
-
-      stage.addEventListener("mouseenter", () => tl.play());
-      stage.addEventListener("mouseleave", () => tl.reverse());
-    });
-
-    // Cleanup: reset inline styles when breakpoint no longer matches
-    return () => {
-      stages.forEach((stage) => {
-        gsap.set(stage.querySelector(".heading"), { clearProps: "height" });
-        gsap.set(stage.querySelector(".headings"), { clearProps: "y" });
-        gsap.set(stage.querySelector("p"), { clearProps: "opacity,y" });
-      });
-    };
+  gsap.set(".bottom-rule-focus", { scaleX: 0, transformOrigin: "left center" });
+  gsap.to(".bottom-rule-focus", {
+    scaleX: 1,
+    duration: 1,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".bottom-rule-focus",
+      start: "top 90%",
+    },
   });
 };

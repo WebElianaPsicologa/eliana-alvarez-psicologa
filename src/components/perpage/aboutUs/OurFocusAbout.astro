@@ -1,4 +1,6 @@
 ---
+import OurFocusCard from "@/components/ui/cards/OurFocusCard.astro";
+
 const steps = [
   {
     id: "01",
@@ -27,26 +29,42 @@ const steps = [
 ];
 ---
 
-<section class="mx-auto w-full px-6 py-10">
-  <div class="top-rule bg-gray-lavender/30 mb-16 h-1 w-full"></div>
-  <div class="wrapper mx-auto max-w-6xl">
+<section class="our-focus-section mx-auto w-full px-6 py-10">
+  <div class="top-rule-focus bg-gray-lavender/30 mb-16 h-1 w-full"></div>
+  <div class="wrapper mx-auto max-w-7xl">
+    <!-- Heading -->
     <div class="mx-auto mb-10 flex flex-col gap-4">
       <h1
-        class="text-purple-accent text-center text-4xl leading-relaxed font-bold md:text-5xl lg:text-6xl"
+        class="focus-title text-purple-accent text-center text-4xl leading-relaxed font-bold md:text-5xl lg:text-6xl"
       >
         Cada persona es un universo.
       </h1>
-      <p class="text-purple-dark mx-auto max-w-3xl text-center text-lg">
+      <p
+        class="focus-description text-purple-dark mx-auto max-w-3xl text-center text-lg"
+      >
         Por eso, mi práctica clínica es <span
           class="text-purple-accent font-bold">pluralista</span
         >. Esto significa que no intento encajarte en una sola teoría, sino que
         integro lo mejor de diferentes corrientes psicológicas:
       </p>
     </div>
+    <!-- stages -->
+    <div class="stages-grid grid grid-cols-1 gap-4 lg:grid-cols-4">
+      {
+        steps.map((step) => (
+          <OurFocusCard
+            id={step.id}
+            title={step.title}
+            description={step.description}
+          />
+        ))
+      }
+    </div>
   </div>
+  <div class="bottom-rule-focus bg-gray-lavender/30 mt-16 h-1 w-full"></div>
 </section>
 
-<!-- <script>
+<script>
   import { ourFocusAboutAnimation } from "@/utils/animations/about/ourFocusAbout.Animation";
   ourFocusAboutAnimation();
-</script> -->
+</script>
