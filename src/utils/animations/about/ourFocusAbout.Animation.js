@@ -29,9 +29,8 @@ export const ourFocusAboutAnimation = () => {
       ease: "power2.out",
       stagger: 0.2,
       scrollTrigger: {
-        trigger: ".stages-grid",
+        trigger: ".focus-description",
         start: "top 80%",
-        toggleActions: "play none none reverse",
       },
     },
     "<0.5",

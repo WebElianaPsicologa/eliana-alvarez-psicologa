@@ -1,0 +1,59 @@
+---
+import { Image } from "astro:assets";
+import artImage from "@/assets/images/art.webp";
+---
+
+<section class="mx-auto w-full px-6 py-10 lg:px-16 lg:py-20">
+  <div class="mx-auto max-w-7xl">
+    <!-- Card with image bg -->
+    <div class="relative overflow-hidden rounded-3xl">
+      <!-- Background image -->
+      <Image
+        src={artImage}
+        alt="Ilustración acuarela con elementos artísticos: guitarra, pincel, película y plantas"
+        class="absolute inset-0 h-full w-full object-cover object-bottom"
+      />
+
+      <!-- Soft overlay so text reads cleanly without hiding the art -->
+      <div
+        class="from-soft-beige/95 via-soft-beige/80 to-soft-beige/20 absolute inset-0 bg-linear-to-b"
+      >
+      </div>
+
+      <!-- Content -->
+      <div
+        class="relative z-10 px-8 pt-14 pb-52 md:px-16 md:pt-16 md:pb-64 lg:px-20 lg:pt-20 lg:pb-72"
+      >
+        <h2
+          class="text-purple-accent mb-8 text-3xl leading-snug font-bold md:text-4xl lg:text-5xl"
+        >
+          Detrás de la profesional...
+        </h2>
+
+        <ul class="flex max-w-2xl flex-col gap-6">
+          <li class="flex gap-4">
+            <!-- Decorative accent dot -->
+            <span class="bg-purple-accent mt-2 h-2 w-2 shrink-0 rounded-full"
+            ></span>
+            <p class="text-purple-dark text-lg leading-relaxed">
+              El arte es una de mis grandes pasiones, y por eso muchas de mis
+              terapias incluyen actividades artísticas. A través de ellas he
+              descubierto cómo la creatividad puede abrir caminos hacia verdades
+              profundas.
+            </p>
+          </li>
+          <li class="flex gap-4">
+            <span class="bg-purple-accent mt-2 h-2 w-2 shrink-0 rounded-full"
+            ></span>
+            <p class="text-purple-dark text-lg leading-relaxed">
+              A veces, una escena dice lo que cuesta poner en palabras. A muchos
+              de mis pacientes les recomiendo películas y series que se parecen
+              a lo que están viviendo y las usamos en terapia como un puente
+              para mirar su historia con más claridad.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
