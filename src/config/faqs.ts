@@ -49,6 +49,34 @@ export const onlineTherapyFAQs: FAQItem[] = [
   },
 ];
 
+export const psychologyAdviceFAQs: FAQItem[] = [
+  {
+    question: "¿Qué es una asesoría psicológica?",
+    answer:
+      "Es una intervención breve y focalizada, ideal para situaciones puntuales o decisiones inmediatas. A diferencia de la terapia profunda, la asesoría se centra en resolver un problema específico, ofreciendo orientación clara y herramientas prácticas para actuar de inmediato.",
+  },
+  {
+    question: "¿La orientación vocacional es solo para adolescentes?",
+    answer:
+      "No. Gran parte de los consultantes son adultos que sienten insatisfacción laboral y desean redirigir su trayectoria o elegir una especialización. Nunca es tarde para recalibrar tu brújula profesional.",
+  },
+  {
+    question: "¿Qué es el entrenamiento en habilidades sociales?",
+    answer:
+      "Es un proceso educativo donde, en lugar de solo 'hablar', practicamos técnicas concretas. Es ideal para mejorar el liderazgo, aprender a poner límites o manejar conflictos culturales si te has mudado de país.",
+  },
+  {
+    question: "¿Puedo tomar el servicio en pareja o familia?",
+    answer:
+      "Sí. Tanto la Orientación Psicológica (para conflictos puntuales) como el Desarrollo de Habilidades (ej: pautas de crianza o comunicación) son altamente efectivos en modalidad grupal o familiar.",
+  },
+  {
+    question: "¿Es lo mismo una asesoría psicológica que una terapia?",
+    answer:
+      "No. La asesoría es breve y focalizada en un problema actual, mientras que la terapia es un proceso más profundo y prolongado que busca cambios estructurales y autoconocimiento a largo plazo.",
+  },
+];
+
 // General FAQs - for main FAQ page
 export const generalFAQs: FAQItem[] = [...onlineTherapyFAQs];
 
