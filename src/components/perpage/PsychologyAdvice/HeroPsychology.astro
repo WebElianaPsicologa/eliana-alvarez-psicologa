@@ -1,17 +1,149 @@
 ---
-
+import { Image } from "astro:assets";
+import meetImg from "@/assets/images/meet.webp";
+import ArrowRightIcon from "@/assets/icons/arrow-right.svg";
+import ShieldIcon from "@/assets/icons/shield.svg";
 ---
 
-<section>
-  <div class="container">
-    <div class="content">
-      <h1>Psicología</h1>
-      <p>
-        La psicología es una disciplina que se dedica al estudio del
-        comportamiento humano y los procesos mentales. A través de diferentes
-        enfoques y técnicas, la psicología busca comprender, explicar y
-        modificar el comportamiento humano.
-      </p>
+<section
+  class="hero-psychology bg-soft-bg relative min-h-screen overflow-hidden"
+>
+  <!-- Atmospheric background glows -->
+  <div
+    class="bg-blue-mist/20 pointer-events-none absolute -bottom-40 -left-40 h-96 w-96 rounded-full blur-3xl"
+  >
+  </div>
+  <div
+    class="bg-olive/10 pointer-events-none absolute -top-20 right-2/5 h-64 w-64 rounded-full blur-3xl"
+  >
+  </div>
+
+  <div class="grid min-h-screen grid-cols-1 items-stretch md:grid-cols-12">
+    <!-- LEFT: Content Panel -->
+    <div
+      class="relative z-10 col-span-1 flex flex-col justify-center px-8 pt-24 pb-24 md:col-span-7 md:pt-40 lg:px-16 xl:px-24"
+    >
+      <div class="mx-auto w-full max-w-2xl">
+        <!-- Kicker -->
+        <div class="hero-psychology-kicker invisible mb-7 flex items-center gap-3">
+          <div class="bg-gray-lavender/60 h-px w-10 shrink-0"></div>
+          <span
+            class="font-nunito text-gray-lavender text-xs font-semibold tracking-widest uppercase"
+          >
+            Asesoría Psicológica
+          </span>
+        </div>
+
+        <!-- H1 -->
+        <h1
+          class="hero-psychology-title invisible text-purple-accent mb-6 text-4xl leading-tight font-black tracking-tight md:text-5xl xl:text-6xl"
+        >
+          <span class="block">Soluciones</span>
+          <span class="text-purple-dark block font-extrabold"
+            >prácticas para</span
+          >
+          <span class="block">momentos decisivos.</span>
+        </h1>
+
+        <!-- Single pill tag -->
+        <div class="hero-psychology-tags invisible mb-8">
+          <span
+            class="bg-blue-mist/50 text-purple-dark border-blue-mist/70 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold"
+          >
+            <span class="bg-purple-accent h-1.5 w-1.5 rounded-full"></span>
+            Enfoque Focalizado | 100% Online
+          </span>
+        </div>
+
+        <!-- Subtitle -->
+        <p
+          class="hero-psychology-subtitle invisible text-purple-dark/75 mb-10 max-w-lg text-base leading-relaxed lg:text-lg"
+        >
+          Intervenciones de corto plazo (3 a 8 sesiones) diseñadas para quienes
+          no requieren una terapia profunda, sino herramientas concretas,
+          dirección clara y estrategias efectivas para avanzar.
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero-psychology-ctas invisible flex flex-wrap items-center gap-4">
+          <a
+            href="/contacto"
+            class="group bg-purple-accent hover:bg-purple-dark inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:shadow-md lg:text-base"
+          >
+            Solicitar mi evaluación inicial
+            <ArrowRightIcon
+              class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
+            />
+          </a>
+        </div>
+
+        <!-- Microcopy -->
+        <div class="hero-psychology-microcopy invisible mt-5 flex items-center gap-2">
+          <ShieldIcon class="text-gray-lavender h-3.5 w-3.5 shrink-0" />
+          <span class="font-nunito text-gray-lavender text-xs"
+            >Atención confidencial vía Zoom / Microsoft Teams.</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Image Panel -->
+    <div class="relative col-span-1 hidden md:col-span-5 md:block">
+      <!-- Left-to-content blend gradient -->
+      <div
+        class="from-soft-bg via-soft-bg/50 absolute inset-0 z-10 bg-linear-to-r to-transparent"
+      >
+      </div>
+      <!-- Bottom vignette -->
+      <div
+        class="from-soft-bg absolute inset-x-0 bottom-0 z-10 h-48 bg-linear-to-t to-transparent"
+      >
+      </div>
+      <!-- Caption ribbon -->
+      <div class="absolute inset-x-0 bottom-0 z-20 px-6 pb-32">
+        <p class="font-jakarta text-purple-dark text-sm font-semibold">
+          Sesión de asesoría psicológica online
+        </p>
+        <p class="font-nunito text-purple-dark/60 mt-0.5 text-xs">
+          Desde la comodidad y privacidad de tu propio espacio
+        </p>
+      </div>
+
+      <Image
+        src={meetImg}
+        alt="Psicóloga Eliana Álvarez en sesión de asesoría psicológica online via videollamada, acompañando a una paciente de forma confidencial y personalizada"
+        class="hero-psychology-image invisible absolute inset-0 h-full w-full object-cover object-center"
+        priority
+      />
     </div>
   </div>
+
+  <!-- Floating differentiator badge -->
+  <!-- <div
+    class="hero-psychology-badge invisible absolute bottom-10 left-3/5 z-20 hidden -translate-x-1/2 md:block lg:bottom-20"
+  >
+    <div
+      class="border-purple-accent/15 shadow-purple-accent/10 relative overflow-hidden rounded-2xl border bg-white/90 px-5 py-4 shadow-xl backdrop-blur-sm"
+    >
+      <div class="bg-olive/30 absolute -top-4 -right-4 h-16 w-16 rounded-full">
+      </div>
+      <p
+        class="font-jakarta text-purple-accent relative text-xs font-bold tracking-wider uppercase"
+      >
+        ¿Terapia o Asesoría?
+      </p>
+      <p
+        class="font-nunito text-purple-dark/70 relative mt-1 max-w-44 text-xs leading-relaxed"
+      >
+        Procesos ágiles centrados en el <em
+          class="text-purple-dark font-semibold not-italic">"cómo"</em
+        >, no en el porqué profundo.
+      </p>
+    </div>
+  </div> -->
 </section>
+
+<script>
+  import { heroPsychologyAnimations } from "@/utils/animations/psychologyAdvice/heroPsychology.Animations.js";
+  heroPsychologyAnimations();
+</script>

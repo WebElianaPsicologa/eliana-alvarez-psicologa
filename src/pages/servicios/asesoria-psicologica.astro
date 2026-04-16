@@ -1,6 +1,12 @@
 ---
-import HeroPsychology from "@/components/perpage/PsychologyAdvice/HeroPsychology.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
+import HeroPsychology from "@/components/perpage/PsychologyAdvice/HeroPsychology.astro";
+import TherapyVsAdvice from "@/components/perpage/PsychologyAdvice/TherapyVsAdvice.astro";
+import InterventionLines from "@/components/perpage/PsychologyAdvice/InterventionLines.astro";
+import WorkProcess from "@/components/perpage/PsychologyAdvice/WorkProcess.astro";
+import FAQsSection from "@/components/global/FAQs.astro";
+import Cta from "@/components/global/Cta.astro";
+import { psychologyAdviceFAQs } from "@/config/faqs";
 ---
 
 <MainLayout
@@ -10,4 +16,14 @@ import MainLayout from "@/layouts/MainLayout.astro";
   }}
 >
   <HeroPsychology />
+  <TherapyVsAdvice />
+  <InterventionLines />
+  <WorkProcess />
+  <Cta
+    heading="No necesitas pasar años en terapia para ver cambios"
+    description="A veces, solo necesitas las herramientas correctas y una guía experta durante unas semanas."
+    buttonText="Reserva tu sesión para definir tu plan de trabajo"
+    buttonHref="/contacto"
+  />
+  <FAQsSection faqs={psychologyAdviceFAQs} />
 </MainLayout>

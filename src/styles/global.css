@@ -1,19 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Plus Jakarta Sans";
-  src: url("/fonts/PlusJakartaSans-Variable.woff2") format("woff2");
-  font-weight: 100 900;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Nunito";
-  src: url("/fonts/Nunito-Variable.woff2") format("woff2");
-  font-weight: 100 900;
-  font-display: swap;
-}
-
 @layer base {
   body {
     box-sizing: border-box;
@@ -22,21 +8,14 @@
     background-color: var(--color-soft-beige);
   }
 
-  h1 {
-    font-family: var(--font-jakarta);
-  }
-  h2 {
-    font-family: var(--font-jakarta);
-  }
+  h1,
+  h2,
   h3 {
     font-family: var(--font-jakarta);
   }
-  p {
-    font-family: var(--font-nunito);
-  }
-  button {
-    font-family: var(--font-nunito);
-  }
+
+  p,
+  button,
   a {
     font-family: var(--font-nunito);
   }
@@ -83,7 +62,7 @@
   }
 }
 
-@theme {
+@theme inline {
   --color-soft-bg: oklch(1 0 0);
   --color-soft-beige: oklch(0.9655 0.0119 101.48);
   --color-purple-accent: oklch(46.2% 0.066 315);

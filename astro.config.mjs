@@ -13,6 +13,19 @@ export default defineConfig({
 
   security: { csp: true },
 
+  fonts: [
+    {
+      name: "Plus Jakarta Sans",
+      cssVariable: "--font-jakarta",
+      provider: fontProviders.fontsource(),
+    },
+    {
+      name: "Nunito",
+      cssVariable: "--font-nunito",
+      provider: fontProviders.fontsource(),
+    },
+  ],
+
   vite: {
     plugins: [tailwindcss()],
   },

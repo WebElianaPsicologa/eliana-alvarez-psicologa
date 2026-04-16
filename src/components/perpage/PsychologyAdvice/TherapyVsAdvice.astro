@@ -1,0 +1,114 @@
+---
+
+---
+
+<section
+  class="therapy-vs-advice bg-soft-beige relative z-10 overflow-hidden rounded-b-[2.5rem] py-24 lg:py-32"
+>
+  <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-12 xl:px-20">
+    <div class="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
+      <!-- LEFT: Textual explanation -->
+      <div class="therapy-vs-advice-left invisible lg:sticky lg:top-32">
+        <!-- Kicker -->
+        <div class="mb-6 flex items-center gap-3">
+          <div class="bg-gray-lavender/50 h-px w-8 shrink-0"></div>
+          <span
+            class="font-nunito text-gray-lavender text-xs font-semibold tracking-widest uppercase"
+          >
+            Claridad antes de empezar
+          </span>
+        </div>
+
+        <!-- Heading -->
+        <h2
+          class="text-purple-accent mb-8 text-4xl leading-tight font-black tracking-tight lg:text-5xl"
+        >
+          <span class="block">¿Terapia o Asesoría?</span>
+          <span class="block">Entendiendo la</span>
+          <span class="block">diferencia.</span>
+        </h2>
+
+        <!-- Body -->
+        <p
+          class="text-purple-dark/70 max-w-md text-base leading-relaxed lg:text-lg"
+        >
+          A diferencia de la psicoterapia profunda, los Servicios de Asesoría
+          Psicológica son procesos ágiles centrados en el
+          <em class="text-purple-dark font-semibold not-italic">"cómo"</em>.
+          Trabajamos directamente sobre el problema actual para desbloquearlo,
+          brindándote un plan de acción personalizado en pocas sesiones.
+        </p>
+      </div>
+
+      <!-- RIGHT: Comparison cards -->
+      <div class="therapy-vs-advice-right invisible flex flex-col gap-5">
+        <!-- Card 1: Psicoterapia Profunda -->
+        <article
+          class="bg-purple-dark relative overflow-hidden rounded-3xl p-7 lg:p-8"
+        >
+          <!-- Decorative glow -->
+          <div
+            class="bg-purple-accent/30 pointer-events-none absolute -top-12 -right-12 h-48 w-48 rounded-full blur-3xl"
+          >
+          </div>
+
+          <div class="relative z-10">
+            <div class="flex items-start justify-between gap-4">
+              <span
+                class="font-nunito text-xs font-semibold tracking-widest text-white/50 uppercase"
+              >
+                Asesoría Psicológica
+              </span>
+              <span
+                class="font-nunito bg-olive/80 shrink-0 rounded-full px-3 py-1 text-xs font-bold whitespace-nowrap text-white"
+              >
+                + Este servicio
+              </span>
+            </div>
+
+            <h3 class="mt-3 text-xl leading-snug font-bold text-white">
+              Herramientas concretas para avanzar hoy
+            </h3>
+
+            <p class="mt-3 text-sm leading-relaxed text-white/75">
+              Intervención breve (3 a 8 sesiones) orientada a resolver el nudo
+              actual: un plan de acción claro, práctico y personalizado.
+            </p>
+          </div>
+        </article>
+
+        <!-- Card 2: Asesoría Psicológica (highlighted) -->
+        <article
+          class="border-purple-dark/20 relative overflow-hidden rounded-3xl border bg-white/60 p-7 shadow-2xl backdrop-blur-sm lg:p-8"
+        >
+          <div class="flex items-start justify-between gap-4">
+            <span
+              class="font-nunito text-gray-lavender text-xs font-semibold tracking-widest uppercase"
+            >
+              Psicoterapia Profunda
+            </span>
+            <span
+              class="font-nunito bg-blue-mist/60 border-purple-dark/15 text-purple-dark/80 shrink-0 rounded-full border px-3 py-1 text-xs font-semibold whitespace-nowrap"
+            >
+              Largo plazo
+            </span>
+          </div>
+
+          <h3 class="text-purple-dark mt-3 text-xl leading-snug font-bold">
+            Explora raíces y transforma patrones
+          </h3>
+
+          <p class="text-purple-dark/80 mt-3 text-sm leading-relaxed">
+            Proceso de mediano/largo plazo que indaga en la historia personal,
+            trabaja traumas y reconstruye vínculos emocionales desde adentro.
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { therapyVsAdviceAnimations } from "@/utils/animations/psychologyAdvice/therapyVsAdvice.Animations.js";
+  therapyVsAdviceAnimations();
+</script>

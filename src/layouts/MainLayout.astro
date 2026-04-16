@@ -25,14 +25,20 @@ const allSchemas = [...schemas, ORGANIZATION_SCHEMA, WEBSITE_SCHEMA];
 <!doctype html>
 <html lang="en" class="scrollbar-hide overflow-x-hidden">
   <head>
+    <!-- SEO Head -->
+    <SeoHead seoProps={seoProps} schemas={allSchemas} />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
-    <!-- SEO Head -->
-    <SeoHead seoProps={seoProps} schemas={allSchemas} />
+    <!-- Fonts -->
+    <Font cssVariable="--font-jakarta" />
+    <Font cssVariable="--font-nunito" />
+
+    <!-- SiteMap -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <script>
       import "@/utils/scripts/lennis.js";
