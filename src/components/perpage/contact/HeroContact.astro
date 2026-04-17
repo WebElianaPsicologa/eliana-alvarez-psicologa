@@ -1,22 +1,56 @@
 ---
-import MainLayout from "@/layouts/MainLayout.astro";
+const trustItems = [
+  "100% Confidencial",
+  "Respuesta rápida por WhatsApp",
+  "Atención online global",
+];
 ---
 
-<MainLayout
-  seoProps={{
-    title: "Contacto",
-    description: "Contacto",
-  }}
->
-  <section>
-    <div class="container">
-      <div class="content">
-        <h1>Contacto</h1>
-        <p>
-          Estoy aquí para acompañarte en tu proceso. Puedes contactarme a través
-          de los siguientes medios:
-        </p>
-      </div>
+<section class="bg-soft-beige px-6 py-24 text-center md:py-32">
+  <div class="mx-auto max-w-3xl">
+    <!-- Kicker -->
+    <div class="mb-8 flex items-center justify-center gap-4">
+      <span class="bg-purple-accent h-px w-10 opacity-40"></span>
+      <span
+        class="text-purple-accent font-jakarta text-xs font-semibold tracking-widest uppercase opacity-60"
+      >
+        Un espacio seguro para ti
+      </span>
+      <span class="bg-purple-accent h-px w-10 opacity-40"></span>
     </div>
-  </section>
-</MainLayout>
+    <!-- Heading -->
+    <div class="mx-auto w-full max-w-4xl">
+      <h1
+        class="hero-contact-title text-purple-dark invisible mb-8 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl"
+      >
+        El primer paso es el más valiente.
+        <span class="block">Estoy aquí para escucharte.</span>
+      </h1>
+
+      <p
+        class="text-purple-accent mx-auto mb-12 max-w-xl text-lg leading-relaxed opacity-80"
+      >
+        Ya sea que estés listo para agendar tu sesión o tengas dudas sobre el
+        proceso, este es un espacio seguro. Te responderé personalmente en un
+        plazo máximo de 24 horas hábiles.
+      </p>
+    </div>
+
+    <ul class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+      {
+        trustItems.map((item) => (
+          <li class="flex items-center gap-2">
+            <span class="bg-olive h-2 w-2 shrink-0 rounded-full" />
+            <span class="text-purple-accent text-sm opacity-75">{item}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<script>
+  import { animateHeroContact } from "@/utils/animations/contact/heroContact.Animation";
+
+  animateHeroContact();
+</script>

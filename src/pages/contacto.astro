@@ -1,13 +1,40 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import HeroContact from "@/components/perpage/contact/HeroContact.astro";
+import ContactMethods from "@/components/perpage/contact/ContactMethods.astro";
+import CrisisDisclaimer from "@/components/perpage/contact/CrisisDisclaimer.astro";
+import FAQs from "@/components/global/FAQs.astro";
+
+import {
+  generateDynamicSEO,
+  generateBreadcrumbSchema,
+  generateFAQSchema,
+} from "@/config/seoConf";
+import { contactLogisticsFAQs } from "@/config/faqs";
+
+const seoProps = generateDynamicSEO({
+  pageType: "contact",
+  title: "Agenda tu cita | Eliana Álvarez Psicóloga",
+  description:
+    "Agenda tu cita con Eliana Álvarez Psicóloga Clínica. Atención online para hispanohablantes en todo el mundo.",
+  canonical: "/contacto",
+});
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", path: "/" },
+  { name: "Contacto", path: "/contacto" },
+]);
+
+const faqSchema = generateFAQSchema(contactLogisticsFAQs);
 ---
 
-<MainLayout
-  seoProps={{
-    title: "Contacto",
-    description: "Contacto",
-  }}
->
+<MainLayout {seoProps} schemas={[breadcrumbSchema, faqSchema]}>
   <HeroContact />
+  <ContactMethods />
+  <FAQs
+    title="Dudas frecuentes antes de empezar"
+    subtitle="Todo lo que necesitas saber sobre pagos, horarios y cancelaciones, para que llegues a tu primera sesión sin preguntas pendientes."
+    faqs={contactLogisticsFAQs}
+  />
+  <CrisisDisclaimer />
 </MainLayout>

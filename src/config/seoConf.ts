@@ -88,7 +88,7 @@ export const COMPANY_INFO: CompanyInfo = {
     "Psicóloga clínica con más de 20 años de experiencia acompañando a mujeres, adolescentes y familias a sanar la ansiedad, superar duelos y reconstruir vínculos mediante una terapia integral, humana y sin fronteras.",
   url: "https://elianaalvarezpsicologa.com", // TODO: Verify this URL
   phone: "+55 11 XXXX-XXXX", // TODO: Verify this phone number
-  email: "hola@elianaalvarezpsicologa.com", // TODO: Verify this email
+  email: "webelianaalvarezpsicologa@outlook.com", // TODO: Verify this email
   address: {
     street: "Atención 100% Online",
     city: "São Paulo",
