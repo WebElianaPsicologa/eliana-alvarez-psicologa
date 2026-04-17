@@ -77,6 +77,29 @@ export const psychologyAdviceFAQs: FAQItem[] = [
   },
 ];
 
+export const contactLogisticsFAQs: FAQItem[] = [
+  {
+    question: "¿Qué métodos de pago aceptas?",
+    answer:
+      "Entre cuentas en Colombia: transferencia bancaria local o Daviplata. Para pagos internacionales (hacia Brasil): Western Union o transferencia internacional. Coordinaremos el método más cómodo para ti por WhatsApp.",
+  },
+  {
+    question: "¿Qué pasa si tengo que cancelar?",
+    answer:
+      "Entiendo que la vida pasa. Puedes reagendar sin costo avisando con 24 horas de anticipación. Solo te pido ese margen para reorganizar la agenda y ofrecerle el espacio a otro paciente.",
+  },
+  {
+    question: "¿En qué horarios puedo agendar una sesión?",
+    answer:
+      "Atiendo de lunes a viernes entre las 8:00 AM y las 3:00 PM (hora Colombia). Si estás en otra zona horaria, lo ajustamos juntos sin problema.",
+  },
+  {
+    question: "¿Cuánto tiempo tardarás en responderme?",
+    answer:
+      "Te respondo personalmente en un plazo máximo de 24 horas hábiles. Si me escribes por WhatsApp, el tiempo de respuesta suele ser mucho más rápido.",
+  },
+];
+
 // General FAQs - for main FAQ page
 export const generalFAQs: FAQItem[] = [...onlineTherapyFAQs];
 
