@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export const eticPillarsAnimation = () => {
-  const colors = ["#674d72", "#b9cadf", "#cbcf96"];
+  const colors = ["#674d72", "#b9cadf", "#cbcf96", "#a58bb0"];
 
   gsap.set(".line", { background: gsap.utils.wrap(colors) });
 

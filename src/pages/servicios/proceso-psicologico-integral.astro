@@ -1,13 +1,52 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import HeroIntegral from "@/components/perpage/integralPsychology/HeroIntegral.astro";
+import DiagnosisIntegral from "@/components/perpage/integralPsychology/DiagnosisIntegral.astro";
+import Methodology from "@/components/perpage/integralPsychology/Methodology.astro";
+import BenefitsIntegral from "@/components/perpage/integralPsychology/BenefitsIntegral.astro";
+import Modalities from "@/components/perpage/integralPsychology/modalities.astro";
+import DurationAEO from "@/components/perpage/integralPsychology/DurationAEO.astro";
+import CTASection from "@/components/global/Cta.astro";
+import {
+  generateDynamicSEO,
+  generateServiceSchema,
+  generateBreadcrumbSchema,
+  services,
+} from "@/config/seoConf";
+
+const service = services.find(
+  (s) => s.slug === "proceso-psicologico-integral",
+)!;
+
+const seoProps = generateDynamicSEO({
+  pageType: "services",
+  title: "Proceso Psicológico Integral | Eliana Álvarez Psicóloga",
+  description:
+    "Psicoterapia y entrenamiento en habilidades a mediano o largo plazo. Trabaja las raíces, fortalece tu mundo emocional y logra un cambio sostenible. Online.",
+  canonical: "/servicios/proceso-psicologico-integral",
+});
+
+const serviceSchema = generateServiceSchema(service);
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", path: "/" },
+  {
+    name: "Proceso Psicológico Integral",
+    path: "/servicios/proceso-psicologico-integral",
+  },
+]);
 ---
 
-<MainLayout
-  seoProps={{
-    title: "Proceso Psicológico Integral",
-    description: "Proceso Psicológico Integral",
-  }}
->
+<MainLayout {seoProps} schemas={[serviceSchema, breadcrumbSchema]}>
   <HeroIntegral />
+  <DiagnosisIntegral />
+  <Methodology />
+  <BenefitsIntegral />
+  <Modalities />
+  <DurationAEO />
+  <CTASection
+    heading="El primer paso es el más valiente. Estoy aquí para escucharte."
+    description="Ya sea que estés listo para agendar tu sesión o tengas dudas sobre el proceso, este es un espacio seguro. Te responderé personalmente en un plazo máximo de 24 horas hábiles."
+    buttonText="Agendar mi sesión de valoración"
+    buttonHref="/contacto"
+  />
 </MainLayout>

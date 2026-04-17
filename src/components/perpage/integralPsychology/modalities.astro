@@ -1,0 +1,248 @@
+---
+import UserIcon from "@/assets/icons/user.svg";
+import CoupleIcon from "@/assets/icons/couple.svg";
+import FamilyIcon from "@/assets/icons/family.svg";
+import GroupIcon from "@/assets/icons/group.svg";
+
+const modalities = [
+  {
+    id: "c-1",
+    icon: UserIcon,
+    label: "Individual",
+    description:
+      "Un viaje personal de autoconocimiento y empoderamiento a tu propio ritmo.",
+  },
+  {
+    id: "c-2",
+    icon: CoupleIcon,
+    label: "Pareja",
+    description:
+      "Para resolver conflictos crónicos y reconectar desde la empatía.",
+  },
+  {
+    id: "c-3",
+    icon: FamilyIcon,
+    label: "Familia",
+    description:
+      "Para mejorar la dinámica del hogar y la escucha activa entre miembros.",
+  },
+  {
+    id: "c-4",
+    icon: GroupIcon,
+    label: "Grupos",
+    description:
+      "Entrenamientos específicos de habilidades sociales y adaptación.",
+  },
+];
+---
+
+<section class="bg-soft-beige mx-auto px-6 py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl">
+    <!-- Grid two columns -->
+    <div class="modalities-grid grid grid-cols-1 gap-12 lg:grid-cols-2">
+      <!-- Left column -->
+      <div class="modalities-left flex flex-col justify-center">
+        <!-- Kicker -->
+        <div class="modalities-kicker mb-12 flex items-center gap-3">
+          <div class="bg-gray-lavender/50 h-px w-8 shrink-0"></div>
+          <span
+            class="font-nunito text-gray-lavender text-xs font-semibold tracking-widest uppercase"
+          >
+            Flexible y adaptado a ti
+          </span>
+        </div>
+        <h2
+          class="text-purple-accent mb-6 text-3xl leading-tight font-bold lg:text-4xl"
+        >
+          Modalidades de atención
+        </h2>
+        <p class="text-purple-dark mb-6 max-w-xl text-lg">
+          Este proceso es completamente flexible en cuanto a quién participa.
+          Puedes comenzar en cualquier modalidad y ajustarla a medida que
+          avanzamos juntos.
+        </p>
+      </div>
+
+      <!-- Right column -->
+      <div class="modalities-right mx-auto w-full">
+        <div class="content-wrapper">
+          <div class="content-container">
+            <div class="modality-card">
+              {
+                modalities.map((m) => {
+                  const Icon = m.icon;
+                  return (
+                    <div
+                      class="modality"
+                      data-grid={m.id}
+                      data-label={m.label}
+                      data-description={m.description}
+                    >
+                      <div class="card-inner">
+                        <Icon class="card-icon" />
+                        <span class="card-label">{m.label}</span>
+                        <p class="card-description">{m.description}</p>
+                      </div>
+                    </div>
+                  );
+                })
+              }
+            </div>
+          </div>
+        </div>
+        <span
+          class="font-nunito text-purple-accent mt-6 text-xs tracking-widest"
+        >
+          *Haz clic en cada modalidad para explorarla.
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { modalitiesAnimation } from "@/utils/animations/integralPsychology/modalitiesIntegral.Animation";
+
+  modalitiesAnimation();
+</script>
+
+<style>
+  .content-wrapper {
+    width: 100%;
+    max-width: 460px;
+  }
+
+  .content-container {
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .content-container::before {
+    float: left;
+    padding-top: 110%;
+    content: "";
+  }
+
+  .content-container::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+
+  .modality-card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    grid-template-areas:
+      "c-1 c-1 c-1"
+      "c-1 c-1 c-1"
+      "c-1 c-1 c-1"
+      "c-2 c-3 c-4";
+  }
+
+  .modality {
+    cursor: pointer;
+    border-radius: 12px;
+    border: 1.5px solid oklch(46.2% 0.066 315 / 0.15);
+    background-color: oklch(83.8% 0.075 111 / 0.8);
+    will-change: transform;
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modality:hover {
+    border-color: oklch(46.2% 0.066 315 / 0.4);
+    background-color: oklch(46.2% 0.066 315 / 0.1);
+  }
+
+  .modality[data-grid="c-1"] {
+    grid-area: c-1;
+    z-index: 1;
+    cursor: default;
+    background-color: oklch(83.8% 0.075 111 / 0.1);
+    border-color: oklch(46.2% 0.066 315 / 0.3);
+  }
+
+  .modality[data-grid="c-2"] {
+    grid-area: c-2;
+  }
+
+  .modality[data-grid="c-3"] {
+    grid-area: c-3;
+  }
+
+  .modality[data-grid="c-4"] {
+    grid-area: c-4;
+  }
+
+  /* Card inner layout */
+  .card-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 16px;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .card-icon {
+    width: 3rem;
+    height: 3rem;
+    color: oklch(46.2% 0.066 315);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .modality[data-grid="c-1"] .card-icon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .modality:hover .card-icon {
+    transform: scale(1.1);
+  }
+
+  .card-label {
+    font-family: var(--font-jakarta);
+    font-weight: 700;
+    color: oklch(36.9% 0.051 316);
+    letter-spacing: 0.02em;
+    font-size: 0.8rem;
+  }
+
+  .modality[data-grid="c-1"] .card-label {
+    font-size: 1.5rem;
+  }
+
+  .card-description {
+    font-family: var(--font-nunito);
+    color: oklch(46.2% 0.066 315);
+    line-height: 1.5;
+    margin: 0;
+    font-size: 0.7rem;
+  }
+
+  .modality[data-grid="c-1"] .card-description {
+    font-size: 1.2rem;
+    max-width: 28ch;
+  }
+
+  /* Hide description on small cards */
+  .modality:not([data-grid="c-1"]) .card-description {
+    display: none;
+  }
+</style>
