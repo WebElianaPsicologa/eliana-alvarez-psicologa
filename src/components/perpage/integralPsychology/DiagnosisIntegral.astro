@@ -1,0 +1,147 @@
+---
+import LoopIcon from "@/assets/icons/loop.svg";
+import CompassIcon from "@/assets/icons/compass.svg";
+import FightIcon from "@/assets/icons/fight-cloud.svg";
+import RocketIcon from "@/assets/icons/rocket.svg";
+
+const reasons = [
+  {
+    icon: "loop",
+    label: "Cambios sostenibles",
+    heading: "Buscas cambios sostenibles",
+    body: "No quieres un alivio momentáneo, sino transformar patrones de conducta que repites una y otra vez.",
+  },
+  {
+    icon: "compass",
+    label: "Momento de transición",
+    heading: "Estás en transición",
+    body: "Atraviesas cambios significativos —duelo migratorio, cambio de carrera, separación— y necesitas adaptarte a una nueva realidad.",
+  },
+  {
+    icon: "fight",
+    label: "Conflicto constante",
+    heading: "El conflicto es constante",
+    body: "Sientes que te faltan herramientas para manejar tus emociones o comunicarte sin pelear, en pareja, familia o trabajo.",
+  },
+  {
+    icon: "rocket",
+    label: "Crecimiento personal",
+    heading: "Quieres potenciarte",
+    body: "No se trata de estar mal, sino de comprenderte mejor y potenciar habilidades como el liderazgo, la empatía y la inteligencia emocional.",
+  },
+] as const;
+---
+
+<section
+  class="diagnosis-integral bg-soft-bg relative z-10 overflow-hidden rounded-b-[2.5rem] py-24 lg:py-32"
+>
+  <!-- Subtle background texture -->
+  <div
+    class="bg-olive/10 pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full blur-3xl"
+  >
+  </div>
+  <div
+    class="bg-blue-mist/15 pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full blur-3xl"
+  >
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-12 xl:px-20">
+    <div class="grid grid-cols-1 items-start gap-16 lg:grid-cols-12 lg:gap-20">
+
+      <!-- LEFT: Sticky heading -->
+      <div class="diagnosis-integral-heading invisible lg:col-span-4 lg:sticky lg:top-32">
+        <!-- Kicker -->
+        <div class="mb-6 flex items-center gap-3">
+          <div class="bg-gray-lavender/50 h-px w-8 shrink-0"></div>
+          <span
+            class="font-nunito text-gray-lavender text-xs font-semibold tracking-widest uppercase"
+          >
+            ¿Para quién es?
+          </span>
+        </div>
+
+        <!-- H2 -->
+        <h2
+          class="text-purple-accent mb-7 text-4xl leading-tight font-black tracking-tight lg:text-5xl"
+        >
+          <span class="block">¿Cuándo es el</span>
+          <span class="text-purple-dark block font-extrabold">momento de</span>
+          <span class="block">iniciar?</span>
+        </h2>
+
+        <p class="text-purple-dark/65 max-w-xs text-sm leading-relaxed lg:text-base">
+          Este espacio está diseñado para ti si te identificas con alguna de
+          estas situaciones.
+        </p>
+
+        <!-- Decorative number -->
+        <div
+          class="border-purple-accent/15 mt-10 hidden w-fit rounded-2xl border px-5 py-4 lg:block"
+        >
+          <span
+            class="font-jakarta text-purple-accent text-5xl font-black leading-none"
+            >4</span
+          >
+          <p
+            class="font-nunito text-purple-dark/50 mt-1 text-xs font-semibold tracking-wider uppercase"
+          >
+            <span class="block">señales</span>
+            <span class="block">clave</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT: 2×2 cards grid -->
+      <div
+        class="diagnosis-integral-cards invisible grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-8"
+      >
+        {
+          reasons.map((reason) => (
+            <article class="diagnosis-card group border-purple-dark/10 hover:border-purple-accent/30 relative overflow-hidden rounded-3xl border bg-white/70 p-7 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md lg:p-8">
+              <!-- Hover glow -->
+              <div class="bg-olive/20 pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+
+              <div class="relative z-10">
+                <!-- Icon container -->
+                <div class="bg-olive/30 border-olive/40 mb-5 flex h-11 w-11 items-center justify-center rounded-xl border">
+                  {reason.icon === "loop" && (
+                    <LoopIcon class="text-purple-dark h-8 w-8" />
+                  )}
+                  {reason.icon === "compass" && (
+                    <CompassIcon class="text-purple-dark h-8 w-8" />
+                  )}
+                  {reason.icon === "fight" && (
+                    <FightIcon class="text-purple-dark h-8 w-8" />
+                  )}
+                  {reason.icon === "rocket" && (
+                    <RocketIcon class="text-purple-dark h-8 w-8" />
+                  )}
+                </div>
+
+                <!-- Label pill -->
+                <span class="font-nunito text-gray-lavender mb-3 block text-xs font-semibold tracking-widest uppercase">
+                  {reason.label}
+                </span>
+
+                <!-- Heading -->
+                <h3 class="text-purple-dark mb-3 text-lg font-bold leading-snug">
+                  {reason.heading}
+                </h3>
+
+                <!-- Body -->
+                <p class="text-purple-dark/65 text-sm leading-relaxed">
+                  {reason.body}
+                </p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { diagnosisIntegralAnimations } from "@/utils/animations/integralPsychology/diagnosisIntegral.Animations.js";
+  diagnosisIntegralAnimations();
+</script>

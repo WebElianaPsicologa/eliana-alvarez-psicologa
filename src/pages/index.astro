@@ -8,14 +8,20 @@ import AboutMe from "@/components/perpage/home/AboutMe.astro";
 import FAQSection from "@/components/global/FAQs.astro";
 import Cta from "@/components/global/Cta.astro";
 import { onlineTherapyFAQs } from "@/config/faqs";
+import { generateDynamicSEO, generateFAQSchema } from "@/config/seoConf";
+
+const seoProps = generateDynamicSEO({
+  pageType: "home",
+  title: "Psicóloga Online | Eliana Álvarez Psicóloga Clínica",
+  description:
+    "Psicóloga clínica con +20 años de experiencia. Terapia online en español para ansiedad, duelo y familia. Atención para hispanohablantes en todo el mundo.",
+  canonical: "/",
+});
+
+const faqSchema = generateFAQSchema(onlineTherapyFAQs);
 ---
 
-<MainLayout
-  seoProps={{
-    title: "Home",
-    description: "Home",
-  }}
->
+<MainLayout {seoProps} schemas={[faqSchema]}>
   <Hero />
   <EmpathyTabs />
   <ValueProposal />

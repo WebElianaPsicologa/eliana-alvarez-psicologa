@@ -1,0 +1,30 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { COMPANY_INFO } from "@/config/seoConf";
+
+const seoProps = {
+  title: `Página no encontrada | ${COMPANY_INFO.name}`,
+  description: "La página que buscas no existe o fue movida. Vuelve al inicio y encuentra el apoyo psicológico que necesitas con Eliana Álvarez, psicóloga clínica online.",
+  noindex: true,
+};
+---
+
+<MainLayout {seoProps}>
+  <section class="flex min-h-[70vh] flex-col items-center justify-center px-6 py-24 text-center">
+    <p class="font-nunito text-gray-lavender mb-4 text-xs font-semibold tracking-widest uppercase">
+      Error 404
+    </p>
+    <h1 class="text-purple-accent mb-6 text-5xl font-black tracking-tight lg:text-7xl">
+      Página no encontrada
+    </h1>
+    <p class="text-purple-dark/70 mb-10 max-w-md text-lg leading-relaxed">
+      La página que buscas no existe o fue movida. No te preocupes, puedes volver al inicio.
+    </p>
+    <a
+      href="/"
+      class="bg-purple-accent font-nunito hover:bg-purple-dark inline-flex items-center rounded-full px-8 py-4 text-sm font-bold text-white transition-colors duration-200"
+    >
+      Volver al inicio
+    </a>
+  </section>
+</MainLayout>

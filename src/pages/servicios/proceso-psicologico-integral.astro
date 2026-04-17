@@ -1,13 +1,41 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import HeroIntegral from "@/components/perpage/integralPsychology/HeroIntegral.astro";
+import DiagnosisIntegral from "@/components/perpage/integralPsychology/DiagnosisIntegral.astro";
+import Methodology from "@/components/perpage/integralPsychology/Methodology.astro";
+import BenefitsIntegral from "@/components/perpage/integralPsychology/BenefitsIntegral.astro";
+import {
+  generateDynamicSEO,
+  generateServiceSchema,
+  generateBreadcrumbSchema,
+  services,
+} from "@/config/seoConf";
+
+const service = services.find(
+  (s) => s.slug === "proceso-psicologico-integral",
+)!;
+
+const seoProps = generateDynamicSEO({
+  pageType: "services",
+  title: "Proceso Psicológico Integral | Eliana Álvarez Psicóloga",
+  description:
+    "Psicoterapia y entrenamiento en habilidades a mediano o largo plazo. Trabaja las raíces, fortalece tu mundo emocional y logra un cambio sostenible. Online.",
+  canonical: "/servicios/proceso-psicologico-integral",
+});
+
+const serviceSchema = generateServiceSchema(service);
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", path: "/" },
+  {
+    name: "Proceso Psicológico Integral",
+    path: "/servicios/proceso-psicologico-integral",
+  },
+]);
 ---
 
-<MainLayout
-  seoProps={{
-    title: "Proceso Psicológico Integral",
-    description: "Proceso Psicológico Integral",
-  }}
->
+<MainLayout {seoProps} schemas={[serviceSchema, breadcrumbSchema]}>
   <HeroIntegral />
+  <DiagnosisIntegral />
+  <Methodology />
+  <BenefitsIntegral />
 </MainLayout>

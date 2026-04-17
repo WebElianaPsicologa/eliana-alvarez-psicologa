@@ -7,14 +7,33 @@ import WorkProcess from "@/components/perpage/PsychologyAdvice/WorkProcess.astro
 import FAQsSection from "@/components/global/FAQs.astro";
 import Cta from "@/components/global/Cta.astro";
 import { psychologyAdviceFAQs } from "@/config/faqs";
+import {
+  generateDynamicSEO,
+  generateServiceSchema,
+  generateFAQSchema,
+  generateBreadcrumbSchema,
+  services,
+} from "@/config/seoConf";
+
+const service = services.find((s) => s.slug === "asesoria-psicologica")!;
+
+const seoProps = generateDynamicSEO({
+  pageType: "services",
+  title: "Asesoría Psicológica Online | Eliana Álvarez Psicóloga",
+  description:
+    "Orientación psicológica, vocacional y entrenamiento en habilidades en 3 a 8 sesiones. Intervención breve y focalizada para situaciones puntuales. Online.",
+  canonical: "/servicios/asesoria-psicologica",
+});
+
+const serviceSchema = generateServiceSchema(service);
+const faqSchema = generateFAQSchema(psychologyAdviceFAQs);
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", path: "/" },
+  { name: "Asesoría Psicológica", path: "/servicios/asesoria-psicologica" },
+]);
 ---
 
-<MainLayout
-  seoProps={{
-    title: "Asesoría Psicológica",
-    description: "Asesoría Psicológica",
-  }}
->
+<MainLayout {seoProps} schemas={[serviceSchema, faqSchema, breadcrumbSchema]}>
   <HeroPsychology />
   <TherapyVsAdvice />
   <InterventionLines />
