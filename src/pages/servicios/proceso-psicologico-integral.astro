@@ -4,6 +4,9 @@ import HeroIntegral from "@/components/perpage/integralPsychology/HeroIntegral.a
 import DiagnosisIntegral from "@/components/perpage/integralPsychology/DiagnosisIntegral.astro";
 import Methodology from "@/components/perpage/integralPsychology/Methodology.astro";
 import BenefitsIntegral from "@/components/perpage/integralPsychology/BenefitsIntegral.astro";
+import Modalities from "@/components/perpage/integralPsychology/modalities.astro";
+import DurationAEO from "@/components/perpage/integralPsychology/DurationAEO.astro";
+import CTASection from "@/components/global/Cta.astro";
 import {
   generateDynamicSEO,
   generateServiceSchema,
@@ -38,4 +41,12 @@ const breadcrumbSchema = generateBreadcrumbSchema([
   <DiagnosisIntegral />
   <Methodology />
   <BenefitsIntegral />
+  <Modalities />
+  <DurationAEO />
+  <CTASection
+    heading="El primer paso es el más valiente. Estoy aquí para escucharte."
+    description="Ya sea que estés listo para agendar tu sesión o tengas dudas sobre el proceso, este es un espacio seguro. Te responderé personalmente en un plazo máximo de 24 horas hábiles."
+    buttonText="Agendar mi sesión de valoración"
+    buttonHref="/contacto"
+  />
 </MainLayout>

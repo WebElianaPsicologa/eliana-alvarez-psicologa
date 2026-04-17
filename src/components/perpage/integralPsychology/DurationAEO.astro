@@ -1,0 +1,155 @@
+---
+const tiers = [
+  {
+    range: "3-8 sesiones",
+    label: "Asesoría Psicológica",
+    description: "Soluciones prácticas para un problema puntual.",
+    intensity: "light",
+  },
+  {
+    range: "3-6 meses",
+    label: "Proceso Mediano Plazo",
+    description: "Cambios reales y sostenibles en patrones de conducta.",
+    intensity: "mid",
+  },
+  {
+    range: "6-12 meses",
+    label: "Proceso Largo Plazo",
+    description:
+      "Transformación profunda e integración de la historia personal.",
+    intensity: "deep",
+  },
+];
+
+const faqs = [
+  {
+    question: "¿Necesito compromiso a largo plazo desde el inicio?",
+    answer:
+      "A diferencia de una asesoría puntual, la transformación profunda requiere tiempo. La duración varía según la complejidad de tu historia y tus objetivos. Cada persona tiene un ritmo único. No forzamos el proceso, sino que lo ajustamos a tus necesidades. Trabajaremos a mediano o largo plazo para asegurar que los cambios se mantengan con el tiempo.",
+  },
+];
+---
+
+<section class="duration-section bg-soft-bg px-6 py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
+      <!-- Left: text -->
+      <div class="duration-left flex flex-col justify-center">
+        <div class="mb-8 flex items-center gap-3">
+          <div class="bg-gray-lavender/50 h-px w-8 shrink-0"></div>
+          <span
+            class="font-nunito text-gray-lavender text-xs font-semibold tracking-widest uppercase"
+          >
+            Expectativas claras
+          </span>
+        </div>
+
+        <h2
+          class="duration-title text-purple-dark invisible mb-6 text-4xl leading-tight font-bold lg:text-5xl"
+        >
+          ¿Cuánto dura el proceso integral?
+        </h2>
+
+        <p class="text-purple-dark/80 mb-5 text-base leading-relaxed">
+          A diferencia de una asesoría puntual, la transformación profunda
+          requiere tiempo. La duración varía según la complejidad de tu historia
+          y tus objetivos.
+        </p>
+
+        <p class="text-purple-dark/80 text-base leading-relaxed">
+          Cada persona tiene un ritmo único. No forzamos el proceso, sino que lo
+          ajustamos a tus necesidades. Trabajaremos a mediano o largo plazo para
+          asegurar que los cambios se mantengan con el tiempo.
+        </p>
+      </div>
+
+      <!-- Right: tiers + FAQ -->
+      <div class="duration-right flex flex-col gap-3">
+        <!-- Duration tier cards -->
+        {
+          tiers.map((tier) => (
+            <div
+              class:list={[
+                "tier-card group flex items-center gap-5 rounded-2xl px-6 py-5",
+                tier.intensity === "light" && "bg-blue-mist/60",
+                tier.intensity === "mid" && "bg-gray-lavender/50",
+                tier.intensity === "deep" && "bg-purple-accent",
+              ]}
+            >
+              <div class="shrink-0">
+                <span
+                  class:list={[
+                    "font-jakarta block text-xl leading-none font-black",
+                    tier.intensity === "deep"
+                      ? "text-soft-beige"
+                      : "text-purple-dark",
+                  ]}
+                >
+                  {tier.range}
+                </span>
+              </div>
+
+              <div class="h-8 w-px shrink-0 bg-current opacity-30" />
+
+              <div>
+                <span
+                  class:list={[
+                    "font-nunito mb-0.5 block text-xs font-semibold tracking-widest uppercase opacity-70",
+                    tier.intensity === "deep"
+                      ? "text-soft-beige"
+                      : "text-purple-dark",
+                  ]}
+                >
+                  {tier.label}
+                </span>
+                <p
+                  class:list={[
+                    "font-nunito text-sm leading-snug",
+                    tier.intensity === "deep"
+                      ? "text-soft-beige/90"
+                      : "text-purple-dark/80",
+                  ]}
+                >
+                  {tier.description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+
+        <!-- FAQ accordion -->
+        <div class="mt-1 flex flex-col gap-2">
+          {
+            faqs.map((faq, i) => (
+              <details class="faq-item group border-purple-accent/15 bg-soft-bg rounded-2xl border px-6 py-4 open:pb-5">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+                  <span class="font-nunito text-purple-dark text-sm leading-snug font-semibold">
+                    {faq.question}
+                  </span>
+                  <span class="text-purple-accent border-purple-accent/30 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-lg font-light transition-transform duration-200 group-open:rotate-45">
+                    +
+                  </span>
+                </summary>
+                <p class="font-nunito text-purple-dark/70 mt-4 text-sm leading-relaxed">
+                  {faq.answer}
+                </p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { durationIntegralAnimation } from "@/utils/animations/integralPsychology/durationIntegral.Animation";
+
+  durationIntegralAnimation();
+</script>
+
+<style>
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
