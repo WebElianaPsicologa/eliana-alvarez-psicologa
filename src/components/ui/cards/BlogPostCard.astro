@@ -1,0 +1,75 @@
+---
+import { Image } from "astro:assets";
+import ArrowRight from "@/assets/icons/arrow-right.svg";
+
+interface Props {
+  slug: string;
+  title: string;
+  author?: string;
+  bio?: string;
+  publishDate: string;
+  description: string;
+  content?: string;
+  image?: string;
+}
+
+const { description, image, publishDate, slug, title } = Astro.props;
+
+const formattedDate = new Date(publishDate).toLocaleDateString("es-CO", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<a href={`/blog/${slug}`} class="group flex flex-col">
+  <article class="hover:bg-blue-mist/30 flex h-full flex-col rounded-2xl p-4">
+    <div class="wrapper">
+      <div
+        class="border-purple-accent/40 mb-5 overflow-hidden rounded-2xl border"
+      >
+        {
+          image ? (
+            <Image
+              src={image}
+              alt={title}
+              inferSize={true}
+              class="aspect-video w-full object-cover"
+            />
+          ) : (
+            <div class="from-blue-mist/60 to-purple-accent/10 aspect-video w-full bg-linear-to-br" />
+          )
+        }
+      </div>
+
+      <div class="flex flex-1 flex-col gap-3">
+        <time
+          class="text-gray-lavender text-xs font-semibold tracking-widest uppercase"
+        >
+          {formattedDate}
+        </time>
+
+        <h2
+          class="text-purple-dark group-hover:text-purple-accent text-xl leading-snug font-bold transition-colors duration-200"
+        >
+          {title}
+        </h2>
+
+        <p
+          class="text-purple-dark/60 group-hover:text-purple-dark/80 line-clamp-3 flex-1 text-sm leading-relaxed"
+        >
+          {description}
+        </p>
+
+        <div
+          class="text-purple-accent mt-4 flex items-center gap-1.5 text-sm font-bold"
+        >
+          <span>Leer más</span>
+          <ArrowRight
+            class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5"
+          />
+        </div>
+      </div>
+    </div>
+  </article>
+</a>

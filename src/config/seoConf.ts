@@ -56,7 +56,7 @@ export interface BlogPost {
   publishDate: Date;
   modifiedDate?: Date;
   tags?: string[];
-  image: string;
+  image?: string;
   author?: string;
 }
 
@@ -513,12 +513,14 @@ export function generateBlogPostSchema(post: BlogPost): JSONLDSchema {
       "@type": "WebPage",
       "@id": `${COMPANY_INFO.url}/blog/${post.id}`,
     },
-    image: {
-      "@type": "ImageObject",
-      url: `${COMPANY_INFO.url}${post.image}`,
-      width: 1200,
-      height: 630,
-    },
+    ...(post.image && {
+      image: {
+        "@type": "ImageObject",
+        url: `${COMPANY_INFO.url}${post.image}`,
+        width: 1200,
+        height: 630,
+      },
+    }),
     keywords: post.tags?.join(", ") ?? MAIN_KEYWORDS.primary.join(", "),
     inLanguage: "es-ES",
     isPartOf: {

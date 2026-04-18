@@ -58,7 +58,7 @@ export interface Author {
 
 export const AUTHORS: Author[] = [
   {
-    name: "Eliana Álvarez",
+    name: "Eliana Alvarez",
     role: "Psicóloga Clínica",
     bio: "Psicóloga clínica con más de 20 años de experiencia acompañando a mujeres, adolescentes y familias. Especialista en duelo migratorio y atención a población hispanohablante desde Brasil.",
     image: "/images/team/eliana-alvarez.jpg",
@@ -107,7 +107,7 @@ export const AUTHORS: Author[] = [
 // =============================================================================
 
 export const DEFAULT_AUTHOR: Author = {
-  name: "Eliana Álvarez - Psicóloga Clínica",
+  name: "Eliana Alvarez - Psicóloga Clínica",
   role: "Psicóloga Clínica",
   bio: "Psicóloga clínica con más de 20 años de experiencia acompañando a mujeres, adolescentes y familias mediante una terapia integral, humana y sin fronteras.",
   credentials: [
