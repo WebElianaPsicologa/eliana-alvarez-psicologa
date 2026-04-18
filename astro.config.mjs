@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig, fontProviders, envField } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -28,6 +28,21 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+  },
+
+  image: {
+    domains: ["d2gr4gsp182xcm.cloudfront.net"],
+  },
+
+  env: {
+    schema: {
+      CONTENT_ISLAND_SECRET_TOKEN: envField.string({
+        context: "server",
+        access: "secret",
+        optional: false,
+        default: "INFORM_VALID_TOKEN",
+      }),
+    },
   },
 
   adapter: netlify({

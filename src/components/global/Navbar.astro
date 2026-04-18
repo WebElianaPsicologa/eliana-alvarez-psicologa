@@ -39,7 +39,10 @@ const currentPath =
         {
           navigation
             .filter(
-              (item) => item.path !== "/contacto" && item.path !== "/servicios",
+              (item) =>
+                item.path !== "/contacto" &&
+                item.path !== "/servicios" &&
+                item.path !== "/blog",
             )
             .map((item) => (
               <a
@@ -114,6 +117,14 @@ const currentPath =
           </div>
         </details>
         <!-- end Services dropdown -->
+
+        <!-- Blog link (always visible) -->
+        <a
+          href="/blog"
+          class={`nav-link hover:text-soft-bg/70 text-lg transition-colors duration-200 ${currentPath === "/blog" ? "text-olive" : "text-soft-bg"}`}
+          aria-current={currentPath === "/blog" ? "page" : undefined}
+          >Blog</a
+        >
       </div>
       <!-- end Desktop links -->
 

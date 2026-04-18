@@ -9,13 +9,15 @@ export const animateMethodsContact = () => {
   mm.add("(min-width: 1024px)", () => {
     const leftColumn = document.querySelector(".left-column");
     const rightColumn = document.querySelector(".right-column");
+    const methodsContact = document.querySelector(".methods-contact");
 
     gsap
       .timeline({
         scrollTrigger: {
-          trigger: rightColumn,
+          trigger: methodsContact,
           start: "top bottom",
           end: "top 30%",
+          markers: false,
           toggleActions: "play none none none",
         },
       })

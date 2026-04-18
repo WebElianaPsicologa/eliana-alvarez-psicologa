@@ -1,0 +1,71 @@
+---
+import {
+  generateDynamicSEO,
+  generateBreadcrumbSchema,
+  BLOG_SCHEMA,
+} from "@/config/seoConf";
+import { getPosts } from "./post.api";
+import MainLayout from "@/layouts/MainLayout.astro";
+import BlogPostCard from "@/components/ui/cards/BlogPostCard.astro";
+
+const posts = await getPosts();
+
+const sortedPosts = posts.sort(
+  (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime(),
+);
+
+const blogSeo = generateDynamicSEO({
+  pageType: "blog",
+  canonical: "/blog",
+});
+
+const breadcrumb = [
+  { name: "Inicio", path: "/" },
+  { name: "Blog", path: "/blog" },
+];
+
+const breadcrumbSchema = generateBreadcrumbSchema(breadcrumb);
+---
+
+<MainLayout seoProps={blogSeo} schemas={[BLOG_SCHEMA, breadcrumbSchema]}>
+  <section class="mt-24 w-full py-20">
+    <div class="wrapper mx-auto max-w-7xl px-6">
+      <!-- Header -->
+      <div class="mx-auto mb-16 max-w-2xl text-center">
+        <span
+          class="bg-purple-accent/10 text-purple-accent mb-4 inline-block rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase"
+        >
+          Artículos
+        </span>
+        <h1 class="text-purple-dark mb-4 text-4xl font-bold">
+          Blog de bienestar emocional
+        </h1>
+        <p class="text-purple-dark/60 text-base leading-relaxed">
+          Recursos, reflexiones y herramientas para acompañarte en tu proceso de
+          crecimiento personal y salud mental.
+        </p>
+      </div>
+
+      <!-- Grid -->
+      {
+        sortedPosts.length > 0 ? (
+          <div class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            {sortedPosts.map((post) => (
+              <BlogPostCard
+                slug={post.slug}
+                title={post.title}
+                publishDate={post.pubDate}
+                description={post.description}
+                image={post.image?.url}
+              />
+            ))}
+          </div>
+        ) : (
+          <div class="py-24 text-center">
+            <p class="text-purple-dark/40">Próximamente nuevos artículos.</p>
+          </div>
+        )
+      }
+    </div>
+  </section>
+</MainLayout>
