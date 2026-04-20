@@ -1,16 +1,9 @@
 ---
 import CheckmarkIcon from "@/assets/icons/checkmark.svg";
 import QuoteIcon from "@/assets/icons/quote.svg";
+import { Image } from "astro:assets";
+import artImage from "@/assets/images/art.webp";
 ---
-
-<style>
-  .radar-chart {
-    --chart-grid-stroke: oklch(83.2% 0.035 255 / 0.4);
-    --chart-data-stroke: oklch(36.9% 0.051 316);
-    --chart-data-fill: oklch(36.9% 0.051 316 / 0.15);
-    --chart-label-fill: oklch(36.9% 0.051 316 / 0.7);
-  }
-</style>
 
 <section
   class="value-proposal-section bg-soft-bg relative overflow-hidden py-16 lg:py-24"
@@ -19,209 +12,112 @@ import QuoteIcon from "@/assets/icons/quote.svg";
     <!-- Header -->
     <div class="mx-auto mb-12 max-w-4xl text-center lg:mb-16">
       <h2
-        class="value-proposal-title text-purple-dark mb-6 text-3xl leading-tight font-bold tracking-tight md:text-4xl lg:text-5xl"
+        class="value-proposal-title invisible text-purple-dark mb-6 text-3xl leading-tight font-bold tracking-tight md:text-4xl lg:text-5xl"
       >
         Un acompañamiento terapéutico que se ajusta a tus necesidades.
       </h2>
 
       <p
-        class="value-proposal-subtitle text-purple-dark/75 mx-auto max-w-3xl text-base leading-relaxed italic md:text-lg"
+        class="value-proposal-subtitle invisible text-purple-dark/75 mx-auto max-w-3xl text-base leading-relaxed italic md:text-lg"
       >
-        Aquí exploraremos cómo funciona mi método. La psicología tradicional a
-        veces puede sentirse fría o rígida. Mi enfoque es <strong
-          class="text-purple-dark font-semibold not-italic"
+        La psicología tradicional a veces puede sentirse fría o rígida. Mi
+        enfoque es <strong class="text-purple-dark font-semibold not-italic"
           >Pluralista y Humano</strong
-        >. El siguiente gráfico ilustra cómo integramos diferentes escuelas
-        psicológicas para crear un proceso personalizado y equilibrado para ti.
+        >: integro diferentes escuelas psicológicas para crear un proceso
+        personalizado y equilibrado para ti.
       </p>
     </div>
 
-    <!-- Two-column layout -->
-    <div
-      class="value-proposal-content mx-auto grid max-w-6xl gap-8 lg:grid-cols-2 lg:gap-6"
-    >
-      <!-- Left Column: Text Content -->
-      <div class="space-y-6 lg:space-y-8">
-        <!-- Approach explanation -->
-        <div class="approach-text">
-          <p class="text-purple-dark/80 text-base leading-relaxed md:text-lg">
-            Integro herramientas de la <strong
-              class="text-purple-dark font-semibold"
-              >Terapia Cognitivo-Conductual</strong
-            > (para el cambio práctico), el <strong
-              class="text-purple-dark font-semibold">Humanismo</strong
-            > (para validar tu emoción) y la <strong
-              class="text-purple-dark font-semibold"
-              >Mirada Sistémica / Psicodinámica</strong
-            > para explorar los procesos profundos que influyen en tu historia y en
-            tu forma de relacionarte.
-          </p>
-        </div>
-
-        <!-- Quote box -->
-        <div
-          class="quote-box bg-soft-beige relative overflow-hidden rounded-2xl p-6 shadow-sm lg:p-8"
-        >
-          <div class="relative z-10">
-            <QuoteIcon
-              class="text-purple-accent/30 mb-3 h-8 w-8 lg:h-10 lg:w-10"
-            />
+    <!-- Content -->
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
+      <!-- Left side -->
+      <div class="value-proposal-content invisible">
+        <div class="space-y-6 lg:space-y-8">
+          <!-- Approach explanation -->
+          <div class="approach-text">
             <p
-              class="text-purple-dark/85 text-base leading-relaxed italic lg:text-lg"
+              class="text-purple-dark/80 text-justify text-base leading-relaxed md:text-lg"
             >
-              ¿El resultado? Es un espacio seguro y personalizado, donde no solo
-              te escucho, sino que te acompaño con herramientas concretas para
-              favorecer un proceso de comprensión y cambio genuino.
+              Integro herramientas de la <strong
+                class="text-purple-dark font-semibold"
+                >Terapia Cognitivo-Conductual</strong
+              > (para el cambio práctico), el <strong
+                class="text-purple-dark font-semibold">Humanismo</strong
+              > (para validar tu emoción) y la <strong
+                class="text-purple-dark font-semibold"
+                >Mirada Sistémica / Psicodinámica</strong
+              > para explorar los procesos profundos que influyen en tu historia y
+              en tu forma de relacionarte.
             </p>
           </div>
 
-          <!-- Decorative background element -->
+          <!-- Quote box -->
           <div
-            class="bg-purple-accent/5 pointer-events-none absolute -right-6 -bottom-6 h-24 w-24 rounded-full blur-2xl"
+            class="quote-box bg-soft-beige relative overflow-hidden rounded-2xl p-6 shadow-sm lg:p-8"
           >
-          </div>
-        </div>
-
-        <!-- Checkmark list -->
-        <div class="checkmark-list space-y-4">
-          <div class="flex items-start gap-3">
-            <div
-              class="bg-olive/20 flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
-            >
-              <CheckmarkIcon class="text-olive h-4 w-4" />
+            <div class="relative z-10">
+              <QuoteIcon
+                class="text-purple-accent/30 mb-3 h-8 w-8 lg:h-10 lg:w-10"
+              />
+              <p
+                class="text-purple-dark/85 text-base leading-relaxed font-semibold italic lg:text-lg"
+              >
+                <strong>
+                  ¿El resultado? Es un espacio seguro y personalizado, donde no
+                  solo te escucho, sino que te acompaño con herramientas
+                  concretas para favorecer un proceso de comprensión y cambio
+                  genuino.
+                </strong>
+              </p>
             </div>
-            <p class="text-purple-dark/80 text-base leading-relaxed lg:text-lg">
-              Espacio 100% libre de juicios.
-            </p>
-          </div>
 
-          <div class="flex items-start gap-3">
+            <!-- Decorative background element -->
             <div
-              class="bg-olive/20 flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
+              class="bg-purple-accent/5 pointer-events-none absolute -right-6 -bottom-6 h-24 w-24 rounded-full blur-2xl"
             >
-              <CheckmarkIcon class="text-olive h-4 w-4" />
             </div>
-            <p class="text-purple-dark/80 text-base leading-relaxed lg:text-lg">
-              Enfoque práctico orientado a soluciones.
-            </p>
           </div>
 
-          <div class="flex items-start gap-3">
-            <div
-              class="bg-olive/20 flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
-            >
-              <CheckmarkIcon class="text-olive h-4 w-4" />
+          <!-- Checkmark list -->
+          <div class="checkmark-list space-y-4">
+            <div class="flex items-start gap-3">
+              <div
+                class="bg-olive/20 flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
+              >
+                <CheckmarkIcon class="text-purple-accent h-4 w-4" />
+              </div>
+              <p class="text-purple-dark text-base leading-relaxed lg:text-lg">
+                Espacio 100% libre de juicios.
+              </p>
             </div>
-            <p class="text-purple-dark/80 text-base leading-relaxed lg:text-lg">
-              Experiencia especializada con población migrante.
-            </p>
+
+            <div class="flex items-start gap-3">
+              <div
+                class="bg-olive/20 flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
+              >
+                <CheckmarkIcon class="text-purple-accent h-4 w-4" />
+              </div>
+              <p class="text-purple-dark text-base leading-relaxed lg:text-lg">
+                Enfoque práctico orientado a soluciones.
+              </p>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div
+                class="bg-olive/20 flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
+              >
+                <CheckmarkIcon class="text-purple-accent h-4 w-4" />
+              </div>
+              <p class="text-purple-dark text-base leading-relaxed lg:text-lg">
+                Experiencia especializada con población migrante.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Right Column: Radar Chart -->
-      <div
-        class="radar-chart-container bg-soft-beige mx-auto w-full max-w-md rounded-2xl p-8 shadow-2xl"
-      >
-        <!-- Title -->
-        <div class="mb-6 text-center">
-          <h2 class="text-purple-dark text-xl font-bold">
-            Equilibrio del Enfoque Pluralista
-          </h2>
-          <p class="text-purple-dark/60 mt-1 text-sm">
-            Integración de dimensiones terapéuticas
-          </p>
-        </div>
-
-        <!-- Chart container -->
-        <div class="chart-wrapper relative flex items-center justify-center">
-          <svg
-            viewBox="0 0 400 380"
-            xmlns="http://www.w3.org/2000/svg"
-            class="radar-chart w-full max-w-sm"
-            aria-label="Gráfico radar del Enfoque Pluralista"
-          >
-            <!-- ── GRID PENTAGONS (5 levels, lightest = outermost) ── -->
-            <g stroke="var(--chart-grid-stroke)" stroke-width="1" fill="none">
-              <!-- Level 5 (outermost) -->
-              <polygon points="200,65 323,152 276,298 124,298 77,152"></polygon>
-              <!-- Level 4 -->
-              <polygon points="200,91 307,165 265,280 135,280 93,165"></polygon>
-              <!-- Level 3 -->
-              <polygon points="200,117 291,178 254,262 146,262 109,178"
-              ></polygon>
-              <!-- Level 2 -->
-              <polygon points="200,143 275,191 243,244 157,244 125,191"
-              ></polygon>
-              <!-- Level 1 (innermost) -->
-              <polygon points="200,169 259,204 232,226 168,226 141,204"
-              ></polygon>
-            </g>
-
-            <!-- ── AXIS LINES (center to each vertex of outermost pentagon) ── -->
-            <g stroke="var(--chart-grid-stroke)" stroke-width="1">
-              <line x1="200" y1="195" x2="200" y2="65"></line>
-              <!-- top -->
-              <line x1="200" y1="195" x2="323" y2="152"></line>
-              <!-- top-right -->
-              <line x1="200" y1="195" x2="276" y2="298"></line>
-              <!-- bottom-right -->
-              <line x1="200" y1="195" x2="124" y2="298"></line>
-              <!-- bottom-left -->
-              <line x1="200" y1="195" x2="77" y2="152"></line>
-              <!-- top-left -->
-            </g>
-
-            <polygon
-              points="200,117 304.6,161 222.9,226.6 184.7,216 144.9,177.1"
-              fill="var(--chart-data-fill)"
-              stroke="var(--chart-data-stroke)"
-              stroke-width="2"
-              stroke-linejoin="round"></polygon>
-
-            <!-- ── DATA POINTS (dots on vertices) ── -->
-            <g fill="var(--chart-data-stroke)">
-              <circle cx="200" cy="117" r="5"></circle>
-              <circle cx="304.6" cy="161" r="5"></circle>
-              <circle cx="222.9" cy="226.6" r="5"></circle>
-              <circle cx="184.7" cy="216" r="5"></circle>
-              <circle cx="144.9" cy="177.1" r="5"></circle>
-            </g>
-
-            <!-- ── LABELS ── -->
-            <g
-              font-size="11"
-              fill="var(--chart-label-fill)"
-              font-family="sans-serif"
-              text-anchor="middle"
-            >
-              <!-- Acción Práctica (TCC) — top -->
-              <text x="200" y="53" class="text-purple-dark font-bold"
-                >Acción Práctica (TCC)</text
-              >
-
-              <!-- Validación Emocional — top-right -->
-              <text x="345" y="150" class="text-purple-dark font-bold"
-                >Validación Emocional</text
-              >
-
-              <!-- Raíces Profundas — bottom-right -->
-              <text x="310" y="318" class="text-purple-dark font-bold"
-                >Raíces Profundas</text
-              >
-
-              <!-- Contexto Sistémico — bottom-left -->
-              <text x="98" y="318" class="text-purple-dark font-bold"
-                >Contexto Sistémico</text
-              >
-
-              <!-- Resolución de Duelos — top-left -->
-              <text x="60" y="150" class="text-purple-dark font-bold"
-                >Resolución de Duelos</text
-              >
-            </g>
-          </svg>
-        </div>
+      <!-- Right side -->
+      <div id="highlights" class="invisible flex flex-col justify-center gap-4">
+        <Image src={artImage} alt="Value Proposal" />
       </div>
     </div>
   </div>

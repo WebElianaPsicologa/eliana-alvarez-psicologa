@@ -10,26 +10,28 @@ const tabs = [
     title: "La Ansiedad te domina",
     icon: BrainIcon,
     content:
-      "Tu mente no para, sientes un vacío en el pecho y el futuro te genera miedo constante. Es agotador vivir en estado de alerta permanente. Aprenderemos a entender qué te está pidiendo tu ansiedad y a darle calma a tu sistema nervioso.",
+      "A veces nuestra mente no para, sentimos un vacío en el pecho y el futuro nos genera un miedo constante. Vivir en un estado de alerta permanente es agotador. Aprenderemos a <strong><em>entender</em></strong> qué te está pidiendo tu <strong><em>ansiedad</em></strong> y a <strong><em>darle calma</em></strong> a tu sistema nervioso.",
   },
   {
     id: "bonds",
     title: "Los Vínculos duelen",
     icon: HeartBrokenIcon,
     content:
-      "Atraviesas una ruptura amorosa, un duelo migratorio (dejar atrás tu país, tu gente) o sientes que la comunicación con tu hijo adolescente se ha roto. Trabajaremos en resignificar esas pérdidas y reconstruir relaciones desde un lugar más sano.",
+      "¿Atraviesas una ruptura amorosa, un duelo migratorio (dejar atrás tu país, tu gente) o sientes que la comunicación con tu hijo adolescente se ha roto? Juntos <strong><em>resignificar</em></strong> esas <strong><em>pérdidas y reconstruir relaciones</em></strong> desde un lugar más sano.",
   },
   {
     id: "stuck",
     title: "Te sientes estancado",
     icon: LockIcon,
     content:
-      "Repites patrones que te hacen daño y, aunque quieres cambiar, no sabes por dónde empezar. Sientes que la historia se repite. Juntos exploraremos las raíces de esos patrones para que puedas tomar decisiones con verdadera libertad emocional.",
+      "Repites patrones que te hacen daño y, aunque quieres cambiar, no sabes por dónde empezar. Sientes que la historia se repite. Juntos exploraremos las raíces de esos patrones para que puedas <strong><em>tomar decisiones con</em></strong> verdadera <strong><em>libertad emocional</em></strong>.",
   },
 ];
 ---
 
-<section class="empathy-tabs-section relative overflow-hidden py-16 lg:py-24">
+<section
+  class="empathy-tabs-section bg-soft-beige relative overflow-hidden py-16 lg:py-24"
+>
   <div class="mx-auto max-w-7xl px-6 lg:px-12">
     <!-- Header -->
     <div
@@ -39,15 +41,17 @@ const tabs = [
       <h2
         class="empathy-tabs-title text-purple-dark mb-4 text-3xl leading-tight font-bold tracking-tight md:text-4xl lg:text-5xl"
       >
-        No tienes que poder con todo tú solo
+        No tienes que poder con todo tú solo(a)
       </h2>
 
       <p
         class="empathy-tabs-subtitle text-purple-dark/90 mx-auto max-w-3xl text-base leading-relaxed md:text-lg"
       >
         El propósito de este espacio es ayudarte a identificar qué es lo que más
-        te duele hoy. A veces, la fortaleza no es aguantar más, sino saber pedir
-        ayuda. <span class="text-purple-dark font-semibold"
+        te duele hoy. <span class="block"
+          >A veces, la fortaleza no es aguantar más, sino saber pedir ayuda.</span
+        >
+        <span class="text-purple-dark font-semibold"
           >Haz clic sobre cada opción</span
         > para explorar cómo podemos abordarlo juntos.
       </p>
@@ -58,7 +62,7 @@ const tabs = [
       <!-- Left Tabs -->
       <div
         id="empathy-left"
-        class="bg-olive/10 sm:border-purple-dark/20 col-span-2 flex flex-col gap-4 rounded-2xl p-8 opacity-0 sm:rounded-none sm:rounded-ss-2xl sm:rounded-es-2xl sm:border-r-2"
+        class="bg-olive/30 sm:border-purple-dark/20 col-span-2 flex flex-col gap-4 rounded-2xl p-8 opacity-0 sm:rounded-none sm:rounded-ss-2xl sm:rounded-es-2xl sm:border-r-2"
       >
         {
           tabs.map((tab, index) => (
@@ -73,13 +77,14 @@ const tabs = [
               data-tab-id={tab.id}
             >
               <div class="flex flex-col items-center gap-8 md:flex-row">
-                <tab.icon class="tab-icon bg-gray-lavender/70 text-soft-bg h-10 w-10 rounded-lg p-0.5 transition-transform duration-300" />
+                <tab.icon class="tab-icon bg-gray-lavender/30 text-purple-dark h-10 w-10 rounded-lg p-0.5 transition-transform duration-300" />
                 <h3 class="tab-title text-purple-dark text-base font-medium md:text-lg">
                   {tab.title}
                 </h3>
-                <p class="text-purple-dark text-center text-base leading-relaxed md:hidden lg:text-xl">
-                  {tab.content}
-                </p>
+                <p
+                  class="text-purple-dark text-center text-base leading-relaxed md:hidden lg:text-xl"
+                  set:html={tab.content}
+                />
                 <div class="bg-gray-lavender/60 h-px w-full shrink-0 md:hidden" />
               </div>
             </article>
@@ -103,9 +108,10 @@ const tabs = [
                 ]}
                 data-content-id={tab.id}
               >
-                <p class="text-purple-dark text-base leading-relaxed md:text-lg lg:text-xl">
-                  {tab.content}
-                </p>
+                <p
+                  class="text-purple-dark text-base leading-relaxed md:text-lg lg:text-xl"
+                  set:html={tab.content}
+                />
               </div>
             ))
           }
