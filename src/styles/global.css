@@ -6,7 +6,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: var(--color-soft-beige);
+    background-color: var(--color-soft-bg);
   }
 
   h1,
@@ -17,7 +17,8 @@
 
   p,
   button,
-  a {
+  a,
+  li {
     font-family: var(--font-nunito);
   }
 
