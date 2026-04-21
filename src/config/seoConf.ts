@@ -106,13 +106,10 @@ export const COMPANY_INFO: CompanyInfo = {
   foundingDate: "2001", // TODO: Verify this date
   founders: ["Eliana Álvarez"],
   socialMedia: {
-    linkedin: "",
-    instagram: "",
-    facebook: "",
-    twitter: "",
-    youtube: "",
-    tiktok: "",
-    googleBusiness: "",
+    linkedin: "https://www.linkedin.com/in/eliana-alvarez-psicologa",
+    instagram: "https://www.instagram.com/eliana.alvarez.psicologa",
+    facebook: "https://www.facebook.com/elianaalvarezpsicologa",
+    tiktok: "https://www.tiktok.com/@eliana.alvarez.psicologa",
   },
 };
 

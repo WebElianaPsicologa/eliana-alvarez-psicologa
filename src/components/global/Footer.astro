@@ -6,13 +6,26 @@ import LogoShine from "@/assets/icons/logoshinewhitecharacters.svg";
 import InstagramIcon from "@/assets/icons/instagram.svg";
 import FacebookIcon from "@/assets/icons/facebook.svg";
 import LinkedInIcon from "@/assets/icons/linkedin.svg";
+import TiktokIcon from "@/assets/icons/tiktok.svg";
+import ArrowUpIcon from "@/assets/icons/arrow-up.svg";
 ---
 
 <footer class="bg-purple-dark px-6 py-4 md:px-12 lg:rounded-t-full lg:px-20">
   <div class="mx-auto max-w-7xl">
     <!-- Top section: Brand + Social -->
+    <div class="flex items-center justify-center">
+      <button
+        id="back-button"
+        type="button"
+        class="text-soft-bg border-gray-lavender/20 hover:border-gray-lavender cursor-pointer rounded-lg border px-4 py-2 font-bold transition-all duration-300"
+      >
+        Volver Arriba <ArrowUpIcon
+          class="ml-2 inline-block h-4 w-4 animate-bounce"
+        />
+      </button>
+    </div>
     <div
-      class="border-soft-bg/20 flex items-center justify-between gap-6 border-b px-6 pb-5 md:flex-row"
+      class="border-soft-bg/20 flex flex-col items-center justify-between gap-6 border-b px-6 pb-5 md:flex-row"
     >
       <!-- Brand -->
       <div class="flex items-center">
@@ -62,6 +75,19 @@ import LinkedInIcon from "@/assets/icons/linkedin.svg";
             </a>
           )
         }
+        {
+          COMPANY_INFO.socialMedia.tiktok && (
+            <a
+              href={COMPANY_INFO.socialMedia.tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+              class="text-soft-bg hover:text-gray-lavender transition-all duration-300 hover:scale-110"
+            >
+              <TiktokIcon class="h-7 w-7" />
+            </a>
+          )
+        }
       </div>
     </div>
 
@@ -103,3 +129,14 @@ import LinkedInIcon from "@/assets/icons/linkedin.svg";
     </div>
   </div>
 </footer>
+
+<script>
+  const backBtn = document.querySelector("#back-button") as HTMLButtonElement;
+
+  backBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+</script>

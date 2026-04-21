@@ -3,6 +3,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import HeroPsychology from "@/components/perpage/PsychologyAdvice/HeroPsychology.astro";
 import TherapyVsAdvice from "@/components/perpage/PsychologyAdvice/TherapyVsAdvice.astro";
 import InterventionLines from "@/components/perpage/PsychologyAdvice/InterventionLines.astro";
+import InterventionLinesSplitPinning from "@/components/perpage/PsychologyAdvice/InterventionLinesSplitPinning.astro";
 import WorkProcess from "@/components/perpage/PsychologyAdvice/WorkProcess.astro";
 import FAQsSection from "@/components/global/FAQs.astro";
 import Cta from "@/components/global/Cta.astro";
@@ -36,12 +37,12 @@ const breadcrumbSchema = generateBreadcrumbSchema([
 <MainLayout {seoProps} schemas={[serviceSchema, faqSchema, breadcrumbSchema]}>
   <HeroPsychology />
   <TherapyVsAdvice />
-  <InterventionLines />
+  <InterventionLinesSplitPinning />
   <WorkProcess />
   <Cta
     heading="No necesitas pasar años en terapia para ver cambios"
     description="A veces, solo necesitas las herramientas correctas y una guía experta durante unas semanas."
-    buttonText="Reserva tu sesión para definir tu plan de trabajo"
+    buttonText="Hablemos, estoy aquí para escucharte"
     buttonHref="/contacto"
   />
   <FAQsSection faqs={psychologyAdviceFAQs} />

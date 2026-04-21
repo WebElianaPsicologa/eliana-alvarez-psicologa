@@ -1,0 +1,571 @@
+---
+import { getCldVideoUrl } from "astro-cloudinary/helpers";
+import CompassIcon from "@/assets/icons/compass.svg";
+import BrainIcon from "@/assets/icons/brain-resistance.svg";
+import UserIcon from "@/assets/icons/user.svg";
+import PuzzleIcon from "@/assets/icons/puzzle.svg";
+import CheckmarkIcon from "@/assets/icons/checkmark.svg";
+import TalkIcon from "@/assets/icons/talk.svg";
+import PuzzleItemIcon from "@/assets/icons/puzzle.svg";
+import FamilyIcon from "@/assets/icons/family.svg";
+import ClockIcon from "@/assets/icons/clock.svg";
+
+const lines = [
+  {
+    icon: "compass",
+    audiences: ["Individuos", "Parejas", "Familias"],
+    title: "Orientación Psicológica",
+    tagline: "Guía clara para situaciones específicas",
+    sectionLabel: "El objetivo",
+    body: "Si estás pasando por un conflicto puntual en casa, con tu pareja o en el trabajo y necesitas una \u201cbrújula\u201d externa. No indagamos en traumas antiguos, sino que resolvemos el nudo actual.",
+    listLabel: "Lograrás",
+    items: [
+      "Estrategias para manejar situaciones difíciles del día a día",
+      "Mejorar tu toma de decisiones inmediata",
+      "Recuperar el bienestar integral ante un reto concreto",
+    ],
+    skillItems: null,
+    achievement: null,
+    methodology: null,
+    sessions: "3 a 8 Sesiones",
+  },
+  {
+    icon: "user",
+    audiences: ["Jóvenes", "Adultos", "Profesionales"],
+    title: "Orientación Vocacional & Profesional",
+    tagline: "Diseña un futuro que te apasione",
+    sectionLabel: "El proceso incluye",
+    body: null,
+    listLabel: null,
+    items: [
+      "Evaluación integral con pruebas especializadas (test de aptitudes e intereses)",
+      "Análisis del mercado laboral actual",
+      "Plan de acción: metas a corto, mediano y largo plazo",
+    ],
+    skillItems: null,
+    achievement:
+      "Construir un camino profesional alineado con tus talentos reales, no con las expectativas de otros.",
+    methodology: null,
+    sessions: "5 a 8 Sesiones",
+  },
+  {
+    icon: "brain",
+    audiences: ["Entrenamiento Psicoeducativo"],
+    title: "Desarrollo de Habilidades",
+    tagline: "Potencia tus fortalezas a través de la Psicoeducación",
+    sectionLabel: "Áreas de entrenamiento",
+    body: null,
+    listLabel: null,
+    items: null,
+    skillItems: [
+      { icon: "talk", label: "Comunicación Asertiva y Empatía" },
+      { icon: "puzzle-item", label: "Resolución de Conflictos" },
+      {
+        icon: "brain-resistance",
+        label: "Resiliencia e Inteligencia Emocional",
+      },
+      { icon: "family", label: "Pautas de Crianza efectivas" },
+      {
+        icon: "clock",
+        label: "Gestión del tiempo y fin de la procrastinación",
+      },
+    ],
+    achievement: null,
+    methodology:
+      "Práctica guiada, modelado de conductas y feedback constructivo en un entorno seguro.",
+    sessions: "3 a 8 Sesiones",
+  },
+];
+
+// Cloudinary video optimization
+// format: "auto" → WebM (VP9) for Chrome/Firefox, MP4 (H.264) for Safari
+// quality: "auto" → content-aware compression
+const videoOpts = {
+  width: 1280,
+  height: 720,
+  format: "auto",
+  quality: "auto",
+};
+
+// Poster URLs: so_auto picks the most representative frame, f_webp outputs static image
+const posterOpts = {
+  width: 1280,
+  height: 720,
+  rawTransformations: ["so_auto", "f_webp", "q_auto"],
+};
+
+// TODO: Replace these placeholder video IDs with actual demoliciones footage
+const orientacionPsicologicaVideo = getCldVideoUrl({
+  src: "1_ORIENTACION_PSICOLOGICA_1_zn00ql",
+  ...videoOpts,
+});
+const orientacionPsicologicaPoster = getCldVideoUrl({
+  src: "1_ORIENTACION_PSICOLOGICA_1_zn00ql",
+  ...posterOpts,
+});
+
+const orientacionVocacionalVideo = getCldVideoUrl({
+  src: "2_ORIENTACION_VOCACIONAL_1_tnqrbe",
+  ...videoOpts,
+});
+const orientacionVocacionalPoster = getCldVideoUrl({
+  src: "2_ORIENTACION_VOCACIONAL_1_tnqrbe",
+  ...posterOpts,
+});
+
+const desarrolloDeHabilidadesVideo = getCldVideoUrl({
+  src: "3_DESARROLLO_DE_HABILIDADES_1_sghmqh",
+  ...videoOpts,
+});
+const desarrolloDeHabilidadesPoster = getCldVideoUrl({
+  src: "3_DESARROLLO_DE_HABILIDADES_1_sghmqh",
+  ...posterOpts,
+});
+---
+
+<section id="servicios-demolicion" class="bg-olive/10 mx-auto w-full py-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div
+      class="mb-12 flex flex-col items-center justify-center lg:mt-16 lg:mb-8"
+    >
+      <div class="mb-5 flex items-center justify-center gap-3">
+        <div class="bg-gray-lavender/50 h-px w-8 shrink-0"></div>
+        <span
+          class="font-nunito text-gray-lavender text-xs font-semibold tracking-widest uppercase"
+        >
+          Lo que ofrezco
+        </span>
+        <div class="bg-gray-lavender/50 h-px w-8 shrink-0"></div>
+      </div>
+      <h2
+        class="text-purple-accent mb-4 text-center text-4xl leading-tight font-bold lg:text-5xl"
+      >
+        Mis 3 Líneas de <span class="block">Intervención</span>
+      </h2>
+    </div>
+
+    <!-- Gallery -->
+    <div class="gallery flex gap-8">
+      <!-- Left content -->
+      <div class="left hidden w-1/2 lg:block">
+        <div class="desktopContent m-auto w-full">
+          <!-- First section: Orientación Psicológica -->
+          <div
+            class="desktopContentSection flex min-h-screen flex-col justify-center"
+          >
+            <div class="flex flex-col items-start justify-center space-y-2">
+              <!-- Section Label -->
+              <div class="flex items-center justify-between">
+                <CompassIcon class="text-purple-dark mr-4 h-6 w-6" />
+                <h1
+                  class="text-purple-dark text-shadow-purple-dark text-2xl font-bold text-shadow-xs"
+                >
+                  {lines[0]?.title}
+                </h1>
+              </div>
+              <span class="text-purple-dark/60">"{lines[0]?.tagline}"</span>
+              <ul class="flex flex-wrap gap-2">
+                {
+                  lines[0]?.audiences?.map((audience) => (
+                    <li class="text-purple-dark/60 bg-blue-mist/20 border-gray-lavender rounded-2xl border px-2 py-1 text-sm">
+                      {audience}
+                    </li>
+                  ))
+                }
+              </ul>
+              <p class="text-purple-dark text-justify">
+                {lines[0]?.body}
+              </p>
+              <div class="flex flex-col space-y-4">
+                <h2 class="text-green-army-900 text-2xl font-bold">
+                  {lines[0]?.listLabel}
+                </h2>
+                <ul class="flex flex-wrap gap-1">
+                  {
+                    lines[0]?.items?.map((item) => (
+                      <li class="text-purple-dark flex items-center gap-2 text-base">
+                        <CheckmarkIcon /> {item}
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+              <p
+                class="text-purple-dark/60 bg-blue-mist/20 border-gray-lavender rounded-2xl border px-2 py-1 text-sm"
+              >
+                {lines[0]?.sessions}
+              </p>
+            </div>
+          </div>
+
+          <!-- Second section: Desarrollo de Habilidades -->
+          <div
+            class="desktopContentSection flex min-h-screen flex-col justify-center"
+          >
+            <div class="flex flex-col items-start justify-center space-y-2">
+              <!-- Section Label -->
+              <div class="flex items-center justify-between">
+                <UserIcon class="text-purple-dark mr-4 h-6 w-6" />
+                <h1
+                  class="text-purple-dark text-shadow-purple-dark text-2xl font-bold text-shadow-xs"
+                >
+                  {lines[1]?.title}
+                </h1>
+              </div>
+              <span class="text-purple-dark/60">"{lines[1]?.tagline}"</span>
+              <ul class="flex flex-wrap gap-2">
+                {
+                  lines[1]?.audiences?.map((audience) => (
+                    <li class="text-purple-dark/60 bg-blue-mist/20 border-gray-lavender rounded-2xl border px-2 py-1 text-sm">
+                      {audience}
+                    </li>
+                  ))
+                }
+              </ul>
+              <p class="text-purple-dark text-justify">
+                {lines[0]?.body}
+              </p>
+              <div class="flex flex-col space-y-4">
+                <h2 class="text-green-army-900 text-2xl font-bold">
+                  {lines[0]?.listLabel}
+                </h2>
+                <ul class="flex flex-wrap gap-1">
+                  {
+                    lines[0]?.items?.map((item) => (
+                      <li class="text-purple-dark flex items-center gap-2 text-base">
+                        <CheckmarkIcon /> {item}
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+              <p
+                class="text-purple-dark/60 bg-blue-mist/20 border-gray-lavender rounded-2xl border px-2 py-1 text-sm"
+              >
+                {lines[0]?.sessions}
+              </p>
+            </div>
+          </div>
+
+          <!-- Third section: Demolición Pasiva -->
+          <div
+            class="desktopContentSection flex min-h-screen flex-col justify-center"
+          >
+            <div class="flex flex-col items-start justify-center space-y-2">
+              <!-- Section Label -->
+              <div class="flex items-center justify-between">
+                <BrainIcon class="text-purple-dark mr-4 h-6 w-6" />
+                <h1
+                  class="text-purple-dark text-shadow-purple-dark text-2xl font-bold text-shadow-xs"
+                >
+                  {lines[2]?.title}
+                </h1>
+              </div>
+              <span class="text-purple-dark/60">"{lines[2]?.tagline}"</span>
+              <ul class="flex items-center gap-2">
+                {
+                  lines[2]?.audiences?.map((audience) => (
+                    <li class="text-purple-dark/60 bg-blue-mist/20 border-gray-lavender rounded-2xl border px-2 py-1 text-sm">
+                      {audience}
+                    </li>
+                  ))
+                }
+              </ul>
+
+              <div class="flex flex-col space-y-4">
+                <h2 class="text-purple-dark text-2xl font-bold">
+                  {lines[2]?.sectionLabel}
+                </h2>
+                <ul class="flex flex-col gap-1">
+                  {
+                    lines[2]?.skillItems?.map((skill) => (
+                      <li class="flex items-center gap-2.5">
+                        <span class="text-purple-accent inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-lg">
+                          {skill.icon === "talk" && (
+                            <TalkIcon class="h-6 w-6" />
+                          )}
+                          {skill.icon === "puzzle-item" && (
+                            <PuzzleItemIcon class="h-6 w-6" />
+                          )}
+                          {skill.icon === "brain-resistance" && (
+                            <BrainIcon class="h-6 w-6" />
+                          )}
+                          {skill.icon === "family" && (
+                            <FamilyIcon class="h-6 w-6" />
+                          )}
+                          {skill.icon === "clock" && (
+                            <ClockIcon class="h-6 w-6" />
+                          )}
+                        </span>
+                        <span class="font-nunito text-purple-dark/70 text-sm leading-snug">
+                          {skill.label}
+                        </span>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+
+              <p
+                class="text-purple-dark/60 bg-blue-mist/20 border-gray-lavender rounded-2xl border px-2 py-1 text-sm"
+              >
+                {lines[0]?.sessions}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right content -->
+      <div
+        class="right flex h-auto w-full flex-col items-center lg:h-screen lg:w-1/2 lg:justify-center"
+      >
+        <!-- Mobile content -->
+        <div class="mobileContent w-[80vw] lg:hidden">
+          <!-- Video 1: Demoliciones Mecánicas -->
+          <video
+            class="mobilePhoto mt-10 size-[80vw] rounded-2xl object-cover"
+            controls
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster={orientacionPsicologicaPoster}
+          >
+            <source src={orientacionPsicologicaVideo} type="video/mp4" />
+          </video>
+          <div class="mt-5">
+            <div class="flex flex-col items-start justify-center space-y-4">
+              <!-- Section Label -->
+              <div class="flex items-center justify-between">
+                <CompassIcon class="text-purple-dark mr-4 h-6 w-6" />
+                <h1
+                  class="text-purple-dark text-shadow-purple-dark text-2xl font-bold text-shadow-xs"
+                >
+                  {lines[0]?.title}
+                </h1>
+              </div>
+              <p class="text-purple-dark text-justify">
+                {lines[0]?.body}
+              </p>
+              <div class="flex flex-col space-y-4">
+                <h2 class="text-purple-dark text-2xl font-bold">
+                  {lines[0]?.listLabel}
+                </h2>
+                <ul class="flex list-inside list-disc flex-wrap gap-3">
+                  {
+                    lines[0]?.items?.map((item) => (
+                      <li class="text-purple-dark text-base leading-tight tracking-tight">
+                        {item}
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="border-gray-lavender mt-5 border-b"></div>
+
+          <!-- Video 2: Implosiones Controladas -->
+          <video
+            class="mobilePhoto mt-10 size-[80vw] rounded-2xl object-cover"
+            controls
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster={orientacionVocacionalPoster}
+          >
+            <source src={orientacionVocacionalVideo} type="video/mp4" />
+          </video>
+          <div class="mt-5">
+            <div class="flex flex-col items-start justify-center space-y-4">
+              <!-- Section Label -->
+              <div class="flex items-center justify-between">
+                <UserIcon class="text-purple-dark mr-4 h-6 w-6" />
+                <h1
+                  class="text-purple-dark text-shadow-purple-dark text-2xl font-bold text-shadow-xs"
+                >
+                  {lines[1]?.title}
+                </h1>
+              </div>
+              <p class="text-purple-dark text-justify">
+                {lines[1]?.tagline}
+              </p>
+              <div class="flex flex-col space-y-4">
+                <h2 class="text-purple-dark text-2xl font-bold">
+                  {lines[1]?.listLabel}
+                </h2>
+                <ul class="flex list-inside list-disc flex-wrap gap-3">
+                  {
+                    lines[1]?.items?.map((item) => (
+                      <li class="text-purple-dark text-base leading-tight tracking-tight">
+                        {item}
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="border-gray-lavender mt-5 border-b"></div>
+
+          <!-- Video 3: Demolición Pasiva -->
+          <video
+            class="mobilePhoto mt-10 size-[80vw] rounded-2xl object-cover"
+            controls
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster={desarrolloDeHabilidadesPoster}
+          >
+            <source src={desarrolloDeHabilidadesVideo} type="video/mp4" />
+          </video>
+          <div class="mt-5">
+            <div class="flex flex-col items-start justify-center space-y-4">
+              <!-- Section Label -->
+              <div class="flex items-center justify-between">
+                <BrainIcon class="text-purple-dark mr-4 h-6 w-6" />
+                <h1
+                  class="text-purple-dark text-shadow-purple-dark text-2xl font-bold text-shadow-xs"
+                >
+                  {lines[2]?.title}
+                </h1>
+              </div>
+              <p class="text-bone-white-900 text-justify">
+                {lines[2]?.body}
+              </p>
+              <div class="flex flex-col space-y-4">
+                <h2 class="text-purple-dark text-2xl font-bold">
+                  {lines[2]?.sectionLabel}
+                </h2>
+                <ul class="flex list-inside list-disc flex-wrap gap-3">
+                  {
+                    lines[2]?.skillItems?.map((skill) => (
+                      <li class="text-bone-white-900 text-base leading-tight tracking-tight">
+                        {skill.label}
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop content -->
+        <div
+          class="desktopPhotos relative hidden aspect-video w-full overflow-hidden rounded-2xl shadow-2xl lg:block"
+        >
+          <video
+            class="desktopPhoto absolute h-full w-full object-cover"
+            controls
+            muted
+            loop
+            playsinline
+            poster={orientacionPsicologicaPoster}
+            data-src={orientacionPsicologicaVideo}
+          >
+          </video>
+          <video
+            class="desktopPhoto absolute h-full w-full object-cover"
+            controls
+            muted
+            loop
+            playsinline
+            poster={orientacionVocacionalPoster}
+            data-src={orientacionVocacionalVideo}
+          >
+          </video>
+          <video
+            class="desktopPhoto absolute h-full w-full object-cover"
+            controls
+            muted
+            loop
+            playsinline
+            poster={desarrolloDeHabilidadesPoster}
+            data-src={desarrolloDeHabilidadesVideo}
+          >
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { demolicionesServicesAnimationAll } from "@/utils/animations/psychologyAdvice/interventionLinesSplitPinning.Animation";
+
+  // Desktop: lazy-inject <source> 300px before video enters the viewport.
+  // The src doesn't exist in the HTML at all, so the browser makes zero
+  // requests until this observer fires. unobserve() after loading since
+  // GSAP takes over play/pause from here.
+  const desktopLazyVideos = document.querySelectorAll<HTMLVideoElement>(
+    ".desktopPhoto[data-src]",
+  );
+
+  // Track video readiness
+  let firstVideoReady = false;
+  const videoReadyPromises: Promise<void>[] = [];
+
+  const desktopLazyObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const video = entry.target as HTMLVideoElement;
+          const source = document.createElement("source");
+          source.src = video.dataset.src!;
+          source.type = "video/mp4";
+          video.appendChild(source);
+          video.load();
+          desktopLazyObserver.unobserve(video);
+        }
+      });
+    },
+    { rootMargin: "300px" },
+  );
+
+  // Create promises for each video to track when they can play
+  desktopLazyVideos.forEach((v, index) => {
+    const promise = new Promise<void>((resolve) => {
+      const handleCanPlay = () => {
+        if (index === 0) firstVideoReady = true;
+        v.removeEventListener("canplay", handleCanPlay);
+        resolve();
+      };
+      v.addEventListener("canplay", handleCanPlay);
+    });
+    videoReadyPromises.push(promise);
+    desktopLazyObserver.observe(v);
+  });
+
+  // Wait for first video to be ready before initializing GSAP animations
+  // This prevents race condition where switchVideo(0) tries to play before load
+  Promise.race([
+    videoReadyPromises[0],
+    new Promise((resolve) => setTimeout(resolve, 3000)), // fallback timeout
+  ]).then(() => {
+    demolicionesServicesAnimationAll();
+  });
+
+  // Mobile: play/pause based on viewport visibility (50% threshold).
+  // preload="metadata" ensures first frame loads, preventing gray flash
+  const mobileVideos =
+    document.querySelectorAll<HTMLVideoElement>(".mobilePhoto");
+  const mobileObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target as HTMLVideoElement;
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    },
+    { threshold: 0.5 },
+  );
+  mobileVideos.forEach((v) => mobileObserver.observe(v));
+</script>
