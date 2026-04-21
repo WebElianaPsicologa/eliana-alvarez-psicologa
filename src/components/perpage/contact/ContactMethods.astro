@@ -1,0 +1,106 @@
+---
+import { COMPANY_INFO } from "@/config/seoConf";
+import ContactForm from "@/components/ui/form/ContactForm.astro";
+import WhatsAppIcon from "@/assets/icons/whatsapp.svg";
+
+const whatsappUrl = `https://wa.me/${COMPANY_INFO.phone.replace(/\D/g, "")}`;
+---
+
+<section class="bg-soft-bg methods-contact px-6 py-24">
+  <div class="mx-auto max-w-7xl">
+    <div class="grid grid-cols-1 gap-16 lg:grid-cols-2">
+      <!-- Left column: WhatsApp direct contact -->
+      <div
+        class="left-column flex flex-col items-center lg:invisible lg:items-start"
+      >
+        <!-- Kicker -->
+        <div class="mb-6 flex items-center gap-3">
+          <span class="bg-purple-accent/30 h-px w-8"></span>
+          <span
+            class="text-purple-accent text-xs font-semibold tracking-widest uppercase opacity-70"
+          >
+            Contacto Directo
+          </span>
+        </div>
+
+        <!-- Heading -->
+        <h2
+          class="text-purple-dark mb-5 text-center text-4xl leading-tight font-bold lg:text-left lg:text-5xl"
+        >
+          ¿Listo para empezar? Escríbeme por WhatsApp.
+        </h2>
+
+        <!-- Description -->
+        <p
+          class="text-purple-accent mb-10 max-w-xl text-center text-base leading-relaxed opacity-80 lg:text-left"
+        >
+          La forma más rápida de conectar. Cuéntame brevemente qué necesitas y
+          coordinamos juntos el mejor horario para ti.
+        </p>
+
+        <!-- WhatsApp card -->
+        <div class="w-full">
+          <!-- WhatsApp CTA button -->
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-purple-accent flex w-full items-center justify-center gap-3 rounded-full px-6 py-4 text-sm font-semibold text-white transition-opacity duration-200 hover:opacity-90"
+          >
+            <WhatsAppIcon class="h-5 w-5 shrink-0" />
+            Contactar a Eliana por WhatsApp
+          </a>
+
+          <!-- Footnote -->
+          <p
+            class="text-purple-accent/60 mt-1 text-center text-xs leading-relaxed"
+          >
+            <span class="text-purple-accent mr-1">★</span>La sesión se realiza
+            vía Microsoft Teams. Te enviaré el enlace una vez confirmemos el
+            horario.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right column: Contact form -->
+      <div
+        class="right-column flex flex-col items-center lg:invisible lg:items-start"
+      >
+        <!-- Kicker -->
+        <div class="mb-6 flex items-center gap-3">
+          <span class="bg-purple-accent/30 h-px w-8"></span>
+          <span
+            class="text-purple-accent text-xs font-semibold tracking-widest uppercase opacity-70"
+          >
+            ¿Tienes Dudas?
+          </span>
+        </div>
+
+        <!-- Heading -->
+        <h2
+          class="text-purple-dark mb-4 text-center text-4xl leading-tight font-bold lg:text-left lg:text-5xl"
+        >
+          ¿Tienes alguna pregunta antes de agendar?
+        </h2>
+
+        <!-- Description -->
+        <p
+          class="text-purple-accent mb-8 text-center text-base leading-relaxed opacity-80 lg:text-left"
+        >
+          Cuéntame lo que necesitas. Sin compromisos, sin presiones.
+        </p>
+
+        <!-- Contact form -->
+        <div class="w-full">
+          <ContactForm />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animateMethodsContact } from "@/utils/animations/contact/methodsContact.Animation";
+
+  animateMethodsContact();
+</script>

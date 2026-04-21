@@ -58,24 +58,27 @@ export interface Author {
 
 export const AUTHORS: Author[] = [
   {
-    name: "Eliana Álvarez",
+    name: "Eliana Alvarez",
     role: "Psicóloga Clínica",
-    bio: "Psicóloga clínica con más de 10 años de experiencia en terapia cognitivo-conductual y atención de adultos, adolescentes y parejas.",
+    bio: "Psicóloga clínica con más de 20 años de experiencia acompañando a mujeres, adolescentes y familias. Especialista en duelo migratorio y atención a población hispanohablante desde Brasil.",
     image: "/images/team/eliana-alvarez.jpg",
     credentials: [
-      "Psicología Clínica",
       "Terapia Cognitivo-Conductual",
-      "Atención de Parejas",
-      "Psicología de Adultos y Adolescentes",
+      "Terapia Humanista",
+      "Terapia Sistémica",
+      "Duelo Migratorio",
+      "Terapia Familiar",
+      "Orientación Vocacional",
     ],
-    yearsOfExperience: 10,
+    yearsOfExperience: 23,
     certifications: [
-      "Licenciada en Psicología",
-      "Especialista en Terapia Cognitivo-Conductual",
+      "Licenciada en Psicología (2001)",
+      "Enfoque Pluralista (TCC, Humanista, Sistémica)",
+      "Especialista en Migrantes y Duelo Migratorio",
     ],
     socialMedia: {
-      instagram: "https://www.instagram.com/elianapsicologia/",
-      linkedin: "https://www.linkedin.com/in/eliana-alvarez-psicologa/",
+      instagram: "",
+      linkedin: "",
     },
     url: "/sobre-mi",
   },
@@ -104,18 +107,19 @@ export const AUTHORS: Author[] = [
 // =============================================================================
 
 export const DEFAULT_AUTHOR: Author = {
-  name: "Eliana Álvarez Psicóloga",
-  role: "Servicios de Psicología Profesional",
-  bio: "Consulta psicológica profesional especializada en terapia para adultos, adolescentes y parejas con enfoque cognitivo-conductual.",
+  name: "Eliana Alvarez - Psicóloga Clínica",
+  role: "Psicóloga Clínica",
+  bio: "Psicóloga clínica con más de 20 años de experiencia acompañando a mujeres, adolescentes y familias mediante una terapia integral, humana y sin fronteras.",
   credentials: [
-    "Psicología Clínica",
-    "Terapia Individual",
-    "Terapia de Pareja",
-    "Atención Profesional",
+    "Terapia Cognitivo-Conductual",
+    "Terapia Humanista",
+    "Terapia Sistémica",
+    "Duelo Migratorio",
+    "Terapia Familiar",
   ],
   socialMedia: {
-    instagram: "https://www.instagram.com/elianapsicologia/",
-    linkedin: "https://www.linkedin.com/in/eliana-alvarez-psicologa/",
+    instagram: "",
+    linkedin: "",
   },
 };
 

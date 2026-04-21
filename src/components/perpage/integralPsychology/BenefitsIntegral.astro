@@ -1,0 +1,175 @@
+---
+import BrainIcon from "@/assets/icons/brain.svg";
+import PuzzleIcon from "@/assets/icons/puzzle.svg";
+import FightIcon from "@/assets/icons/fight-cloud.svg";
+import GrowingIcon from "@/assets/icons/growing.svg";
+import RocketIcon from "@/assets/icons/rocket.svg";
+---
+
+<section class="benefits-integral bg-blue-mist py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-12 xl:px-20">
+    <!-- Header -->
+    <div class="mb-16 text-center">
+      <div class="mb-5 flex items-center justify-center gap-4">
+        <div class="bg-gray-lavender/40 h-px w-12 shrink-0"></div>
+        <span
+          class="text-gray-lavender text-xs font-semibold tracking-widest uppercase"
+        >
+          Beneficios del proceso
+        </span>
+        <div class="bg-gray-lavender/40 h-px w-12 shrink-0"></div>
+      </div>
+      <h2
+        class="text-purple-dark mx-auto mb-4 max-w-2xl text-4xl font-black tracking-tight lg:text-5xl"
+      >
+        Lo que transformaremos <span class="text-purple-accent">juntos</span>
+      </h2>
+      <p class="text-purple-dark/80 mx-auto max-w-lg text-base leading-relaxed">
+        La psicoterapia es un proceso de acompañamiento y entrenamiento personal
+        para:
+      </p>
+    </div>
+
+    <!-- <div class="grid grid-cols-3 grid-rows-6 gap-4">
+    <div class="row-span-2">1</div>
+    <div class="col-span-2 row-span-2">2</div>
+    <div class="col-span-2 row-span-2 row-start-3">3</div>
+    <div class="row-span-2 col-start-3 row-start-3">4</div>
+    <div class="col-span-3 row-span-2 row-start-5">5</div>
+</div> -->
+
+    <div
+      class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3"
+    >
+      <!-- Cell 01 — top left (1 col, 1 row) -->
+      <article
+        class="benefits-card flex flex-col gap-6 rounded-3xl bg-white/60 p-8 shadow-sm"
+      >
+        <div class="flex items-center justify-between">
+          <div
+            class="bg-olive/25 border-olive/30 flex h-12 w-12 items-center justify-center rounded-2xl border"
+          >
+            <BrainIcon class="text-purple-dark h-8 w-8" />
+          </div>
+          <span class="text-gray-lavender font-jakarta text-4xl font-extrabold"
+            >01</span
+          >
+        </div>
+        <div class="flex-1">
+          <h3 class="text-purple-dark mb-3 text-2xl leading-snug font-bold">
+            Autoconocimiento y Conciencia Personal
+          </h3>
+          <p class="text-purple-dark/65 text-base leading-relaxed">
+            Comprender quién eres, cómo funcionas e identificar patrones
+            internos.
+          </p>
+        </div>
+      </article>
+
+      <!-- Cell 02 — top center+right (col-span-2) -->
+      <article
+        class="benefits-card flex flex-col gap-5 rounded-3xl bg-white/60 p-8 shadow-sm lg:col-span-2"
+      >
+        <div class="flex items-center justify-between">
+          <div
+            class="bg-blue-mist/40 border-blue-mist/50 flex h-12 w-12 items-center justify-center rounded-2xl border"
+          >
+            <PuzzleIcon class="text-purple-dark h-8 w-8" />
+          </div>
+          <p class="text-gray-lavender font-jakarta text-4xl font-extrabold">
+            02
+          </p>
+        </div>
+        <div>
+          <h3 class="text-purple-dark mb-3 text-lg leading-snug font-bold">
+            Reconstrucción de la Historia Personal
+          </h3>
+          <p class="text-purple-dark/65 text-sm leading-relaxed">
+            Dar sentido al pasado —historia personal, familiar y vincular— para
+            la autoaceptación, el perdón y el cierre de experiencias no
+            resueltas.
+          </p>
+        </div>
+      </article>
+
+      <!-- Cell 03 — middle left+center (col-span-2) -->
+      <article
+        class="benefits-card flex flex-col gap-5 rounded-3xl bg-white/60 p-8 shadow-sm lg:col-span-2 lg:row-start-2"
+      >
+        <div class="flex items-center justify-between">
+          <div
+            class="bg-gray-lavender/20 border-gray-lavender/30 flex h-12 w-12 items-center justify-center rounded-2xl border"
+          >
+            <FightIcon class="text-purple-accent h-8 w-8" />
+          </div>
+          <p class="text-gray-lavender font-jakarta text-4xl font-extrabold">
+            03
+          </p>
+        </div>
+        <div>
+          <h3 class="text-purple-dark mb-3 text-lg leading-snug font-bold">
+            Transformación de Patrones y Hábitos
+          </h3>
+          <p class="text-purple-dark/65 text-sm leading-relaxed">
+            Romper ciclos de malestar y generar cambios sostenibles,
+            fortaleciendo la autonomía.
+          </p>
+        </div>
+      </article>
+
+      <!-- Cell 04 — middle right -->
+      <article
+        class="benefits-card flex flex-col gap-5 rounded-3xl bg-white/60 p-8 shadow-sm lg:col-start-3 lg:row-start-2"
+      >
+        <div class="flex items-center justify-between">
+          <div
+            class="bg-olive/25 border-olive/30 flex h-12 w-12 items-center justify-center rounded-2xl border"
+          >
+            <GrowingIcon class="text-purple-dark h-8 w-8" />
+          </div>
+          <p class="text-gray-lavender font-jakarta text-4xl font-extrabold">
+            04
+          </p>
+        </div>
+        <div>
+          <h3 class="text-purple-dark mb-3 text-lg leading-snug font-bold">
+            Fortalecer Recursos
+          </h3>
+          <p class="text-purple-dark/65 text-sm leading-relaxed">
+            Entrenar habilidades clave: comunicación asertiva, inteligencia
+            emocional, autoestima, resiliencia y gestión del tiempo.
+          </p>
+        </div>
+      </article>
+
+      <!-- Cell 05 — bottom full width (col-span-3) -->
+      <article
+        class="benefits-card bg-purple-dark flex flex-col gap-5 rounded-3xl p-8 shadow-sm sm:col-span-2 lg:col-span-3 lg:row-start-3"
+      >
+        <div class="flex items-center justify-between">
+          <div
+            class="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/20 bg-white/10"
+          >
+            <RocketIcon class="text-soft-beige h-8 w-8" />
+          </div>
+          <p class="font-jakarta text-4xl font-extrabold text-white/40">05</p>
+        </div>
+        <div>
+          <h3 class="mb-3 text-lg leading-snug font-bold text-white">
+            Integración y Crecimiento Personal
+          </h3>
+          <p class="text-sm leading-relaxed text-white/65">
+            Consolidar los aprendizajes para afrontar nuevos desafíos con
+            claridad, flexibilidad y seguridad.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { benefitsIntegralAnimations } from "@/utils/animations/integralPsychology/benefitsIntegral.Animations.js";
+
+  benefitsIntegralAnimations();
+</script>

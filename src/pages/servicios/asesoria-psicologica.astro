@@ -1,13 +1,49 @@
 ---
-import HeroPsychology from "@/components/perpage/PsychologyAdvice/HeroPsychology.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
+import HeroPsychology from "@/components/perpage/PsychologyAdvice/HeroPsychology.astro";
+import TherapyVsAdvice from "@/components/perpage/PsychologyAdvice/TherapyVsAdvice.astro";
+import InterventionLines from "@/components/perpage/PsychologyAdvice/InterventionLines.astro";
+import InterventionLinesSplitPinning from "@/components/perpage/PsychologyAdvice/InterventionLinesSplitPinning.astro";
+import WorkProcess from "@/components/perpage/PsychologyAdvice/WorkProcess.astro";
+import FAQsSection from "@/components/global/FAQs.astro";
+import Cta from "@/components/global/Cta.astro";
+import { psychologyAdviceFAQs } from "@/config/faqs";
+import {
+  generateDynamicSEO,
+  generateServiceSchema,
+  generateFAQSchema,
+  generateBreadcrumbSchema,
+  services,
+} from "@/config/seoConf";
+
+const service = services.find((s) => s.slug === "asesoria-psicologica")!;
+
+const seoProps = generateDynamicSEO({
+  pageType: "services",
+  title: "Asesoría Psicológica Online | Eliana Álvarez Psicóloga",
+  description:
+    "Orientación psicológica, vocacional y entrenamiento en habilidades en 3 a 8 sesiones. Intervención breve y focalizada para situaciones puntuales. Online.",
+  canonical: "/servicios/asesoria-psicologica",
+});
+
+const serviceSchema = generateServiceSchema(service);
+const faqSchema = generateFAQSchema(psychologyAdviceFAQs);
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", path: "/" },
+  { name: "Asesoría Psicológica", path: "/servicios/asesoria-psicologica" },
+]);
 ---
 
-<MainLayout
-  seoProps={{
-    title: "Asesoría Psicológica",
-    description: "Asesoría Psicológica",
-  }}
->
+<MainLayout {seoProps} schemas={[serviceSchema, faqSchema, breadcrumbSchema]}>
   <HeroPsychology />
+  <TherapyVsAdvice />
+  <InterventionLinesSplitPinning />
+  <WorkProcess />
+  <Cta
+    heading="No necesitas pasar años en terapia para ver cambios"
+    description="A veces, solo necesitas las herramientas correctas y una guía experta durante unas semanas."
+    buttonText="Hablemos, estoy aquí para escucharte"
+    buttonHref="/contacto"
+  />
+  <FAQsSection faqs={psychologyAdviceFAQs} />
 </MainLayout>

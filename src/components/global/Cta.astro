@@ -1,7 +1,89 @@
 ---
+import ArrowRightIcon from "@/assets/icons/arrow-right.svg";
 
+interface TrustSignal {
+  text: string;
+}
+
+interface Props {
+  heading?: string;
+  description?: string;
+  buttonText?: string;
+  buttonHref?: string;
+  trustSignals?: TrustSignal[];
+  showDecorations?: boolean;
+}
+
+const {
+  heading = "Tu primer paso para sanar es permitirte ser escuchado/a.",
+  description = "Tu bienestar emocional merece atención profesional. Agenda tu primera sesión y comienza el camino hacia la transformación que necesitas.",
+  buttonText = "Empieza tu proceso hoy",
+  buttonHref = "/contacto",
+  trustSignals = [
+    { text: "+20 años de experiencia" },
+    { text: "100% confidencial" },
+    { text: "Atención online" },
+  ],
+  showDecorations = true,
+} = Astro.props;
 ---
 
-<section>
-  <h1 class="text-6xl font-bold">CTA</h1>
+<section class="cta-section bg-soft-beige relative overflow-hidden py-20">
+  <div class="relative z-10 mx-auto max-w-5xl px-6 lg:px-12">
+    <div class="text-center">
+      <!-- Decorative line accent -->
+      {
+        showDecorations && (
+          <div class="mb-8 flex items-center justify-center gap-3">
+            <div class="bg-gray-lavender/40 h-px w-12" />
+            <div class="bg-olive/60 h-1 w-1 rounded-full" />
+            <div class="bg-gray-lavender/40 h-px w-12" />
+          </div>
+        )
+      }
+
+      <!-- Heading -->
+      <h2
+        class="text-purple-accent mx-auto mb-6 max-w-2xl text-3xl leading-tight font-bold tracking-tight md:text-4xl lg:text-5xl"
+      >
+        {heading}
+      </h2>
+
+      <!-- Supporting text -->
+      <p
+        class="text-purple-dark/70 mx-auto mb-10 max-w-xl text-base leading-relaxed md:text-lg"
+      >
+        {description}
+      </p>
+
+      <!-- Primary CTA Button -->
+      <div class="mb-8 flex justify-center">
+        <a
+          href={buttonHref}
+          class="group bg-olive hover:bg-olive/90 text-purple-dark inline-flex items-center gap-3 rounded-full px-4 py-2 text-base font-bold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl md:text-lg"
+        >
+          {buttonText}
+          <ArrowRightIcon
+            class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+          />
+        </a>
+      </div>
+
+      <!-- Trust signals -->
+      {
+        trustSignals.length > 0 && (
+          <div class="flex flex-wrap items-center justify-center gap-6 text-sm md:gap-8 md:text-base">
+            {trustSignals.map((signal) => (
+              <div class="flex items-center gap-2">
+                <div class="bg-olive h-1.5 w-1.5 rounded-full" />
+                <span class="text-purple-dark/75 font-medium">
+                  {signal.text}
+                </span>
+              </div>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </div>
 </section>

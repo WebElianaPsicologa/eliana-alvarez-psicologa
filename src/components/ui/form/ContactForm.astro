@@ -1,9 +1,214 @@
 ---
+import { actions } from "astro:actions";
+import ShieldIcon from "@/assets/icons/shield.svg";
 
+const opciones = [
+  {
+    id: "01",
+    title: "Asesoría Psicológica",
+  },
+  {
+    id: "02",
+    title: "Proceso Psicoterapéutico",
+  },
+  {
+    id: "03",
+    title: "Dudas sobre la terapia online",
+  },
+];
+
+export const prerender = false;
 ---
 
-<div>
-  <h1 class="text-2xl font-bold">
-    form component
-  </h1>
-</div>
+<form method="post" action={actions.getContact} class="contact-form space-y-5">
+  <!-- Name and Email row -->
+  <div class="grid gap-4 md:grid-cols-2">
+    <!-- Full name -->
+    <div class="space-y-1">
+      <label for="nombre" class="text-purple-dark block text-sm font-semibold">
+        Nombre <span class="text-purple-accent/60">*</span>
+      </label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        placeholder="¿Cómo te llamas?"
+        required
+        class="border-purple-accent/20 bg-soft-beige text-purple-dark placeholder:text-purple-accent/60 focus:border-purple-accent focus:ring-purple-accent w-full rounded-xl border px-4 py-3 text-sm transition-all duration-200 focus:ring-1 focus:outline-none"
+      />
+      <p id="error_nombre" class="text-xs text-red-500"></p>
+    </div>
+
+    <!-- Email -->
+    <div class="space-y-1">
+      <label for="email" class="text-purple-dark block text-sm font-semibold">
+        Email <span class="text-purple-accent/60">*</span>
+      </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="tu@correo.com"
+        required
+        class="border-purple-accent/20 bg-soft-beige text-purple-dark placeholder:text-purple-accent/60 focus:border-purple-accent focus:ring-purple-accent w-full rounded-xl border px-4 py-3 text-sm transition-all duration-200 focus:ring-1 focus:outline-none"
+      />
+      <p id="error_email" class="text-xs text-red-500"></p>
+    </div>
+  </div>
+
+  <!-- Type of consultation -->
+  <div class="space-y-1">
+    <label
+      for="tipo_consulta"
+      class="text-purple-dark block text-sm font-semibold"
+    >
+      ¿En qué te puedo ayudar? <span class="text-purple-accent/60">*</span>
+    </label>
+    <select
+      id="tipo_consulta"
+      name="tipo_consulta"
+      required
+      class="border-purple-accent/20 bg-soft-beige text-purple-dark focus:border-purple-accent focus:ring-purple-accent w-full rounded-xl border px-4 py-3 text-sm transition-all duration-200 focus:ring-1 focus:outline-none"
+    >
+      <option value="" disabled selected class="text-purple-accent/40"
+        >Selecciona una opción...</option
+      >
+      {
+        opciones.map((opcion) => (
+          <option value={opcion.id}>{opcion.title}</option>
+        ))
+      }
+      <option value="otro">Otro</option>
+    </select>
+    <p id="error_tipo_consulta" class="text-xs text-red-500"></p>
+  </div>
+
+  <!-- Message textarea -->
+  <div class="space-y-1">
+    <label for="mensaje" class="text-purple-dark block text-sm font-semibold">
+      Mensaje <span class="text-purple-accent/60">*</span>
+    </label>
+    <textarea
+      id="mensaje"
+      name="mensaje"
+      rows="5"
+      placeholder="Cuéntame brevemente qué necesitas..."
+      required
+      class="border-purple-accent/20 bg-soft-beige text-purple-dark placeholder:text-purple-accent/60 focus:border-purple-accent focus:ring-purple-accent w-full resize-none rounded-xl border px-4 py-3 text-sm transition-all duration-200 focus:ring-1 focus:outline-none"
+    ></textarea>
+    <p id="error_mensaje" class="text-xs text-red-500"></p>
+  </div>
+
+  <!-- Privacy checkbox -->
+  <div>
+    <label class="flex cursor-pointer items-start gap-3">
+      <input
+        type="checkbox"
+        name="privacidad"
+        value="true"
+        class="accent-purple-accent mt-0.5 h-4 w-4 shrink-0 rounded"
+      />
+      <span class="text-purple-accent/70 text-xs leading-relaxed">
+        Acepto la
+        <a
+          href="/politica-privacidad"
+          class="text-purple-accent underline hover:opacity-80"
+        >
+          política de privacidad
+        </a>
+        y autorizo el tratamiento de mis datos personales para la gestión de mi consulta.
+      </span>
+    </label>
+    <p id="error_privacidad" class="mt-1 text-xs text-red-500"></p>
+  </div>
+
+  <!-- Submit button -->
+  <button
+    id="btn-submit"
+    type="submit"
+    class="bg-purple-dark hover:bg-purple-accent flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-sm font-semibold text-white transition-colors duration-200"
+  >
+    Enviar mensaje a Eliana →
+  </button>
+  <div class="flex items-center gap-2">
+    <ShieldIcon class="text-gray-lavender h-5 w-5 shrink-0" />
+    <span class="text-gray-lavender text-xs">
+      Tus datos son 100% confidenciales y están protegidos. No compartiré tu
+      información con terceros bajo ninguna circunstancia.
+    </span>
+  </div>
+</form>
+
+<script>
+  import { actions, isInputError } from "astro:actions";
+
+  const form = document.querySelector(".contact-form") as HTMLFormElement;
+  const btnSubmit = document.querySelector("#btn-submit") as HTMLButtonElement;
+  const originalBtnHTML = btnSubmit.innerHTML;
+
+  const resetButton = () => {
+    btnSubmit.removeAttribute("disabled");
+    btnSubmit.innerHTML = originalBtnHTML;
+  };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Clear all error messages
+    const errorElements = document.querySelectorAll('[id^="error_"]');
+    errorElements.forEach((el) => {
+      if (el instanceof HTMLElement) {
+        el.textContent = "";
+      }
+    });
+
+    const formData = new FormData(form);
+
+    // Set loading state
+    btnSubmit.setAttribute("disabled", "true");
+    btnSubmit.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="mr-2 -ml-1 animate-spin w-5 h-5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25"/><path fill="currentColor" d="M4 12a8 8 0 0 1 8-8V0C5.373 0 0 5.373 0 12zm2 5.291A7.96 7.96 0 0 1 4 12H0c0 3.042 1.135 5.824 3 7.938z" class="opacity-75"/></svg>
+      Enviando...
+    `;
+
+    try {
+      const { error } = await actions.getContact(formData);
+      if (error) {
+        if (isInputError(error)) {
+          Object.entries(error.fields).forEach(([label, messages]) => {
+            const errorEl = document.querySelector(
+              `#error_${label}`,
+            ) as HTMLParagraphElement;
+            if (errorEl) errorEl.textContent = messages[0];
+          });
+        } else {
+          alert(
+            "Hubo un error al enviar el formulario. Por favor, intente nuevamente.",
+          );
+        }
+
+        resetButton();
+        return;
+      }
+
+      // Success!
+      btnSubmit.innerHTML = `
+        <svg fill="none" stroke="currentColor" class="w-5 h-5 inline" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 13 4 4L19 7"/>
+        </svg>
+        ¡Mensaje enviado!
+      `;
+      form.reset();
+
+      document.dispatchEvent(new CustomEvent("formSuccess"));
+
+      setTimeout(resetButton, 3000);
+    } catch (error) {
+      console.error(error);
+      alert(
+        "Error de conexión. Por favor, verifique su internet e intente nuevamente.",
+      );
+      resetButton();
+    }
+  });
+</script>

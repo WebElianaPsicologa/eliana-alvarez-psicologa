@@ -1,0 +1,87 @@
+---
+import type { FAQItem } from "@/config/faqs";
+import PlusIcon from "@/assets/icons/plus.svg";
+import LinkIcon from "@/assets/icons/link.svg";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  faqs: FAQItem[];
+}
+
+const { title = "Preguntas Frecuentes", subtitle, faqs } = Astro.props;
+---
+
+<section class="faq-section bg-soft-bg w-full py-16 md:py-24">
+  <div class="mx-auto max-w-4xl px-4">
+    <!-- Header -->
+    <div class="mb-12 text-center">
+      <h2
+        class="text-purple-accent mb-4 text-3xl leading-tight font-medium md:text-4xl lg:text-5xl"
+      >
+        {title}
+      </h2>
+      {
+        subtitle && (
+          <p class="text-purple-dark/80 mx-auto max-w-2xl text-base md:text-lg">
+            {subtitle}
+          </p>
+        )
+      }
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="space-y-4">
+      {
+        faqs.map((faq) => (
+          <details class="group border-gray-lavender/30 bg-soft-bg/50 overflow-hidden rounded-xl border backdrop-blur-sm">
+            <summary class="text-purple-dark hover:bg-purple-accent/5 flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-lg font-medium transition-colors duration-200 md:text-xl">
+              <span class="pr-4 text-left">{faq.question}</span>
+              <span class="border-purple-accent text-purple-accent flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-transform duration-300 group-open:rotate-45">
+                <PlusIcon class="h-4 w-4" />
+              </span>
+            </summary>
+            <div class="px-6 pt-2 pb-6">
+              <p class="text-purple-dark/80 text-base leading-relaxed">
+                {faq.answer}
+              </p>
+              <div class="flex items-center gap-3">
+                {faq.links?.map((link) => (
+                  <a
+                    href={link.href}
+                    class="group text-purple-accent hover:text-purple-dark mt-4 flex items-center gap-1 text-sm font-medium transition-colors duration-200 hover:underline hover:underline-offset-2"
+                  >
+                    {link.text}
+                    <LinkIcon class="h-3 w-3 group-hover:scale-110" />
+                  </a>
+                ))}
+              </div>
+              {faq.note && (
+                <p class="text-purple-dark/60 mt-4 text-sm italic">
+                  {faq.note}
+                </p>
+              )}
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Hide default marker in all browsers */
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details summary::marker {
+    display: none;
+    content: "";
+  }
+
+  /* Smooth open/close transition */
+  details[open] summary {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+</style>

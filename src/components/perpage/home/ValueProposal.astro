@@ -1,0 +1,135 @@
+---
+import CheckmarkIcon from "@/assets/icons/checkmark.svg";
+import QuoteIcon from "@/assets/icons/quote.svg";
+import { Image } from "astro:assets";
+import PsychologyCare from "@/assets/images/PsychologyCare.webp";
+---
+
+<section
+  class="value-proposal-section bg-soft-bg relative overflow-hidden py-16 lg:py-24"
+>
+  <div class="mx-auto max-w-7xl px-6 lg:px-12">
+    <!-- Header -->
+    <div class="mx-auto mb-12 max-w-4xl text-center lg:mb-16">
+      <h2
+        class="value-proposal-title text-purple-dark invisible mb-6 text-3xl leading-tight font-bold tracking-tight md:text-4xl lg:text-5xl"
+      >
+        Un acompañamiento terapéutico que se ajusta a tus necesidades.
+      </h2>
+
+      <p
+        class="value-proposal-subtitle text-purple-dark/75 invisible mx-auto max-w-3xl text-base leading-relaxed italic md:text-lg"
+      >
+        La psicología tradicional a veces puede sentirse fría o rígida. Mi
+        enfoque es <strong class="text-purple-dark font-semibold not-italic"
+          >Pluralista y Humano</strong
+        >: integro diferentes escuelas psicológicas para crear un proceso
+        personalizado y equilibrado para ti.
+      </p>
+    </div>
+
+    <!-- Content -->
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
+      <!-- Left side -->
+      <div class="value-proposal-content invisible">
+        <div class="space-y-6 lg:space-y-8">
+          <!-- Approach explanation -->
+          <div class="approach-text">
+            <p
+              class="text-purple-dark/80 text-justify text-base leading-relaxed md:text-lg"
+            >
+              Integro herramientas de la <strong
+                class="text-purple-dark font-semibold"
+                >Terapia Cognitivo-Conductual</strong
+              > (para el cambio práctico), el <strong
+                class="text-purple-dark font-semibold">Humanismo</strong
+              > (para validar tu emoción) y la <strong
+                class="text-purple-dark font-semibold"
+                >Mirada Sistémica / Psicodinámica</strong
+              > para explorar los procesos profundos que influyen en tu historia y
+              en tu forma de relacionarte.
+            </p>
+          </div>
+
+          <!-- Quote box -->
+          <div
+            class="quote-box bg-soft-beige relative overflow-hidden rounded-2xl p-6 shadow-sm lg:p-8"
+          >
+            <div class="relative z-10">
+              <QuoteIcon
+                class="text-purple-accent/30 mb-3 h-8 w-8 lg:h-10 lg:w-10"
+              />
+              <p
+                class="text-purple-dark/85 text-base leading-relaxed font-semibold italic lg:text-lg"
+              >
+                <strong>
+                  ¿El resultado? Es un espacio seguro y personalizado, donde no
+                  solo te escucho, sino que te acompaño con herramientas
+                  concretas para favorecer un proceso de comprensión y cambio
+                  genuino.
+                </strong>
+              </p>
+            </div>
+
+            <!-- Decorative background element -->
+            <div
+              class="bg-purple-accent/5 pointer-events-none absolute -right-6 -bottom-6 h-24 w-24 rounded-full blur-2xl"
+            >
+            </div>
+          </div>
+
+          <!-- Checkmark list -->
+          <div class="checkmark-list space-y-4">
+            <div class="flex items-start gap-3">
+              <div
+                class="bg-olive/20 flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
+              >
+                <CheckmarkIcon class="text-purple-accent h-4 w-4" />
+              </div>
+              <p class="text-purple-dark text-base leading-relaxed lg:text-lg">
+                Espacio 100% libre de juicios.
+              </p>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div
+                class="bg-olive/20 flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
+              >
+                <CheckmarkIcon class="text-purple-accent h-4 w-4" />
+              </div>
+              <p class="text-purple-dark text-base leading-relaxed lg:text-lg">
+                Enfoque práctico orientado a soluciones.
+              </p>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div
+                class="bg-olive/20 flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
+              >
+                <CheckmarkIcon class="text-purple-accent h-4 w-4" />
+              </div>
+              <p class="text-purple-dark text-base leading-relaxed lg:text-lg">
+                Experiencia especializada con población migrante.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right side -->
+      <div id="highlights" class="invisible flex flex-col justify-center gap-4">
+        <Image
+          src={PsychologyCare}
+          alt="Atencion Psicologica"
+          class="h-full w-full rounded-xl object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { valueProposalAnimations } from "@/utils/animations/home/valueProposal.Animations.js";
+
+  // Initialize animations
+  valueProposalAnimations();
+</script>

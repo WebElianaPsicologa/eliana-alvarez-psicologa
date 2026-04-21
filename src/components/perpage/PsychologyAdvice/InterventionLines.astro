@@ -1,0 +1,225 @@
+---
+import CompassIcon from "@/assets/icons/compass.svg";
+import BrainIcon from "@/assets/icons/brain-resistance.svg";
+import UserIcon from "@/assets/icons/user.svg";
+import PuzzleIcon from "@/assets/icons/puzzle.svg";
+import CheckmarkIcon from "@/assets/icons/checkmark.svg";
+import TalkIcon from "@/assets/icons/talk.svg";
+import PuzzleItemIcon from "@/assets/icons/puzzle.svg";
+import BrainResistanceIcon from "@/assets/icons/brain-resistance.svg";
+import FamilyIcon from "@/assets/icons/family.svg";
+import ClockIcon from "@/assets/icons/clock.svg";
+
+const lines = [
+  {
+    icon: "compass",
+    audiences: ["Individuos", "Parejas", "Familias"],
+    title: "Orientación Psicológica",
+    tagline: "Guía clara para situaciones específicas",
+    sectionLabel: "El objetivo",
+    body: 'Si estás pasando por un conflicto puntual en casa, con tu pareja o en el trabajo y necesitas una \u201cbrújula\u201d externa. No indagamos en traumas antiguos, sino que resolvemos el nudo actual.',
+    listLabel: "Lograrás",
+    items: [
+      "Estrategias para manejar situaciones difíciles del día a día",
+      "Mejorar tu toma de decisiones inmediata",
+      "Recuperar el bienestar integral ante un reto concreto",
+    ],
+    skillItems: null,
+    achievement: null,
+    methodology: null,
+    sessions: "3 a 8 Sesiones",
+  },
+  {
+    icon: "user",
+    audiences: ["Jóvenes", "Adultos", "Profesionales"],
+    title: "Orientación Vocacional & Profesional",
+    tagline: "Diseña un futuro que te apasione",
+    sectionLabel: "El proceso incluye",
+    body: null,
+    listLabel: null,
+    items: [
+      "Evaluación integral con pruebas especializadas (test de aptitudes e intereses)",
+      "Análisis del mercado laboral actual",
+      "Plan de acción: metas a corto, mediano y largo plazo",
+    ],
+    skillItems: null,
+    achievement:
+      "Construir un camino profesional alineado con tus talentos reales, no con las expectativas de otros.",
+    methodology: null,
+    sessions: "5 a 8 Sesiones",
+  },
+  {
+    icon: "brain",
+    audiences: ["Entrenamiento Psicoeducativo"],
+    title: "Desarrollo de Habilidades",
+    tagline: "Potencia tus fortalezas a través de la Psicoeducación",
+    sectionLabel: "Áreas de entrenamiento",
+    body: null,
+    listLabel: null,
+    items: null,
+    skillItems: [
+      { icon: "talk", label: "Comunicación Asertiva y Empatía" },
+      { icon: "puzzle-item", label: "Resolución de Conflictos" },
+      { icon: "brain-resistance", label: "Resiliencia e Inteligencia Emocional" },
+      { icon: "family", label: "Pautas de Crianza efectivas" },
+      { icon: "clock", label: "Gestión del tiempo y fin de la procrastinación" },
+    ],
+    achievement: null,
+    methodology:
+      "Práctica guiada, modelado de conductas y feedback constructivo en un entorno seguro.",
+    sessions: "3 a 8 Sesiones",
+  },
+];
+---
+
+<section class="intervention-lines bg-blue-mist relative -mt-10 overflow-hidden py-24 lg:py-32">
+  <!-- Background atmosphere -->
+  <div
+    class="bg-blue-mist/20 pointer-events-none absolute -top-24 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full blur-3xl"
+  ></div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-12 xl:px-20">
+
+    <!-- Section header -->
+    <div class="intervention-lines-header mb-16 text-center">
+      <div class="mb-5 flex items-center justify-center gap-3">
+        <div class="bg-gray-lavender/50 h-px w-8 shrink-0"></div>
+        <span
+          class="font-nunito text-gray-lavender text-xs font-semibold tracking-widest uppercase"
+        >
+          Lo que ofrezco
+        </span>
+        <div class="bg-gray-lavender/50 h-px w-8 shrink-0"></div>
+      </div>
+      <h2 class="intervention-lines-title text-purple-dark invisible text-4xl font-black tracking-tight lg:text-5xl">
+        Mis 3 Líneas de Intervención
+      </h2>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+
+      {lines.map((line) => (
+        <article class="intervention-card shadow-sm hover:shadow-2xl transition-all duration-300 border-purple-dark/8 invisible flex flex-col overflow-hidden rounded-3xl border bg-soft-beige p-7">
+
+          <!-- Card icon -->
+          <div class="bg-blue-mist/30 mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl">
+            {line.icon === "compass" && <CompassIcon class="text-purple-accent h-6 w-6" />}
+            {line.icon === "user" && <UserIcon class="text-purple-accent h-6 w-6" />}
+            {line.icon === "brain" && <BrainIcon class="text-purple-accent h-6 w-6" />}
+          </div>
+
+          <!-- Audience tags -->
+          <div class="mb-4 flex flex-wrap gap-1.5">
+            {line.audiences.map((tag) => (
+              <span class="font-nunito border-purple-dark/10 text-purple-dark/50 rounded-full border px-2.5 py-0.5 text-xs font-medium">
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <!-- Title + tagline -->
+          <h3 class="text-purple-dark mb-1 text-xl font-bold leading-snug">
+            {line.title}
+          </h3>
+          <p class="text-purple-dark/80 mb-5 text-sm italic">
+            "{line.tagline}"
+          </p>
+
+          <!-- Divider -->
+          <div class="bg-purple-dark/8 mb-5 h-px w-full"></div>
+
+          <!-- Section label -->
+          <span class="font-nunito text-purple-accent mb-3 block text-xs font-semibold tracking-widest uppercase">
+            {line.sectionLabel}
+          </span>
+
+          <!-- Body text (card 1 only) -->
+          {line.body && (
+            <p class="text-purple-dark/80 mb-4 text-sm leading-relaxed">
+              {line.body}
+            </p>
+          )}
+
+          <!-- List label (card 1 only) -->
+          {line.listLabel && (
+            <span class="font-nunito text-gray-lavender mb-3 block text-xs font-semibold tracking-widest uppercase">
+              {line.listLabel}
+            </span>
+          )}
+
+          <!-- Generic checkmark items (cards 1 & 2) -->
+          {line.items && (
+            <ul class="mb-5 flex flex-col gap-2.5">
+              {line.items.map((item) => (
+                <li class="flex items-start gap-2.5">
+                  <CheckmarkIcon class="text-purple-accent mt-0.5 h-4 w-4 shrink-0" />
+                  <span class="font-nunito text-purple-dark/70 text-sm leading-snug">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <!-- Skill items with individual icons (card 3 only) -->
+          {line.skillItems && (
+            <ul class="mb-5 flex flex-col gap-2.5">
+              {line.skillItems.map((skill) => (
+                <li class="flex items-center gap-2.5">
+                  <span class=" text-purple-accent inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-lg">
+                    {skill.icon === "talk" && <TalkIcon class="h-6 w-6" />}
+                    {skill.icon === "puzzle-item" && <PuzzleItemIcon class="h-6 w-6" />}
+                    {skill.icon === "brain-resistance" && <BrainResistanceIcon class="h-6 w-6" />}
+                    {skill.icon === "family" && <FamilyIcon class="h-6 w-6" />}
+                    {skill.icon === "clock" && <ClockIcon class="h-6 w-6" />}
+                  </span>
+                  <span class="font-nunito text-purple-dark/70 text-sm leading-snug">
+                    {skill.label}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <!-- Achievement (card 2 only) -->
+          {line.achievement && (
+            <p class="text-purple-dark/70 mb-5 text-sm leading-relaxed">
+              {line.achievement}
+            </p>
+          )}
+
+          <!-- Methodology (card 3 only) -->
+          {line.methodology && (
+            <>
+              <span class="font-nunito text-gray-lavender mb-2 block text-xs font-semibold tracking-widest uppercase">
+                Metodología
+              </span>
+              <p class="text-purple-dark/70 mb-5 text-sm leading-relaxed">
+                {line.methodology}
+              </p>
+            </>
+          )}
+
+          <!-- Sessions badge pinned to bottom -->
+          <div class="mt-auto pt-4">
+            <div class="border-purple-dark/10 inline-flex items-center gap-2 rounded-full border px-4 py-2">
+            <ClockIcon class="text-purple-accent h-4 w-4" />
+              <span class="font-nunito text-purple-dark/60 text-xs font-semibold">
+                {line.sessions}
+              </span>
+            </div>
+          </div>
+
+        </article>
+      ))}
+
+    </div>
+  </div>
+</section>
+
+<script>
+  import { treeLinesAnimation } from "@/utils/animations/psychologyAdvice/treeLines.Animation";
+
+  treeLinesAnimation();
+</script>

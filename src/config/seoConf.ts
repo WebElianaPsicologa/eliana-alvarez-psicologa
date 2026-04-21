@@ -11,7 +11,7 @@ import { AUTHORS, getAuthorByName, type Author } from "./authorBio";
 // Re-export for convenience
 export { services, type Service };
 export { allFAQs, type FAQItem };
-export { generalFAQs, pricingFAQs, getFAQsByCategory } from "./faqs";
+export { generalFAQs } from "./faqs";
 export { AUTHORS, getAuthorByName, type Author };
 
 // =============================================================================
@@ -56,7 +56,7 @@ export interface BlogPost {
   publishDate: Date;
   modifiedDate?: Date;
   tags?: string[];
-  image: string;
+  image?: string;
   author?: string;
 }
 
@@ -83,36 +83,33 @@ export type JSONLDSchema = Record<string, unknown>;
 // =============================================================================
 
 export const COMPANY_INFO: CompanyInfo = {
-  name: "Your Company Name",
+  name: "Eliana Álvarez - Psicóloga Clínica",
   description:
-    "Your company description optimized for SEO. Include main keywords naturally.",
-  url: "https://yourwebsite.com",
-  phone: "+1-555-555-5555",
-  email: "contact@yourwebsite.com",
+    "Psicóloga clínica con más de 20 años de experiencia acompañando a mujeres, adolescentes y familias a sanar la ansiedad, superar duelos y reconstruir vínculos mediante una terapia integral, humana y sin fronteras.",
+  url: "https://elianaalvarezpsicologa.com", // TODO: Verify this URL
+  phone: "+55 11 XXXX-XXXX", // TODO: Verify this phone number
+  email: "webelianaalvarezpsicologa@outlook.com", // TODO: Verify this email
   address: {
-    street: "123 Main Street",
-    city: "Your City",
-    region: "Your State/Region",
-    postalCode: "12345",
-    country: "Your Country",
-    countryCode: "US",
+    street: "Atención 100% Online",
+    city: "São Paulo",
+    region: "SP",
+    postalCode: "01000-000",
+    country: "Brasil",
+    countryCode: "BR",
   },
   geo: {
-    latitude: 0.0,
-    longitude: 0.0,
+    latitude: -23.5505,
+    longitude: -46.6333,
   },
-  logo: "/images/logo.svg",
+  logo: "/images/logo.png",
   image: "/images/og-image.png",
-  foundingDate: "2024",
-  founders: ["Founder 1", "Founder 2"],
+  foundingDate: "2001", // TODO: Verify this date
+  founders: ["Eliana Álvarez"],
   socialMedia: {
-    linkedin: "https://linkedin.com/company/yourcompany",
-    instagram: "https://instagram.com/yourcompany",
-    facebook: "https://facebook.com/yourcompany",
-    twitter: "https://twitter.com/yourcompany",
-    youtube: "https://youtube.com/@yourcompany",
-    tiktok: "https://tiktok.com/@yourcompany",
-    googleBusiness: "https://g.page/yourcompany",
+    linkedin: "https://www.linkedin.com/in/eliana-alvarez-psicologa",
+    instagram: "https://www.instagram.com/eliana.alvarez.psicologa",
+    facebook: "https://www.facebook.com/elianaalvarezpsicologa",
+    tiktok: "https://www.tiktok.com/@eliana.alvarez.psicologa",
   },
 };
 
@@ -123,22 +120,36 @@ export const COMPANY_INFO: CompanyInfo = {
 
 export const MAIN_KEYWORDS: MainKeywords = {
   primary: [
-    "main keyword 1",
-    "main keyword 2",
-    "brand name keyword",
+    "psicóloga online",
+    "terapia online",
+    "psicoterapia",
+    "ayuda psicológica",
   ] as string[],
   secondary: [
-    "secondary keyword 1",
-    "secondary keyword 2",
-    "service keyword 1",
-    "service keyword 2",
+    "terapia para ansiedad",
+    "terapia de duelo",
+    "terapia familiar online",
+    "orientación psicológica",
+    "psicoterapia cognitivo conductual",
+    "terapia humanista",
+    "mirada sistémica",
   ] as string[],
   tertiary: [
-    "long tail keyword 1",
-    "long tail keyword 2",
-    "problem-based keyword 1",
-    "problem-based keyword 2",
-    "location-based keyword 1",
+    "duelo migratorio",
+    "terapia online para mujeres",
+    "psicóloga para adolescentes",
+    "orientación vocacional online",
+    "terapia de pareja online",
+    "ruptura amorosa",
+    "comunicación familiar",
+    "adaptación a nuevo país",
+    "ansiedad por mudanza internacional",
+    "desarrollo de habilidades emocionales",
+    "crianza positiva",
+    "inteligencia emocional",
+    "resiliencia",
+    "terapia sin fronteras",
+    "psicóloga hispanohablante Brasil",
   ] as string[],
 };
 
@@ -147,12 +158,12 @@ export const MAIN_KEYWORDS: MainKeywords = {
 // =============================================================================
 
 export const DEFAULT_SEO: SEOProps = {
-  title: `${COMPANY_INFO.name} | Your Main Value Proposition`,
+  title: `${COMPANY_INFO.name} | Terapia Integral y Humana`,
   description: COMPANY_INFO.description,
   canonical: COMPANY_INFO.url,
   openGraph: {
     basic: {
-      title: `${COMPANY_INFO.name} | Your Main Value Proposition`,
+      title: `Eliana Álvarez - Terapia Online Sin Fronteras`,
       type: "website",
       image: `${COMPANY_INFO.url}${COMPANY_INFO.image}`,
       url: COMPANY_INFO.url,
@@ -160,14 +171,14 @@ export const DEFAULT_SEO: SEOProps = {
     optional: {
       description: COMPANY_INFO.description,
       siteName: COMPANY_INFO.name,
-      locale: "es_CO",
+      locale: "es_ES",
     },
   },
   twitter: {
     card: "summary_large_image",
-    site: "@yourhandle",
-    creator: "@yourhandle",
-    title: `${COMPANY_INFO.name} | Your Main Value Proposition`,
+    site: "@elianaalvarez",
+    creator: "@elianaalvarez",
+    title: `Eliana Álvarez - Terapia Online Sin Fronteras`,
     description: COMPANY_INFO.description,
     image: `${COMPANY_INFO.url}${COMPANY_INFO.image}`,
   },
@@ -175,11 +186,11 @@ export const DEFAULT_SEO: SEOProps = {
     meta: [
       { name: "robots", content: "index, follow" },
       { name: "author", content: COMPANY_INFO.name },
-      { name: "theme-color", content: "#000000" },
-      { name: "msapplication-TileColor", content: "#000000" },
-      { httpEquiv: "Content-Language", content: "es-CO" },
-      { name: "geo.region", content: COMPANY_INFO.address.countryCode },
-      { name: "geo.placename", content: COMPANY_INFO.address.country },
+      { name: "theme-color", content: "#674D72" },
+      { name: "msapplication-TileColor", content: "#674D72" },
+      { httpEquiv: "Content-Language", content: "es" },
+      { name: "geo.region", content: "BR-SP" },
+      { name: "geo.placename", content: "São Paulo" },
     ],
   },
 };
@@ -227,13 +238,13 @@ export function generateDynamicSEO(options: DynamicSEOOptions): SEOProps {
       optional: {
         description,
         siteName: COMPANY_INFO.name,
-        locale: "es_CO",
+        locale: "es_ES",
       },
     },
     twitter: {
       card: "summary_large_image",
-      site: "@yourhandle",
-      creator: "@yourhandle",
+      site: "@elianaalvarez",
+      creator: "@elianaalvarez",
       title,
       description,
       image: imageUrl,
@@ -245,8 +256,8 @@ export function generateDynamicSEO(options: DynamicSEOOptions): SEOProps {
           name: "robots",
           content: options.noindex ? "noindex, nofollow" : "index, follow",
         },
-        { name: "theme-color", content: "#000000" },
-        { httpEquiv: "Content-Language", content: "es-CO" },
+        { name: "theme-color", content: "#674D72" },
+        { httpEquiv: "Content-Language", content: "es" },
       ],
     },
   };
@@ -386,7 +397,7 @@ export const WEBSITE_SCHEMA: JSONLDSchema = {
   alternateName: COMPANY_INFO.name,
   description: COMPANY_INFO.description,
   url: COMPANY_INFO.url,
-  inLanguage: "es-CO",
+  inLanguage: "es-ES",
   copyrightYear: new Date().getFullYear(),
   copyrightHolder: {
     "@type": "Organization",
@@ -415,7 +426,7 @@ export const BLOG_SCHEMA: JSONLDSchema = {
   name: `Blog - ${COMPANY_INFO.name}`,
   description: `Artículos, guías y consejos de ${COMPANY_INFO.name}`,
   url: `${COMPANY_INFO.url}/blog`,
-  inLanguage: "es-CO",
+  inLanguage: "es-ES",
   author: {
     "@id": `${COMPANY_INFO.url}#organization`,
   },
@@ -447,10 +458,14 @@ export function generateBlogPostSchema(post: BlogPost): JSONLDSchema {
 
   // Build social media array for author
   const authorSameAs = [];
-  if (author.socialMedia?.linkedin) authorSameAs.push(author.socialMedia.linkedin);
-  if (author.socialMedia?.instagram) authorSameAs.push(author.socialMedia.instagram);
-  if (author.socialMedia?.twitter) authorSameAs.push(author.socialMedia.twitter);
-  if (author.socialMedia?.facebook) authorSameAs.push(author.socialMedia.facebook);
+  if (author.socialMedia?.linkedin)
+    authorSameAs.push(author.socialMedia.linkedin);
+  if (author.socialMedia?.instagram)
+    authorSameAs.push(author.socialMedia.instagram);
+  if (author.socialMedia?.twitter)
+    authorSameAs.push(author.socialMedia.twitter);
+  if (author.socialMedia?.facebook)
+    authorSameAs.push(author.socialMedia.facebook);
 
   // Create rich author schema for E-E-A-T
   const authorSchema: Record<string, unknown> = {
@@ -471,7 +486,7 @@ export function generateBlogPostSchema(post: BlogPost): JSONLDSchema {
   }
 
   if (author.certifications && author.certifications.length > 0) {
-    authorSchema.hasCredential = author.certifications.map(cert => ({
+    authorSchema.hasCredential = author.certifications.map((cert) => ({
       "@type": "EducationalOccupationalCredential",
       credentialCategory: "Professional Certification",
       name: cert,
@@ -495,14 +510,16 @@ export function generateBlogPostSchema(post: BlogPost): JSONLDSchema {
       "@type": "WebPage",
       "@id": `${COMPANY_INFO.url}/blog/${post.id}`,
     },
-    image: {
-      "@type": "ImageObject",
-      url: `${COMPANY_INFO.url}${post.image}`,
-      width: 1200,
-      height: 630,
-    },
+    ...(post.image && {
+      image: {
+        "@type": "ImageObject",
+        url: `${COMPANY_INFO.url}${post.image}`,
+        width: 1200,
+        height: 630,
+      },
+    }),
     keywords: post.tags?.join(", ") ?? MAIN_KEYWORDS.primary.join(", "),
-    inLanguage: "es-CO",
+    inLanguage: "es-ES",
     isPartOf: {
       "@id": `${COMPANY_INFO.url}/blog#blog`,
     },
@@ -598,13 +615,14 @@ export function generateServiceSchema(service: Service): JSONLDSchema {
 }
 
 /**
- * LocalBusiness Schema for contact page and local SEO
- * Critical for Google Maps and local search rankings
+ * ProfessionalService Schema for psychology practice
+ * More appropriate than LocalBusiness for therapy/counseling services
+ * Critical for establishing professional credentials (E-E-A-T)
  */
 export const LOCAL_BUSINESS_SCHEMA: JSONLDSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": `${COMPANY_INFO.url}#localbusiness`,
+  "@type": "ProfessionalService",
+  "@id": `${COMPANY_INFO.url}#professional-service`,
   name: COMPANY_INFO.name,
   description: COMPANY_INFO.description,
   url: COMPANY_INFO.url,
@@ -632,9 +650,28 @@ export const LOCAL_BUSINESS_SCHEMA: JSONLDSchema = {
     "@type": "OpeningHoursSpecification",
     dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     opens: "09:00",
-    closes: "18:00",
+    closes: "19:00",
   },
   priceRange: "$$",
+  paymentAccepted: "Transferencia bancaria, PayPal, Tarjeta de crédito",
+  areaServed: [
+    { "@type": "Country", name: "España" },
+    { "@type": "Country", name: "México" },
+    { "@type": "Country", name: "Argentina" },
+    { "@type": "Country", name: "Colombia" },
+    { "@type": "Country", name: "Brasil" },
+    { "@type": "Country", name: "Chile" },
+    { "@type": "Country", name: "Perú" },
+  ],
+  knowsAbout: [
+    "Terapia Cognitivo-Conductual",
+    "Terapia Humanista",
+    "Terapia Sistémica",
+    "Duelo Migratorio",
+    "Ansiedad",
+    "Terapia Familiar",
+    "Orientación Vocacional",
+  ],
 };
 
 /**
@@ -677,7 +714,7 @@ export function generateAuthorSchema(author: Author): JSONLDSchema {
   }
 
   if (author.certifications && author.certifications.length > 0) {
-    schema.hasCredential = author.certifications.map(cert => ({
+    schema.hasCredential = author.certifications.map((cert) => ({
       "@type": "EducationalOccupationalCredential",
       credentialCategory: "Professional Certification",
       name: cert,

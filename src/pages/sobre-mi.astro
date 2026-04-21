@@ -1,13 +1,43 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import HeroAbout from "@/components/perpage/aboutUs/HeroAbout.astro";
+import StoryAbout from "@/components/perpage/aboutUs/StoryAbout.astro";
+import ApproachAbout from "@/components/perpage/aboutUs/ApproachAbout.astro";
+import OurFocusAbout from "@/components/perpage/aboutUs/OurFocusAbout.astro";
+import EticPillarsAbout from "@/components/perpage/aboutUs/EticPillarsAbout.astro";
+import BeyondTherapistAbout from "@/components/perpage/aboutUs/BeyondTherapistAbout.astro";
+import Cta from "@/components/global/Cta.astro";
+import {
+  generateDynamicSEO,
+  generateAllAuthorsSchemas,
+  generateBreadcrumbSchema,
+} from "@/config/seoConf";
+
+const seoProps = generateDynamicSEO({
+  pageType: "about",
+  title: "Sobre Mí | Eliana Álvarez · Psicóloga Clínica Online",
+  description:
+    "Psicóloga clínica con +20 años acompañando a personas, parejas y familias. Enfoque pluralista: TCC, Humanismo y Sistémica. Consulta online en español.",
+  canonical: "/sobre-mi",
+});
+
+const authorSchemas = generateAllAuthorsSchemas();
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", path: "/" },
+  { name: "Sobre mí", path: "/sobre-mi" },
+]);
 ---
 
-<MainLayout
-  seoProps={{
-    title: "Sobre mí",
-    description: "Sobre mí",
-  }}
->
+<MainLayout {seoProps} schemas={[...authorSchemas, breadcrumbSchema]}>
   <HeroAbout />
+  <StoryAbout />
+  <ApproachAbout />
+  <OurFocusAbout />
+  <EticPillarsAbout />
+  <BeyondTherapistAbout />
+  <Cta
+    heading="¿Sientes que podemos hacer un buen equipo?"
+    description="Si después de leer mi perfil sientes que podemos conectar, me encantaría conocerte. Agenda una primera sesión y conversemos sin compromiso."
+    buttonText="Hablemos en una primera sesión"
+  />
 </MainLayout>

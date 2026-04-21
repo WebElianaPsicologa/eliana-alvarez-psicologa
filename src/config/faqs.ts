@@ -6,50 +6,102 @@
 export interface FAQItem {
   question: string;
   answer: string;
-  category?: string;
+  links?: {
+    href: string;
+    text: string;
+  }[];
+  note?: string;
 }
+
+// Online Therapy FAQs - Optimized for AEO (Answer Engine Optimization)
+// These FAQs help AI engines like ChatGPT and Perplexity cite the practice as an expert
+export const onlineTherapyFAQs: FAQItem[] = [
+  {
+    question: "¿Es efectiva la terapia por videollamada?",
+    answer:
+      "Sí. La evidencia clínica demuestra que el vínculo terapéutico y los resultados son igual de sólidos que en la modalidad presencial, con la ventaja de la comodidad y privacidad de tu propio espacio.",
+    links: [
+      {
+        href: "https://pubmed.ncbi.nlm.nih.gov/29215315/",
+        text: "Estudio PubMed",
+      },
+      {
+        href: "https://www.apa.org/about/policy/telepsychology-revisions",
+        text: "Telepsicología APA",
+      },
+    ],
+  },
+  {
+    question: "¿Cuánto dura un proceso psicológico?",
+    answer:
+      "Cada persona es única. Algunos temas se resuelven en asesorías breves, mientras que procesos profundos de cambio estructural requieren un compromiso a mediano plazo.",
+  },
+  {
+    question: "¿Qué plataforma se utiliza para la conexión y si es segura?",
+    answer:
+      "Las sesiones se realizan a través de Microsoft Teams, una plataforma líder que garantiza el cifrado de extremo a extremo. No necesitas instalar nada complejo; puedes unirte desde tu navegador o la aplicación, asegurando que nuestra conversación sea totalmente privada.",
+    note: "Si te conectas desde el móvil, te recomiendo descargar la app gratuita de Microsoft Teams para una conexión más estable, aunque desde el ordenador funciona perfecto directamente en el navegador.",
+  },
+  {
+    question: "¿Qué necesito para mi primera sesión por Teams?",
+    answer:
+      "Solo necesitas un dispositivo con cámara y micrófono (ordenador, tablet o móvil) y una conexión a internet estable. Recibirás un enlace de acceso por correo electrónico antes de cada sesión. Recuerda buscar un espacio tranquilo donde puedas hablar con libertad y privacidad.",
+  },
+];
+
+export const psychologyAdviceFAQs: FAQItem[] = [
+  {
+    question: "¿Qué es una asesoría psicológica?",
+    answer:
+      "Es una intervención breve y focalizada, ideal para situaciones puntuales o decisiones inmediatas. A diferencia de la terapia profunda, la asesoría se centra en resolver un problema específico, ofreciendo orientación clara y herramientas prácticas para actuar de inmediato.",
+  },
+  {
+    question: "¿La orientación vocacional es solo para adolescentes?",
+    answer:
+      "No. Gran parte de los consultantes son adultos que sienten insatisfacción laboral y desean redirigir su trayectoria o elegir una especialización. Nunca es tarde para recalibrar tu brújula profesional.",
+  },
+  {
+    question: "¿Qué es el entrenamiento en habilidades sociales?",
+    answer:
+      "Es un proceso educativo donde, en lugar de solo 'hablar', practicamos técnicas concretas. Es ideal para mejorar el liderazgo, aprender a poner límites o manejar conflictos culturales si te has mudado de país.",
+  },
+  {
+    question: "¿Puedo tomar el servicio en pareja o familia?",
+    answer:
+      "Sí. Tanto la Orientación Psicológica (para conflictos puntuales) como el Desarrollo de Habilidades (ej: pautas de crianza o comunicación) son altamente efectivos en modalidad grupal o familiar.",
+  },
+  {
+    question: "¿Es lo mismo una asesoría psicológica que una terapia?",
+    answer:
+      "No. La asesoría es breve y focalizada en un problema actual, mientras que la terapia es un proceso más profundo y prolongado que busca cambios estructurales y autoconocimiento a largo plazo.",
+  },
+];
+
+export const contactLogisticsFAQs: FAQItem[] = [
+  {
+    question: "¿Qué métodos de pago aceptas?",
+    answer:
+      "Entre cuentas en Colombia: transferencia bancaria local o Daviplata. Para pagos internacionales (hacia Brasil): Western Union o transferencia internacional. Coordinaremos el método más cómodo para ti por WhatsApp.",
+  },
+  {
+    question: "¿Qué pasa si tengo que cancelar?",
+    answer:
+      "Entiendo que la vida pasa. Puedes reagendar sin costo avisando con 24 horas de anticipación. Solo te pido ese margen para reorganizar la agenda y ofrecerle el espacio a otro paciente.",
+  },
+  {
+    question: "¿En qué horarios puedo agendar una sesión?",
+    answer:
+      "Atiendo de lunes a viernes entre las 8:00 AM y las 3:00 PM (hora Colombia). Si estás en otra zona horaria, lo ajustamos juntos sin problema.",
+  },
+  {
+    question: "¿Cuánto tiempo tardarás en responderme?",
+    answer:
+      "Te respondo personalmente en un plazo máximo de 24 horas hábiles. Si me escribes por WhatsApp, el tiempo de respuesta suele ser mucho más rápido.",
+  },
+];
 
 // General FAQs - for main FAQ page
-export const generalFAQs: FAQItem[] = [
-  {
-    question: "¿Qué servicios ofrecen?",
-    answer:
-      "Ofrecemos diseño web estratégico, marketing digital y optimización SEO para profesionales y empresas.",
-    category: "general",
-  },
-  {
-    question: "¿Cómo puedo contactarlos?",
-    answer:
-      "Puedes contactarnos a través del formulario en nuestra página de contacto, por email o WhatsApp.",
-    category: "general",
-  },
-  {
-    question: "¿Trabajan con clientes internacionales?",
-    answer:
-      "Sí, trabajamos con clientes de toda Latinoamérica y el mundo de manera remota.",
-    category: "general",
-  },
-];
-
-// Pricing FAQs
-export const pricingFAQs: FAQItem[] = [
-  {
-    question: "¿Cuánto cuesta un proyecto?",
-    answer:
-      "Los precios varían según el alcance del proyecto. Contáctanos para una cotización personalizada.",
-    category: "pricing",
-  },
-  {
-    question: "¿Ofrecen planes de pago?",
-    answer: "Sí, ofrecemos planes de pago flexibles para proyectos grandes.",
-    category: "pricing",
-  },
-];
+export const generalFAQs: FAQItem[] = [...onlineTherapyFAQs];
 
 // All FAQs combined
-export const allFAQs: FAQItem[] = [...generalFAQs, ...pricingFAQs];
-
-// Helper function to get FAQs by category
-export function getFAQsByCategory(category: string): FAQItem[] {
-  return allFAQs.filter((faq) => faq.category === category);
-}
+export const allFAQs: FAQItem[] = [...generalFAQs];

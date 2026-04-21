@@ -18,6 +18,7 @@ pnpm-debug.log*
 
 # Claude
 .claude/
+.agents/
 CLAUDE.md
 
 

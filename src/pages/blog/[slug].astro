@@ -1,0 +1,163 @@
+---
+import {
+  generateDynamicSEO,
+  generateBreadcrumbSchema,
+  generateBlogPostSchema,
+} from "@/config/seoConf";
+import MainLayout from "@/layouts/MainLayout.astro";
+import ArrowUp from "@/assets/icons/arrow-up.svg";
+import { getPosts } from "./post.api";
+import { marked } from "marked";
+import { getReadingTime } from "@/utils/scripts/readingTime";
+import { getAuthorByName } from "@/config/authorBio";
+import Prose from "@/components/ui/Prose.astro";
+
+// Generate all possible paths
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+// Per path let's generate the page
+const { post } = Astro.props;
+
+// Get author info from local config (enriches CMS data with bio, credentials, etc.)
+const author = getAuthorByName(post.author);
+
+// Add reading time
+const readingTime = post.content ? getReadingTime(post.content) : "";
+
+const postContent = await marked.parse(post.content);
+
+// Parse dates for layout
+const updateDate = post.lastUpdate ? new Date(post.lastUpdate) : undefined;
+
+const formatDate = (date: string) =>
+  new Date(date).toLocaleDateString("es-CO", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+
+const postSeo = generateDynamicSEO({
+  pageType: "blog-post",
+  title: post.title,
+  description: post.seoDescription,
+  canonical: `/blog/${post.slug}`,
+  image: post.image?.url,
+});
+
+const blogPostSchema = generateBlogPostSchema({
+  id: post.slug,
+  title: post.title,
+  description: post.description,
+  image: post.image?.url,
+  author: author.name,
+  publishDate: new Date(post.pubDate),
+  modifiedDate: updateDate,
+});
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", path: "/" },
+  { name: "Blog", path: "/blog" },
+  { name: post.title, path: `/blog/${post.slug}` },
+]);
+---
+
+<MainLayout seoProps={postSeo} schemas={[blogPostSchema, breadcrumbSchema]}>
+  <article class="container mx-auto mt-20 px-2 py-8 md:py-16">
+    <nav class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8" aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-2 text-sm">
+        <li>
+          <a
+            href="/"
+            class="text-purple-accent/60 hover:text-purple-accent text-base transition-colors"
+            >Inicio</a
+          >
+        </li>
+        <li class="text-purple-accent/50">/</li>
+        <li>
+          <a
+            href="/blog"
+            class="text-purple-accent/60 hover:text-purple-accent text-base transition-colors"
+            >Blog</a
+          >
+        </li>
+        <li class="text-purple-accent/40">/</li>
+        <li class="text-purple-dark text-sm font-bold" aria-current="page">
+          {post.title}
+        </li>
+      </ol>
+    </nav>
+    <div class="mx-auto max-w-5xl px-2 pt-6 pb-12 sm:px-6 lg:px-8 lg:pt-10">
+      <div class="mx-auto mb-6 flex justify-center">
+        <img
+          src={post.image?.url}
+          alt={post.title}
+          fetchpriority="high"
+          decoding="sync"
+          loading="eager"
+          class="h-96 w-full rounded-2xl object-contain"
+          transition:name={`blog-image-${post.slug}`}
+        />
+      </div>
+      <div class="space-y-5 md:space-y-8">
+        <!-- Author & Post Meta -->
+        <div
+          class="border-purple-accent/20 mb-8 flex flex-col gap-4 border-y py-4 sm:flex-row sm:items-start"
+        >
+          <!-- Author Info -->
+          <div class="flex-1">
+            <p class="text-purple-dark font-medium">
+              <span class="text-purple-accent/80 text-sm">Por:</span>{" "}
+              {author.name}
+            </p>
+            <p class="text-purple-accent/80 text-sm">
+              {author.role}
+            </p>
+            <p class="text-purple-accent/80 mt-1 max-w-prose text-sm">
+              {author.bio.split(".")[0] + "."}
+            </p>
+          </div>
+          <!-- Post Meta -->
+          <div class="text-purple-accent/80 shrink-0 text-sm sm:text-right">
+            <p>Publicado: {formatDate(post.pubDate)}</p>
+            <p>{readingTime}</p>
+          </div>
+        </div>
+      </div>
+      <Prose>
+        <Fragment set:html={postContent} />
+      </Prose>
+    </div>
+    <div
+      class="border-purple-accent/20 bg-soft-beige mx-auto flex h-20 w-20 items-center justify-center rounded-full border backdrop-blur-sm"
+    >
+      <button
+        type="button"
+        id="backToTop"
+        class="text-purple-accent/80 flex cursor-pointer flex-col items-center text-base transition-colors"
+      >
+        <ArrowUp class="block h-4 w-4 animate-bounce" />
+        volver
+        <span class="">arriba</span>
+      </button>
+    </div>
+  </article>
+</MainLayout>
+
+<script>
+  const backToTopButton = document.querySelector(
+    "#backToTop",
+  ) as HTMLButtonElement;
+
+  backToTopButton?.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
