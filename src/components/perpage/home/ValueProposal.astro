@@ -2,7 +2,7 @@
 import CheckmarkIcon from "@/assets/icons/checkmark.svg";
 import QuoteIcon from "@/assets/icons/quote.svg";
 import { Image } from "astro:assets";
-import artImage from "@/assets/images/art.webp";
+import PsychologyCare from "@/assets/images/PsychologyCare.webp";
 ---
 
 <section
@@ -12,13 +12,13 @@ import artImage from "@/assets/images/art.webp";
     <!-- Header -->
     <div class="mx-auto mb-12 max-w-4xl text-center lg:mb-16">
       <h2
-        class="value-proposal-title invisible text-purple-dark mb-6 text-3xl leading-tight font-bold tracking-tight md:text-4xl lg:text-5xl"
+        class="value-proposal-title text-purple-dark invisible mb-6 text-3xl leading-tight font-bold tracking-tight md:text-4xl lg:text-5xl"
       >
         Un acompañamiento terapéutico que se ajusta a tus necesidades.
       </h2>
 
       <p
-        class="value-proposal-subtitle invisible text-purple-dark/75 mx-auto max-w-3xl text-base leading-relaxed italic md:text-lg"
+        class="value-proposal-subtitle text-purple-dark/75 invisible mx-auto max-w-3xl text-base leading-relaxed italic md:text-lg"
       >
         La psicología tradicional a veces puede sentirse fría o rígida. Mi
         enfoque es <strong class="text-purple-dark font-semibold not-italic"
@@ -117,7 +117,11 @@ import artImage from "@/assets/images/art.webp";
       </div>
       <!-- Right side -->
       <div id="highlights" class="invisible flex flex-col justify-center gap-4">
-        <Image src={artImage} alt="Value Proposal" />
+        <Image
+          src={PsychologyCare}
+          alt="Atencion Psicologica"
+          class="h-full w-full rounded-xl object-cover"
+        />
       </div>
     </div>
   </div>
