@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import profile from "@/assets/images/profile.png";
+import profile from "@/assets/images/profile.webp";
 import GlobeIcon from "@/assets/icons/globe.svg";
 import CheckmarkIcon from "@/assets/icons/checkmark.svg";
 import BrainIcon from "@/assets/icons/brain.svg";
@@ -17,11 +17,11 @@ import BrainIcon from "@/assets/icons/brain.svg";
       class="grid grid-cols-1 overflow-hidden rounded-2xl shadow-2xl lg:grid-cols-5 lg:grid-rows-4"
     >
       <!-- Image - full width on mobile, 2 columns on desktop -->
-      <div class="lg:col-span-2 lg:row-span-4 lg:rounded-none">
+      <div class="about-image-wrap relative lg:col-span-2 lg:row-span-4 lg:rounded-none">
         <Image
           src={profile}
           alt="Eliana Álvarez"
-          class="h-full w-full rounded-t-2xl object-cover lg:rounded-none"
+          class="absolute inset-0 size-full rounded-t-2xl object-cover lg:rounded-none"
           priority
         />
       </div>
