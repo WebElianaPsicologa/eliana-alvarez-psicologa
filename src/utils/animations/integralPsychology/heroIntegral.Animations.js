@@ -20,7 +20,7 @@ export const heroIntegralAnimations = () => {
   const split = SplitText.create(title, { type: "words" });
 
   // Set initial states
-  gsap.set(split.words, { yPercent: 110, autoAlpha: 0 });
+  // gsap.set(split.words, { yPercent: 110, autoAlpha: 0 });
   gsap.set([kicker, tags, subtitle, ctas, microcopy, image, badge], {
     autoAlpha: 0,
   });
@@ -30,12 +30,12 @@ export const heroIntegralAnimations = () => {
   // Kicker slides in from left
   tl.to(kicker, { autoAlpha: 1, x: 0, duration: 0.6 }, 0.1)
 
-    // Title words rise up
-    .to(
-      split.words,
-      { yPercent: 0, autoAlpha: 1, duration: 0.75, stagger: 0.08, ease: "power4.out" },
-      0.3,
-    )
+    // // Title words rise up
+    // .to(
+    //   split.words,
+    //   { yPercent: 0, autoAlpha: 1, duration: 0.1, stagger: 0.08, ease: "power4.out" },
+    //   0.3,
+    // )
 
     // Tags pill fades up
     .to(tags, { autoAlpha: 1, y: 0, duration: 0.5 }, "-=0.3")
