@@ -1,42 +1,57 @@
 ---
-import { Image } from "astro:assets";
-import ideaImg from "@/assets/images/idea.webp";
+import { getCldVideoUrl } from "astro-cloudinary/helpers";
 import ArrowRightIcon from "@/assets/icons/arrow-right.svg";
 import ShieldIcon from "@/assets/icons/shield.svg";
+
+const videoOpts = {
+  width: 1280,
+  height: 960,
+  format: "auto",
+  quality: "auto",
+};
+
+const posterOpts = {
+  width: 1280,
+  height: 960,
+  rawTransformations: ["so_auto", "f_webp", "q_auto"],
+};
+
+const heroVideo = getCldVideoUrl({
+  src: "PROCESOPSICOLÓGICO_v2otp8",
+  ...videoOpts,
+});
+const heroPoster = getCldVideoUrl({
+  src: "PROCESOPSICOLÓGICO_v2otp8",
+  ...posterOpts,
+});
+
 ---
 
-<section class="hero-integral bg-soft-bg relative min-h-screen overflow-hidden">
-  <div class="grid min-h-screen grid-cols-1 items-stretch md:grid-cols-12">
-    <!-- LEFT: Content Panel -->
-    <div
-      class="relative z-10 col-span-1 flex flex-col justify-center px-8 pt-24 pb-24 md:col-span-7 md:pt-40 lg:px-16 xl:px-24"
-    >
-      <div class="mx-auto w-full max-w-2xl">
+<section class="hero-integral bg-soft-bg relative overflow-hidden pb-16 pt-28 md:pb-24 md:pt-36 lg:pt-44">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+    <div class="grid grid-cols-1 items-center gap-10 md:grid-cols-2 lg:gap-16">
+
+      <!-- LEFT: Content -->
+      <div class="flex flex-col justify-center">
+
         <!-- Kicker -->
-        <div
-          class="hero-integral-kicker invisible mb-7 flex items-center gap-3"
-        >
+        <div class="hero-integral-kicker invisible mb-6 flex items-center gap-3">
           <div class="bg-gray-lavender/60 h-px w-10 shrink-0"></div>
-          <span
-            class="font-nunito text-gray-lavender text-xs font-semibold tracking-widest uppercase"
-          >
+          <span class="font-nunito text-gray-lavender text-xs font-semibold tracking-widest uppercase">
             Proceso Psicológico Integral
           </span>
         </div>
 
         <!-- H1 -->
         <h1
-          class="hero-integral-title text-purple-accent invisible mb-6 text-4xl leading-tight font-black tracking-tight md:text-5xl xl:text-6xl"
+          class="hero-integral-title text-purple-accent invisible mb-6 text-4xl font-black leading-tight tracking-tight md:text-5xl xl:text-6xl"
         >
           <span class="block">Más que terapia:</span>
-          <span class="text-purple-dark block font-extrabold"
-            >un camino de crecimiento</span
-          >
-          <span class="block">profundo.</span>
-          <!-- <span class="block">herramientas para la vida.</span> -->
+          <span class="text-purple-dark block font-extrabold">un camino de</span>
+          <span class="block">crecimiento profundo.</span>
         </h1>
 
-        <!-- Single pill tag -->
+        <!-- Pill tag -->
         <div class="hero-integral-tags invisible mb-8">
           <span
             class="bg-olive/30 text-purple-dark border-olive/50 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold"
@@ -47,78 +62,70 @@ import ShieldIcon from "@/assets/icons/shield.svg";
         </div>
 
         <!-- Subtitle -->
-        <p
-          class="hero-integral-subtitle text-purple-dark/75 invisible mb-10 max-w-lg text-base leading-relaxed lg:text-lg"
-        >
+        <p class="hero-integral-subtitle text-purple-dark/75 invisible mb-10 max-w-md text-base leading-relaxed lg:text-lg">
           Un proceso terapéutico de mediano o largo plazo diseñado para ir a la
           raíz, fortalecer tu mundo emocional y entrenar las habilidades que
           necesitas para adaptarte a cualquier desafío.
         </p>
 
         <!-- CTAs -->
-        <div
-          class="hero-integral-ctas invisible flex flex-wrap items-center gap-4"
-        >
+        <div class="hero-integral-ctas invisible flex flex-wrap items-center gap-4">
           <a
             href="/contacto"
             class="group bg-purple-accent hover:bg-purple-dark inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:shadow-md lg:text-base"
           >
             Quiero comenzar mi transformación
-            <ArrowRightIcon
-              class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
-            />
+            <ArrowRightIcon class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
           </a>
 
           <a
             href="/sobre-mi"
             class="border-purple-accent/30 text-purple-accent hover:border-purple-accent hover:bg-purple-accent/5 inline-flex items-center rounded-full border px-7 py-3.5 text-sm font-semibold transition-all duration-300 lg:text-base"
           >
-            Conoce el enfoque terapéutico
+            Conoce el enfoque
           </a>
         </div>
 
         <!-- Microcopy -->
-        <div
-          class="hero-integral-microcopy invisible mt-5 flex items-center gap-2"
-        >
+        <div class="hero-integral-microcopy invisible mt-5 flex items-center gap-2">
           <ShieldIcon class="text-gray-lavender h-3.5 w-3.5 shrink-0" />
-          <span class="font-nunito text-gray-lavender text-xs"
-            >Atención confidencial vía Zoom / Microsoft Teams.</span
-          >
+          <span class="font-nunito text-gray-lavender text-xs">
+            Atención confidencial vía Zoom / Microsoft Teams.
+          </span>
         </div>
       </div>
-    </div>
 
-    <!-- RIGHT: Image Panel -->
-    <div class="relative col-span-1 hidden md:col-span-5 md:block">
-      <!-- Left-to-content blend gradient -->
-      <div
-        class="from-soft-bg via-soft-bg/50 absolute inset-0 z-10 bg-linear-to-r to-transparent"
-      >
-      </div>
-      <!-- Bottom vignette -->
-      <div
-        class="from-soft-bg absolute inset-x-0 bottom-0 z-10 h-48 bg-linear-to-t to-transparent"
-      >
-      </div>
-      <!-- Caption ribbon -->
-      <div class="absolute inset-x-0 bottom-0 z-20 px-6 pb-32">
-        <p class="font-jakarta text-purple-dark text-sm font-semibold">
-          Proceso psicológico integral
-        </p>
-        <p class="font-nunito text-purple-dark/60 mt-0.5 text-xs">
-          Autoconocimiento profundo para una transformación sostenible
-        </p>
-      </div>
+      <!-- RIGHT: Video Card + Stats -->
+      <div class="flex flex-col gap-6">
 
-      <Image
-        src={ideaImg}
-        alt="Bombilla iluminada sobre un libro abierto con diagramas y conceptos flotando, simbolizando el autoconocimiento, la claridad mental y la transformación profunda que ofrece el proceso psicológico integral de Eliana Álvarez"
-        class="hero-integral-image invisible absolute inset-0 h-full w-full object-cover object-center"
-        loading="eager"
-        decoding="sync"
-        fetchpriority="high"
-      />
+        <!-- Contained video card -->
+        <div class="relative aspect-video overflow-hidden rounded-3xl shadow-xl">
+          <video
+            autoplay
+            controls
+            muted
+            loop
+            playsinline
+            preload="auto"
+            poster={heroPoster}
+            class="hero-integral-image invisible absolute inset-0 h-full w-full object-cover object-center"
+            aria-label="Proceso psicológico integral: autoconocimiento profundo para una transformación sostenible"
+          >
+            <source src={heroVideo} type="video/mp4" />
+          </video>
+        </div>
+
+        <!-- Caption -->
+        <div class="px-1">
+          <p class="font-jakarta text-purple-dark text-sm font-semibold">
+            Proceso psicológico integral
+          </p>
+          <p class="font-nunito text-purple-dark/50 mt-0.5 text-xs">
+            Autoconocimiento profundo para una transformación sostenible
+          </p>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>

@@ -1,7 +1,8 @@
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(SplitText);
+gsap.registerPlugin(SplitText, ScrollTrigger);
 
 export const heroIntegralAnimations = () => {
   const kicker = document.querySelector(".hero-integral-kicker");
@@ -61,4 +62,20 @@ export const heroIntegralAnimations = () => {
       { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)" },
       "-=0.4",
     );
+
+  // Pause video when section leaves viewport, restart when it comes back
+  const section = document.querySelector(".hero-integral");
+  if (image && section) {
+    ScrollTrigger.create({
+      trigger: section,
+      start: "top bottom",
+      end: "bottom top",
+      onLeave: () => image.pause(),
+      onLeaveBack: () => image.pause(),
+      onEnterBack: () => {
+        image.currentTime = 0;
+        image.play();
+      },
+    });
+  }
 };
