@@ -28,7 +28,7 @@ const breadcrumbSchema = generateBreadcrumbSchema([
 const faqSchema = generateFAQSchema(contactLogisticsFAQs);
 ---
 
-<MainLayout {seoProps} schemas={[breadcrumbSchema, faqSchema]}>
+<MainLayout seoProps={seoProps} schemas={[breadcrumbSchema, faqSchema]}>
   <HeroContact />
   <ContactMethods />
   <FAQs
