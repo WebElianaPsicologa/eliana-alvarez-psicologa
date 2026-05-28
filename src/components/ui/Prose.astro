@@ -5,15 +5,19 @@
 </div>
 
 <style is:global>
-  .prose div[style*="aspect-ratio"] {
+  .video-wrapper {
     position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
     overflow: hidden;
     border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
   }
 
-  .prose div[style*="aspect-ratio"] > iframe {
+  .video-wrapper-iframe {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     border: 0;
