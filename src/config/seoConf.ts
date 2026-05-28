@@ -108,7 +108,7 @@ export const COMPANY_INFO: CompanyInfo = {
   socialMedia: {
     youtube: "https://www.youtube.com/@ElianaAlvarezPsicologa",
     instagram: "https://www.instagram.com/elianaalvarezpsicologa",
-    whatsapp: "https://api.whatsapp.com/send?phone=%E2%80%8E5513997283229&text=Hola%20buen%20d%C3%ADa%2C%0AEstoy%20interesado%2Fa%20en%20el%20servicio%20de%20psicolog%C3%ADa",
+    whatsapp: "https://api.whatsapp.com/send?phone=5513997283229&text=Hola%20buen%20d%C3%ADa%2C%0AEstoy%20interesado%2Fa%20en%20el%20servicio%20de%20psicolog%C3%ADa",
   },
 };
 
