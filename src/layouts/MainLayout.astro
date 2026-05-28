@@ -11,6 +11,7 @@ import {
   type JSONLDSchema,
 } from "@/config/seoConf";
 import type { SEOProps } from "astro-seo";
+import WhatsApp from "@/components/ui/WhatsApp.astro";
 
 interface Props {
   seoProps: SEOProps;
@@ -51,6 +52,9 @@ const allSchemas = [...schemas, ORGANIZATION_SCHEMA, WEBSITE_SCHEMA];
       <slot />
     </main>
     <Footer />
+    <div class="fixed right-4 bottom-4 z-50">
+      <WhatsApp />
+    </div>
   </body>
 </html>
 

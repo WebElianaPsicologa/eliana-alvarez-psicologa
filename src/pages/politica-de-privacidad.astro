@@ -1,0 +1,383 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { generateBreadcrumbSchema, generateDynamicSEO } from "@/config/seoConf";
+import { COMPANY_INFO } from "@/config/seoConf";
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", path: "/" },
+  { name: "Política de Privacidad", path: "/politica-de-privacidad" },
+]);
+
+const privacySEO = generateDynamicSEO({
+  pageType: "politica-de-privacidad",
+  title: "Política de Privacidad | Eliana Álvarez Psicóloga",
+  description:
+    "Conoce cómo Eliana Álvarez Psicóloga protege tu información personal. Transparencia total sobre el uso de datos, cookies y tus derechos según la normativa colombiana.",
+  canonical: "/politica-de-privacidad",
+  noindex: true,
+});
+
+const today = new Date().toLocaleDateString("es-CO", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<MainLayout seoProps={privacySEO} schemas={[breadcrumbSchema]}>
+  <section class="relative overflow-hidden py-20 px-4 md:py-28">
+    <!-- Background decorative blob -->
+    <div
+      class="absolute -right-32 -top-24 h-96 w-96 rounded-full bg-purple-accent/10 blur-3xl pointer-events-none"
+    >
+    </div>
+    <div
+      class="absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-soft-beige blur-3xl pointer-events-none"
+    >
+    </div>
+
+    <div class="relative z-10 max-w-4xl mx-auto">
+      <!-- Header -->
+      <header class="mb-16">
+        <div class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-purple-accent/10">
+          <span class="h-2 w-2 rounded-full bg-purple-accent animate-pulse"></span>
+          <span class="text-sm font-nunito font-semibold text-purple-accent uppercase tracking-widest">Legal</span>
+        </div>
+        <h1
+          class="text-5xl md:text-6xl font-bold text-purple-dark tracking-tight mb-4 leading-tight"
+        >
+          Política de<br />
+          <span class="text-purple-accent">Privacidad</span>
+        </h1>
+        <p class="text-lg text-purple-dark/60 font-nunito">
+          Última actualización: <time datetime={new Date().toISOString().split("T")[0]}><strong>{today}</strong></time>
+        </p>
+      </header>
+
+      <!-- Introduction -->
+      <div
+        class="mb-14 p-8 rounded-2xl bg-soft-beige border border-purple-accent/10 relative"
+      >
+        <div class="absolute -top-3 left-8 h-6 w-6 rotate-45 bg-soft-beige border-l border-t border-purple-accent/10"></div>
+        <p class="text-lg text-purple-dark leading-relaxed">
+          En <strong class="text-purple-accent">Eliana Álvarez Psicóloga</strong>, respetamos su privacidad y nos comprometemos a proteger la información personal que usted comparte con nosotros. Esta Política de Privacidad describe cómo recopilamos, utilisons, almacenamos y protegemos su información cuando visita nuestro sitio web y utiliza nuestros servicios de atención psicológica.
+        </p>
+      </div>
+
+      <!-- Main Content -->
+      <div class="space-y-14">
+        <!-- Section 1 -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span
+              class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg"
+            >1</span>
+            <h2
+              class="text-2xl font-bold text-purple-dark pt-2"
+            >
+              Información que Recopilamos
+            </h2>
+          </div>
+
+          <div class="ml-14 space-y-6">
+            <div class="p-6 rounded-xl bg-white border border-purple-accent/10">
+              <h3 class="text-lg font-semibold text-purple-dark mb-3 font-jakarta">
+                Información Personal
+              </h3>
+              <p class="text-purple-dark/70 mb-4 font-nunito">
+                Recopilamos únicamente la información que usted nos proporciona voluntariamente a través de nuestro formulario de contacto:
+              </p>
+              <ul class="space-y-2">
+                {["Nombre completo", "Correo electrónico", "Mensaje o consulta"].map((item) => (
+                  <li class="flex items-center gap-3 text-purple-dark font-nunito">
+                    <span class="h-1.5 w-1.5 rounded-full bg-purple-accent"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="p-6 rounded-xl bg-white border border-purple-accent/10">
+              <h3 class="text-lg font-semibold text-purple-dark mb-3 font-jakarta">
+                Información Técnica
+              </h3>
+              <p class="text-purple-dark/70 mb-4 font-nunito">
+                Automáticamente recopilamos cierta información técnica cuando visita nuestro sitio:
+              </p>
+              <ul class="space-y-2">
+                {["Dirección IP", "Tipo de navegador", "Páginas visitadas", "Fecha y hora de acceso", "Información del dispositivo"].map((item) => (
+                  <li class="flex items-center gap-3 text-purple-dark font-nunito">
+                    <span class="h-1.5 w-1.5 rounded-full bg-gray-lavender"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span
+              class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg"
+            >2</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">
+              Finalidad del Tratamiento de Datos
+            </h2>
+          </div>
+
+          <div class="ml-14 p-6 rounded-xl bg-white border border-purple-accent/10">
+            <p class="text-purple-dark/70 mb-6 font-nunito">
+              Utilizamos su información personal para los siguientes propósitos:
+            </p>
+            <ul class="space-y-3">
+              {[
+                { label: "Responder a sus consultas", desc: "y solicitudes de información sobre servicios psicológicos" },
+                { label: "Contactarlo", desc: "para agendar citas de atención online" },
+                { label: "Enviar información", desc: "sobre nuevos contenidos del blog y servicios" },
+                { label: "Mejorar nuestros servicios", desc: "y la experiencia en el sitio web" },
+                { label: "Cumplir obligaciones legales", desc: "y regulatorias aplicables" },
+              ].map((item) => (
+                <li class="flex items-start gap-3 text-purple-dark font-nunito">
+                  <span class="mt-2 h-2 w-2 rounded-full bg-purple-accent flex-shrink-0"></span>
+                  <span><strong class="text-purple-dark">{item.label}:</strong> {item.desc}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span
+              class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg"
+            >3</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">
+              Base Legal para el Tratamiento
+            </h2>
+          </div>
+
+          <div class="ml-14 space-y-4">
+            {[
+              { title: "Consentimiento expreso", desc: "Al completar y enviar nuestro formulario de contacto, usted acepta el tratamiento de sus datos para los fines descritos." },
+              { title: "Interés legítimo", desc: "Para responder a sus consultas y ofrecer servicios psicológicos profesionales adecuados a sus necesidades." },
+              { title: "Ejecución contractual", desc: "Para la prestación de los servicios de atención psicológica solicitados." },
+            ].map((item, i) => (
+              <div class="flex items-start gap-4 p-5 rounded-xl bg-white border border-purple-accent/10">
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-purple-accent/10 text-purple-accent font-bold font-jakarta text-sm">{i + 1}</span>
+                <div>
+                  <h4 class="font-semibold text-purple-dark mb-1 font-jakarta">{item.title}</h4>
+                  <p class="text-purple-dark/70 font-nunito text-sm">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span
+              class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg"
+            >4</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">
+              Compartir Información
+            </h2>
+          </div>
+
+          <div class="ml-14">
+            <div class="mb-6 p-5 rounded-xl bg-purple-dark/5 border border-purple-dark/10">
+              <p class="font-semibold text-purple-dark font-nunito">
+                <span class="text-purple-accent">No vendemos, alquilamos ni compartimos</span> su información personal con terceros, excepto en las siguientes circunstancias:
+              </p>
+            </div>
+            <ul class="space-y-3">
+              {[
+                "Con su <strong>consentimiento expreso</strong>",
+                "Para <strong>cumplir con la ley</strong> o responder a procesos legales",
+                "Para <strong>proteger nuestros derechos</strong> o seguridad",
+                "Con <strong>proveedores de servicios</strong> que nos ayudan a operar nuestro negocio, bajo estrictos acuerdos de confidencialidad",
+              ].map((item) => (
+                <li class="flex items-start gap-3 text-purple-dark font-nunito" set:html={`<span class="mt-2 h-2 w-2 rounded-full bg-purple-accent flex-shrink-0"></span><span>${item}</span>`}>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span
+              class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg"
+            >5</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">
+              Almacenamiento y Seguridad
+            </h2>
+          </div>
+
+          <div class="ml-14 space-y-4">
+            <div class="p-6 rounded-xl bg-white border border-purple-accent/10">
+              <h3 class="text-lg font-semibold text-purple-dark mb-3 font-jakarta">Almacenamiento</h3>
+              <ul class="space-y-2">
+                {["Sus datos se almacenan en servidores seguros ubicados en Brasil", "Mantemos su información solo durante el tiempo necesario para cumplir con los propósitos descritos"].map((item) => (
+                  <li class="flex items-start gap-3 text-purple-dark/70 font-nunito">
+                    <span class="mt-2 h-1.5 w-1.5 rounded-full bg-gray-lavender flex-shrink-0"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="p-6 rounded-xl bg-white border border-purple-accent/10">
+              <h3 class="text-lg font-semibold text-purple-dark mb-3 font-jakarta">Medidas de Seguridad</h3>
+              <p class="text-purple-dark/70 mb-4 font-nunito">
+                Implementamos medidas técnicas y organizativas apropiadas para proteger su información:
+              </p>
+              <div class="grid grid-cols-2 gap-3">
+                {["Cifrado de datos", "Acceso restringido", "Monitoreo de seguridad", "Actualizaciones de sistemas"].map((item) => (
+                  <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-soft-beige">
+                    <span class="h-2 w-2 rounded-full bg-purple-accent"></span>
+                    <span class="text-sm text-purple-dark font-nunito">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span
+              class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg"
+            >6</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">
+              Sus Derechos
+            </h2>
+          </div>
+
+          <div class="ml-14">
+            <p class="text-purple-dark/70 mb-6 font-nunito">
+              De acuerdo con la <strong class="text-purple-dark">Ley 1581 de 2012</strong> (Habeas Data) y el Decreto 1377 de 2013, usted tiene derecho a:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+              {[
+                { icon: "Acceder", desc: "a su información personal" },
+                { icon: "Rectificar", desc: "datos inexactos o incompletos" },
+                { icon: "Suprimir", desc: "su información (derecho al olvido)" },
+                { icon: "Revocar", desc: "el consentimiento otorgado" },
+                { icon: "Presentar quejas", desc: "ante la Superintendencia de Industria y Comercio" },
+              ].map((item) => (
+                <div class="flex items-center gap-3 px-5 py-4 rounded-xl bg-white border border-purple-accent/10">
+                  <span class="flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-full bg-purple-accent/10 text-purple-accent font-bold font-jakarta text-sm">{item.icon[0]}</span>
+                  <div>
+                    <span class="font-semibold text-purple-dark font-jakarta text-sm">{item.icon}</span>
+                    <span class="text-purple-dark/60 font-nunito text-sm"> — {item.desc}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div class="p-6 rounded-xl bg-soft-beige border border-purple-accent/20">
+              <p class="font-semibold text-purple-dark mb-3 font-jakarta">Para ejercer estos derechos, puede contactarnos a:</p>
+              <ul class="space-y-2">
+                <li class="flex items-center gap-2 text-purple-dark font-nunito">
+                  <span class="h-1.5 w-1.5 rounded-full bg-purple-accent"></span>
+                  <strong>Email:</strong> <a href={`mailto:${COMPANY_INFO.email}`} class="text-purple-accent hover:text-purple-dark transition-colors">{COMPANY_INFO.email}</a>
+                </li>
+                <li class="flex items-center gap-2 text-purple-dark font-nunito">
+                  <span class="h-1.5 w-1.5 rounded-full bg-gray-lavender"></span>
+                  <strong>Atención:</strong> 100% Online — {COMPANY_INFO.address.city}, {COMPANY_INFO.address.country}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 7: Cookies -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span
+              class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg"
+            >7</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">
+              Cookies y Tecnologías Similares
+            </h2>
+          </div>
+
+          <div class="ml-14 p-6 rounded-xl bg-white border border-purple-accent/10">
+            <p class="text-purple-dark/70 font-nunito leading-relaxed">
+              Nuestro sitio web puede utilizar cookies para mejorar su experiencia de navegación y analizar el tráfico del sitio. Puede configurar su navegador para rechazar cookies, aunque esto puede afectar la funcionalidad del sitio.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 8: Enlaces a Terceros -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span
+              class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg"
+            >8</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">
+              Enlaces a Terceros
+            </h2>
+          </div>
+
+          <div class="ml-14 p-6 rounded-xl bg-white border border-purple-accent/10">
+            <p class="text-purple-dark/70 font-nunito leading-relaxed">
+              Nuestro sitio web puede contener enlaces a sitios de terceros. No somos responsables de las prácticas de privacidad de sitios externos. Le recomendamos revisar las políticas de privacidad de cualquier sitio que visite.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 9: Menores de Edad -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span
+              class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg"
+            >9</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">
+              Menores de Edad
+            </h2>
+          </div>
+
+          <div class="ml-14 p-6 rounded-xl bg-white border border-purple-accent/10">
+            <p class="text-purple-dark/70 font-nunito leading-relaxed">
+              No recopilamos intencionalmente información personal de menores de 18 años. Si descubrimos que hemos recopilado información de un menor sin el consentimiento de sus padres o tutores, la eliminaremos inmediatamente.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 10: Cambios a la Política -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span
+              class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg"
+            >10</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">
+              Cambios a esta Política
+            </h2>
+          </div>
+
+          <div class="ml-14 p-6 rounded-xl bg-white border border-purple-accent/10">
+            <p class="text-purple-dark/70 font-nunito leading-relaxed">
+              Podemos actualizar esta Política de Privacidad ocasionalmente. Los cambios serán publicados en esta misma página con una nueva fecha de "última actualización". Le recomendamos revisar esta política periódicamente.
+            </p>
+          </div>
+        </section>
+
+        <!-- Legal compliance note -->
+        <div class="mt-16 p-8 rounded-2xl bg-purple-dark text-white text-center">
+          <p class="font-jakarta font-semibold text-base leading-relaxed">
+            Esta política cumple con la Ley 1581 de 2012<br class="sm:block hidden" />
+            (Ley de Protección de Datos Personales de Colombia)
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
