@@ -21,7 +21,7 @@ const seoProps = generateDynamicSEO({
 const faqSchema = generateFAQSchema(onlineTherapyFAQs);
 ---
 
-<MainLayout {seoProps} schemas={[faqSchema]}>
+<MainLayout seoProps={seoProps} schemas={[faqSchema]}>
   <Hero />
   <EmpathyTabs />
   <ValueProposal />

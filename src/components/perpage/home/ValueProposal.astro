@@ -1,8 +1,30 @@
 ---
 import CheckmarkIcon from "@/assets/icons/checkmark.svg";
 import QuoteIcon from "@/assets/icons/quote.svg";
-import { Image } from "astro:assets";
-import PsychologyCare from "@/assets/images/PsychologyCare.webp";
+import { getCldVideoUrl } from "astro-cloudinary/helpers";
+
+// Cloudinary video optimization
+const videoOpts = {
+  width: 1280,
+  height: 720,
+  format: "auto",
+  quality: "auto",
+};
+
+const posterOpts = {
+  width: 1280,
+  height: 720,
+  rawTransformations: ["so_auto", "f_webp", "q_auto"],
+};
+
+const valueProposalVideo = getCldVideoUrl({
+  src: "INTROMARCAPERSONAL_pxecqr",
+  ...videoOpts,
+});
+const valueProposalPoster = getCldVideoUrl({
+  src: "INTROMARCAPERSONAL_pxecqr",
+  ...posterOpts,
+});
 ---
 
 <section
@@ -117,11 +139,17 @@ import PsychologyCare from "@/assets/images/PsychologyCare.webp";
       </div>
       <!-- Right side -->
       <div id="highlights" class="invisible flex flex-col justify-center gap-4">
-        <Image
-          src={PsychologyCare}
-          alt="Atencion Psicologica"
-          class="h-full w-full rounded-xl object-cover"
-        />
+        <video
+          class="aspect-video w-full rounded-xl object-contain"
+          controls
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster={valueProposalPoster}
+        >
+          <source src={valueProposalVideo} type="video/mp4" />
+        </video>
       </div>
     </div>
   </div>

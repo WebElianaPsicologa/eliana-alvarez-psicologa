@@ -30,4 +30,22 @@ export const valueProposalAnimations = () => {
     })
     .from(".value-proposal-content", { autoAlpha: 0, xPercent: 100 })
     .from("#highlights", { autoAlpha: 0, xPercent: -100 }, "<");
+
+  // Video play/pause on viewport — reset to start when scrolling above
+  const video = document.querySelector("#highlights video");
+
+  if (video) {
+    ScrollTrigger.create({
+      trigger: video,
+      start: "top 90%",
+      end: "bottom 10%",
+      onEnter: () => video.play().catch(() => {}),
+      onLeave: () => video.pause(),
+      onEnterBack: () => video.play().catch(() => {}),
+      onLeaveBack: () => {
+        video.pause();
+        video.currentTime = 0;
+      },
+    });
+  }
 };
