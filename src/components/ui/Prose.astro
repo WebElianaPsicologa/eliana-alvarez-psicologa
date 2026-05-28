@@ -4,28 +4,14 @@
   <slot />
 </div>
 
-<script>
-  document.querySelectorAll(".prose div[style]").forEach((div) => {
-    if (
-      div instanceof HTMLElement &&
-      div.style.position === "relative" &&
-      div.style.paddingBottom
-    ) {
-      div.classList.add("video-wrap");
-      const iframe = div.querySelector("iframe");
-      if (iframe instanceof HTMLIFrameElement) {
-        iframe.classList.add("video-wrap-iframe");
-      }
-    }
-  });
-</script>
-
 <style is:global>
-  .video-wrap {
+  .prose div[style*="aspect-ratio"] {
+    position: relative;
     overflow: hidden;
     border-radius: 0.75rem;
   }
-  .video-wrap-iframe {
+
+  .prose div[style*="aspect-ratio"] > iframe {
     position: absolute;
     inset: 0;
     width: 100%;
