@@ -1,0 +1,334 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { generateBreadcrumbSchema, generateDynamicSEO } from "@/config/seoConf";
+import { COMPANY_INFO } from "@/config/seoConf";
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Inicio", path: "/" },
+  { name: "Términos y Condiciones", path: "/terminos-y-condiciones" },
+]);
+
+const terminosSEO = generateDynamicSEO({
+  pageType: "terminos-y-condiciones",
+  title: "Términos y Condiciones | Eliana Álvarez Psicóloga",
+  description:
+    "Consulta los términos y condiciones de los servicios psicológicos de Eliana Álvarez. Políticas claras sobre atención, sesiones y responsabilidades.",
+  canonical: "/terminos-y-condiciones",
+  noindex: true,
+});
+
+const today = new Date().toLocaleDateString("es-CO", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<MainLayout seoProps={terminosSEO} schemas={[breadcrumbSchema]}>
+  <section class="relative overflow-hidden py-20 px-4 md:py-28">
+    <!-- Background decorative blob -->
+    <div
+      class="absolute -right-32 -top-24 h-96 w-96 rounded-full bg-purple-accent/10 blur-3xl pointer-events-none"
+    >
+    </div>
+    <div
+      class="absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-soft-beige blur-3xl pointer-events-none"
+    >
+    </div>
+
+    <div class="relative z-10 max-w-4xl mx-auto">
+      <!-- Header -->
+      <header class="mb-16">
+        <div class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-purple-accent/10">
+          <span class="h-2 w-2 rounded-full bg-purple-accent"></span>
+          <span class="text-sm font-nunito font-semibold text-purple-accent uppercase tracking-widest">Legal</span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-purple-dark tracking-tight mb-4 leading-tight">
+          Términos y<br />
+          <span class="text-purple-accent">Condiciones</span>
+        </h1>
+        <p class="text-lg text-purple-dark/60 font-nunito">
+          Última actualización: <time datetime={new Date().toISOString().split("T")[0]}><strong>{today}</strong></time>
+        </p>
+      </header>
+
+      <!-- Introduction -->
+      <div class="mb-14 p-8 rounded-2xl bg-soft-beige border border-purple-accent/10 relative">
+        <div class="absolute -top-3 left-8 h-6 w-6 rotate-45 bg-soft-beige border-l border-t border-purple-accent/10"></div>
+        <p class="text-lg text-purple-dark leading-relaxed">
+          Bienvenido/a a <strong class="text-purple-accent">Eliana Álvarez Psicóloga</strong>. Al acceder y utilizar nuestro sitio web, usted acepta estos Términos y Condiciones en su totalidad. Si no está de acuerdo con alguna parte de estos términos, no debe utilizar nuestros servicios.
+        </p>
+      </div>
+
+      <!-- Main Content -->
+      <div class="space-y-14">
+        <!-- Section 1: Identificación del Servicio -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg">1</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">Identificación del Servicio</h2>
+          </div>
+
+          <div class="ml-14 p-6 rounded-xl bg-white border border-purple-accent/10">
+            <h3 class="text-lg font-semibold text-purple-dark mb-3 font-jakarta">
+              Eliana Álvarez — Psicóloga Clínica
+            </h3>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-3 text-purple-dark font-nunito">
+                <span class="mt-2 h-1.5 w-1.5 rounded-full bg-purple-accent flex-shrink-0"></span>
+                <span><strong>Ubicación:</strong> Atención 100% online — {COMPANY_INFO.address.city}, {COMPANY_INFO.address.country}</span>
+              </li>
+              <li class="flex items-start gap-3 text-purple-dark font-nunito">
+                <span class="mt-2 h-1.5 w-1.5 rounded-full bg-gray-lavender flex-shrink-0"></span>
+                <span><strong>Experiencia:</strong> Más de 20 años acompañando a personas, parejas y familias</span>
+              </li>
+              <li class="flex items-start gap-3 text-purple-dark font-nunito">
+                <span class="mt-2 h-1.5 w-1.5 rounded-full bg-olive flex-shrink-0"></span>
+                <span><strong>Enfoque:</strong> Terapia integral — TCC, Humanismo y Sistémica</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Section 2: Servicios de Atención Psicológica -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg">2</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">Servicios de Atención Psicológica</h2>
+          </div>
+
+          <div class="ml-14 space-y-4">
+            <div class="p-6 rounded-xl bg-white border border-purple-accent/10">
+              <h3 class="text-lg font-semibold text-purple-dark mb-4 font-jakarta">Modalidades de atención</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {[
+                  "Terapia individual online",
+                  "Asesoría psicológica",
+                  "Proceso psicológico integral",
+                  "Atención en español para hispanohablantes globales",
+                ].map((item) => (
+                  <div class="flex items-center gap-3 px-5 py-4 rounded-xl bg-soft-beige">
+                    <span class="h-2 w-2 rounded-full bg-purple-accent flex-shrink-0"></span>
+                    <span class="text-sm text-purple-dark font-nunito">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="p-6 rounded-xl bg-white border border-purple-accent/10">
+              <p class="text-purple-dark/70 font-nunito leading-relaxed">
+                Mis servicios están diseñados para <strong class="text-purple-dark">mujeres, adolescentes y familias</strong> que buscan sanar la ansiedad, superar duelos y reconstruir vínculos mediante una terapia integral, humana y sin fronteras.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 3: Uso del Sitio Web -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg">3</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">Uso del Sitio Web</h2>
+          </div>
+
+          <div class="ml-14 space-y-4">
+            <div class="p-6 rounded-xl bg-white border border-purple-accent/10">
+              <h3 class="text-lg font-semibold text-purple-dark mb-3 font-jakarta">Uso Permitido</h3>
+              <p class="text-purple-dark/70 mb-4 font-nunito">Usted puede usar nuestro sitio web para:</p>
+              <ul class="space-y-2">
+                {[
+                  "Obtener información sobre mis servicios psicológicos",
+                  "Contactarme a través del formulario de contacto",
+                  "Leer artículos del blog y recursos educativos",
+                  "Agendar citas de atención online",
+                ].map((item) => (
+                  <li class="flex items-start gap-3 text-purple-dark font-nunito">
+                    <span class="mt-2 h-1.5 w-1.5 rounded-full bg-olive flex-shrink-0"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="p-6 rounded-xl bg-purple-dark/5 border border-purple-dark/10">
+              <div class="flex items-start gap-3">
+                <span class="mt-1 h-2 w-2 rounded-full bg-purple-dark flex-shrink-0"></span>
+                <div>
+                  <p class="font-semibold text-purple-dark font-nunito mb-2">Está prohibido usar mi sitio web para:</p>
+                  <ul class="space-y-1.5">
+                    {[
+                      "Actividades ilegales o fraudulentas",
+                      "Transmitir virus, malware o código malicioso",
+                      "Intentar acceder a áreas restringidas del sistema",
+                      "Copiar, reproducir o distribuir mi contenido sin autorización",
+                    ].map((item) => (
+                      <li class="text-purple-dark/70 font-nunito text-sm">{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4: Formulario de Contacto -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg">4</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">Formulario de Contacto</h2>
+          </div>
+
+          <div class="ml-14 space-y-4">
+            <div class="p-6 rounded-xl bg-white border border-purple-accent/10">
+              <h3 class="text-lg font-semibold text-purple-dark mb-3 font-jakarta">Información Solicitada</h3>
+              <p class="text-purple-dark/70 mb-4 font-nunito">Mi formulario de contacto solicita:</p>
+              <ul class="space-y-2">
+                {["Nombre completo", "Correo electrónico", "Tipo de consulta (opcional)", "Mensaje o consulta"].map((item) => (
+                  <li class="flex items-center gap-3 text-purple-dark font-nunito">
+                    <span class="h-1.5 w-1.5 rounded-full bg-purple-accent"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="p-6 rounded-xl bg-white border border-purple-accent/10">
+              <h3 class="text-lg font-semibold text-purple-dark mb-3 font-jakarta">Finalidad</h3>
+              <p class="text-purple-dark/70 mb-4 font-nunito">La información proporcionada será utilizada exclusivamente para:</p>
+              <ul class="space-y-2">
+                {[
+                  "Responder a sus consultas y solicitudes de información",
+                  "Agendar citas de atención psicológica online",
+                  "Proporcionar información sobre mis servicios",
+                  "Enviar contenido educativo del blog si usted lo solicita",
+                ].map((item) => (
+                  <li class="flex items-start gap-3 text-purple-dark font-nunito">
+                    <span class="mt-2 h-1.5 w-1.5 rounded-full bg-gray-lavender flex-shrink-0"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5: Propiedad Intelectual -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg">5</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">Propiedad Intelectual</h2>
+          </div>
+
+          <div class="ml-14 space-y-4">
+            <div class="p-6 rounded-xl bg-white border border-purple-accent/10">
+              <h3 class="text-lg font-semibold text-purple-dark mb-3 font-jakarta">Contenido del Sitio</h3>
+              <p class="text-purple-dark/70 mb-4 font-nunito">Todo el contenido presente en mi sitio web, incluyendo:</p>
+              <div class="grid grid-cols-2 gap-2 mb-4">
+                {["Textos y artículos", "Imágenes y gráficos", "Diseño y estructura", "Logotipos y marca"].map((item) => (
+                  <div class="flex items-center gap-2 px-4 py-3 rounded-lg bg-soft-beige">
+                    <span class="h-1.5 w-1.5 rounded-full bg-purple-accent"></span>
+                    <span class="text-sm text-purple-dark font-nunito">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <p class="text-purple-dark font-nunito text-sm font-semibold">
+                Es propiedad exclusiva de Eliana Álvarez y está protegido por las leyes de propiedad intelectual aplicables.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-xl bg-white border border-purple-accent/10">
+              <p class="text-purple-dark/70 font-nunito leading-relaxed">
+                El contenido puede ser visualizado para uso personal y no comercial. Cualquier otro uso requiere autorización previa por escrito.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 6: Política de Privacidad -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg">6</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">Política de Privacidad</h2>
+          </div>
+
+          <div class="ml-14 p-6 rounded-xl bg-soft-beige border border-purple-accent/20">
+            <p class="text-purple-dark font-nunito leading-relaxed">
+              El tratamiento de sus datos personales se rige por mi <a href="/politica-de-privacidad" class="font-semibold text-purple-accent hover:text-purple-dark underline transition-colors">Política de Privacidad</a>, que forma parte integral de estos Términos y Condiciones y cumple con la <strong>Ley 1581 de 2012</strong> de Colombia.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 7: Limitación de Responsabilidad -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg">7</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">Limitación de Responsabilidad</h2>
+          </div>
+
+          <div class="ml-14 space-y-4">
+            <div class="p-6 rounded-xl bg-white border border-purple-accent/10">
+              <p class="text-purple-dark/70 font-nunito mb-4">
+                Este sitio web y su contenido se proporcionan "tal como están". No garantizo resultados específicos de los servicios psicológicos prestados a través de este sitio.
+              </p>
+              <ul class="space-y-2">
+                {[
+                  "La terapia psicológica es un proceso que requiere compromiso del paciente",
+                  "Los resultados varían según cada persona y situación particular",
+                  "Este sitio no sustituye una evaluación clínica presencial",
+                  "En caso de emergencia, contacte servicios de urgencia locales",
+                ].map((item) => (
+                  <li class="flex items-start gap-3 text-purple-dark/70 font-nunito text-sm">
+                    <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-gray-lavender flex-shrink-0"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 8: Modificaciones -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg">8</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">Modificaciones a estos Términos</h2>
+          </div>
+
+          <div class="ml-14 p-6 rounded-xl bg-white border border-purple-accent/10">
+            <p class="text-purple-dark/70 font-nunito leading-relaxed">
+              Puedo actualizar estos Términos y Condiciones ocasionalmente. Los cambios serán publicados en esta misma página con una nueva fecha de "última actualización". Le recomiendo revisar estos términos periódicamente.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 9: Ley Aplicable -->
+        <section>
+          <div class="flex items-start gap-4 mb-6">
+            <span class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-accent text-white font-bold font-jakarta text-lg">9</span>
+            <h2 class="text-2xl font-bold text-purple-dark pt-2">Ley Aplicable</h2>
+          </div>
+
+          <div class="ml-14 p-6 rounded-xl bg-white border border-purple-accent/10">
+            <p class="text-purple-dark/70 font-nunito leading-relaxed">
+              Estos términos se rigen por las leyes de la <strong class="text-purple-dark">República de Colombia</strong>. Cualquier controversia derivada del uso de este sitio será sometida a los tribunales competentes de Colombia.
+            </p>
+          </div>
+        </section>
+
+        <!-- Mission Statement -->
+        <div class="mt-16 p-10 rounded-2xl bg-purple-dark text-white text-center">
+          <h3 class="text-xl font-bold font-jakarta mb-4 text-white/90">Mi Propósito</h3>
+          <p class="text-lg font-nunito leading-relaxed text-white/80 italic">
+            "Acompañar a personas, parejas y familias a sanar, superar duelos y reconstruir vínculos mediante una terapia integral, humana y sin fronteras."
+          </p>
+        </div>
+
+        <!-- Legal compliance note -->
+        <div class="mt-8 p-8 rounded-2xl bg-soft-beige border border-purple-accent/20 text-center">
+          <p class="font-jakarta font-semibold text-base text-purple-dark leading-relaxed">
+            Estos términos cumplen con la legislación colombiana aplicable y reflejan mi compromiso con la transparencia y un servicio psicológico de calidad.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

@@ -86,9 +86,9 @@ export const COMPANY_INFO: CompanyInfo = {
   name: "Eliana Álvarez - Psicóloga Clínica",
   description:
     "Psicóloga clínica con más de 20 años de experiencia acompañando a mujeres, adolescentes y familias a sanar la ansiedad, superar duelos y reconstruir vínculos mediante una terapia integral, humana y sin fronteras.",
-  url: "https://elianaalvarezpsicologa.com", // TODO: Verify this URL
-  phone: "+55 11 XXXX-XXXX", // TODO: Verify this phone number
-  email: "webelianaalvarezpsicologa@outlook.com", // TODO: Verify this email
+  url: "https://elianaalvarezpsicologa.com/",
+  phone: "", // TODO: Verify this phone number
+  email: "contacto@elianaalvarezpsicologa.com",
   address: {
     street: "Atención 100% Online",
     city: "São Paulo",
@@ -106,10 +106,9 @@ export const COMPANY_INFO: CompanyInfo = {
   foundingDate: "2001", // TODO: Verify this date
   founders: ["Eliana Álvarez"],
   socialMedia: {
-    linkedin: "https://www.linkedin.com/in/eliana-alvarez-psicologa",
-    instagram: "https://www.instagram.com/eliana.alvarez.psicologa",
-    facebook: "https://www.facebook.com/elianaalvarezpsicologa",
-    tiktok: "https://www.tiktok.com/@eliana.alvarez.psicologa",
+    youtube: "https://www.youtube.com/@ElianaAlvarezPsicologa",
+    instagram: "https://www.instagram.com/elianaalvarezpsicologa",
+    whatsapp: "https://api.whatsapp.com/send?phone=%E2%80%8E5513997283229&text=Hola%20buen%20d%C3%ADa%2C%0AEstoy%20interesado%2Fa%20en%20el%20servicio%20de%20psicolog%C3%ADa",
   },
 };
 

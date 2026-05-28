@@ -9,7 +9,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://soft-bavarois-cdfa88.netlify.app",
+  site: "https://elianaalvarezpsicologa.com",
 
   security: { csp: true },
 
@@ -51,5 +51,14 @@ export default defineConfig({
       images: true,
     },
   }),
-  integrations: [sitemap()],
+  
+  integrations: [
+    sitemap({
+      filter: (page) => ![
+        "https://elianaalvarezpsicologa.com/politica-de-privacidad/",
+        "https://elianaalvarezpsicologa.com/terminos-y-condiciones/",
+        "https://elianaalvarezpsicologa.com/404/",
+      ].includes(page),
+    }),
+  ],
 });

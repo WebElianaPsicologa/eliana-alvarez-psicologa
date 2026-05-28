@@ -4,10 +4,9 @@ import { Image } from "astro:assets";
 import Logo from "@/assets/images/logowhite256x128.png";
 import LogoShine from "@/assets/icons/logoshinewhitecharacters.svg";
 import InstagramIcon from "@/assets/icons/instagram.svg";
-import FacebookIcon from "@/assets/icons/facebook.svg";
-import LinkedInIcon from "@/assets/icons/linkedin.svg";
-import TiktokIcon from "@/assets/icons/tiktok.svg";
+import YoutubeIcon from "@/assets/icons/youtube.svg";
 import ArrowUpIcon from "@/assets/icons/arrow-up.svg";
+import WhatsappIcon from "@/assets/icons/whatsapp.svg";
 ---
 
 <footer class="bg-purple-dark px-6 py-4 md:px-12 lg:rounded-t-full lg:px-20">
@@ -50,41 +49,28 @@ import ArrowUpIcon from "@/assets/icons/arrow-up.svg";
           )
         }
         {
-          COMPANY_INFO.socialMedia.facebook && (
+          COMPANY_INFO.socialMedia.youtube && (
             <a
-              href={COMPANY_INFO.socialMedia.facebook}
+              href={COMPANY_INFO.socialMedia.youtube}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Facebook"
+              aria-label="Youtube"
               class="text-soft-bg hover:text-gray-lavender transition-all duration-300 hover:scale-110"
             >
-              <FacebookIcon class="h-7 w-7" />
+              <YoutubeIcon class="h-8 w-8" />
             </a>
           )
         }
         {
-          COMPANY_INFO.socialMedia.linkedin && (
+          COMPANY_INFO.socialMedia.whatsapp && (
             <a
-              href={COMPANY_INFO.socialMedia.linkedin}
+              href={COMPANY_INFO.socialMedia.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
+              aria-label="Whatsapp"
               class="text-soft-bg hover:text-gray-lavender transition-all duration-300 hover:scale-110"
             >
-              <LinkedInIcon class="h-7 w-7" />
-            </a>
-          )
-        }
-        {
-          COMPANY_INFO.socialMedia.tiktok && (
-            <a
-              href={COMPANY_INFO.socialMedia.tiktok}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="TikTok"
-              class="text-soft-bg hover:text-gray-lavender transition-all duration-300 hover:scale-110"
-            >
-              <TiktokIcon class="h-7 w-7" />
+              <WhatsappIcon class="h-6 w-6" />
             </a>
           )
         }
@@ -114,13 +100,13 @@ import ArrowUpIcon from "@/assets/icons/arrow-up.svg";
       </div>
       <div class="flex space-x-6 text-xs">
         <a
-          href="/politicadeprivacidad"
+          href="/politica-de-privacidad"
           class="text-soft-bg hover:text-olive transition-colors duration-300"
         >
           <small>Política de Privacidad </small>
         </a>
         <a
-          href="/terminosycondiciones"
+          href="/terminos-y-condiciones"
           class="text-soft-bg hover:text-olive transition-colors duration-300"
         >
           <small>Términos y Condiciones</small>

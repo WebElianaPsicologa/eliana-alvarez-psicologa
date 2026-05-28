@@ -24,7 +24,7 @@ export const getContact = defineAction({
   handler: async ({ nombre, email, tipo_consulta, mensaje }) => {
     try {
       const { data, error } = await resend.emails.send({
-        from: "Eliana Álvarez Psicóloga <onboarding@resend.dev>",
+        from: "Shine <noreply@elianaalvarezpsicologa.com>",
         to: COMPANY_INFO.email,
         subject: "Nueva consulta desde la web - Eliana Álvarez Psicóloga",
         replyTo: email,
