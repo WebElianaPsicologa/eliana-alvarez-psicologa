@@ -1,12 +1,12 @@
 ---
 import { Image } from "astro:assets";
-import meetImg from "@/assets/images/meet.webp";
+import meetImg from "@/assets/images/elianasession.webp";
 import ArrowRightIcon from "@/assets/icons/arrow-right.svg";
 import ShieldIcon from "@/assets/icons/shield.svg";
 ---
 
 <section
-  class="hero-psychology bg-soft-bg relative min-h-screen overflow-hidden"
+  class="hero-psychology bg-soft-bg relative overflow-hidden"
 >
   <!-- Atmospheric background glows -->
   <div
@@ -14,14 +14,14 @@ import ShieldIcon from "@/assets/icons/shield.svg";
   >
   </div>
   <div
-    class="bg-olive/10 pointer-events-none absolute -top-20 right-2/5 h-64 w-64 rounded-full blur-3xl"
+    class="bg-olive/10 pointer-events-none absolute -top-20 left-2/5 h-64 w-64 rounded-full blur-3xl"
   >
   </div>
 
-  <div class="grid min-h-screen grid-cols-1 items-stretch md:grid-cols-12">
+  <div class="grid grid-cols-1 items-stretch md:grid-cols-12">
     <!-- LEFT: Content Panel -->
     <div
-      class="relative z-10 col-span-1 flex flex-col justify-center px-8 pt-24 pb-24 md:col-span-7 md:pt-40 lg:px-16 xl:px-24"
+      class="relative z-10 col-span-1 flex flex-col justify-center px-8 pt-24 pb-24 md:col-span-6 md:pt-40 lg:px-16 xl:px-24"
     >
       <div class="mx-auto w-full max-w-2xl">
         <!-- Kicker -->
@@ -84,10 +84,10 @@ import ShieldIcon from "@/assets/icons/shield.svg";
     </div>
 
     <!-- RIGHT: Image Panel -->
-    <div class="relative col-span-1 hidden md:col-span-5 md:block">
+    <div class="relative col-span-1 hidden md:col-span-6 md:block">
       <!-- Left-to-content blend gradient -->
       <div
-        class="from-soft-bg via-soft-bg/50 absolute inset-0 z-10 bg-linear-to-r to-transparent"
+        class="from-soft-bg absolute inset-y-0 left-0 z-10 w-3/5 bg-linear-to-r to-transparent"
       >
       </div>
       <!-- Bottom vignette -->
@@ -108,7 +108,7 @@ import ShieldIcon from "@/assets/icons/shield.svg";
       <Image
         src={meetImg}
         alt="Psicóloga Eliana Álvarez en sesión de asesoría psicológica online via videollamada, acompañando a una paciente de forma confidencial y personalizada"
-        class="hero-psychology-image invisible absolute inset-0 h-full w-full object-cover object-center"
+        class="hero-psychology-image invisible absolute inset-0 h-full w-full object-cover object-right"
         priority
       />
     </div>
