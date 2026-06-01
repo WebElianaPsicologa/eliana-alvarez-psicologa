@@ -33,14 +33,12 @@ import aboutImg from "@/assets/images/elianadivan2.webp";
   </div>
 
   <!-- ── IMAGE: bottom-anchored, full width, behind nothing ────── -->
-  <div class="about-image-wrapper relative z-0 w-full">
+  <div class="about-image-wrapper relative z-0 max-w-7xl mx-auto mt-12 px-6 lg:px-16">
     <Image
       src={aboutImg}
       alt="Eliana Álvarez, psicóloga clínica con más de 20 años de experiencia, sentada en un sofá con expresión cálida y cercana"
       class="about-image invisible mx-auto block w-full object-contain"
-      loading="eager"
-      decoding="sync"
-      fetchpriority="high"
+      priority
     />
   </div>
 </section>
