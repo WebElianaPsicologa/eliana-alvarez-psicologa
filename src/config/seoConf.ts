@@ -83,7 +83,7 @@ export type JSONLDSchema = Record<string, unknown>;
 // =============================================================================
 
 export const COMPANY_INFO: CompanyInfo = {
-  name: "Eliana Álvarez - Psicóloga Clínica",
+  name: "Eliana Álvarez - Psicóloga",
   description:
     "Psicóloga clínica con más de 20 años de experiencia acompañando a mujeres, adolescentes y familias a sanar la ansiedad, superar duelos y reconstruir vínculos mediante una terapia integral, humana y sin fronteras.",
   url: "https://elianaalvarezpsicologa.com/",

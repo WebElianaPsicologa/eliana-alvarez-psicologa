@@ -5,6 +5,7 @@ import EmpathyTabs from "@/components/perpage/home/EmpathyTabs.astro";
 import ValueProposal from "@/components/perpage/home/ValueProposal.astro";
 import Services from "@/components/perpage/home/Services.astro";
 import AboutMe from "@/components/perpage/home/AboutMe.astro";
+import Testimonials from "@/components/perpage/home/Testimonials.astro";
 import FAQSection from "@/components/global/FAQs.astro";
 import Cta from "@/components/global/Cta.astro";
 import { onlineTherapyFAQs } from "@/config/faqs";
@@ -27,6 +28,7 @@ const faqSchema = generateFAQSchema(onlineTherapyFAQs);
   <ValueProposal />
   <Services />
   <AboutMe />
+  <Testimonials />
   <Cta />
   <FAQSection faqs={onlineTherapyFAQs} title="Preguntas Frecuentes" />
 </MainLayout>

@@ -1,0 +1,158 @@
+---
+import QuoteIcon from "@/assets/icons/quote.svg";
+
+interface Testimonial {
+  quote: string;
+  name: string;
+  role: string;
+  initials: string;
+  bgClass: string;
+  quoteColor: string;
+  textColor: string;
+  roleColor: string;
+  avatarBg: string;
+  cardClass: string;
+  zIndex: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    quote:
+      "A los 28 años decidí hacer un proceso de autoconocimiento y encontré en ella una profesional que me dio un espacio seguro y de escucha. Gracias a ese proceso entendí mejor mis emociones y aprendí a tomar decisiones más conscientes. La recomiendo a cualquiera que quiera un acompañamiento profesional y humano.",
+    name: "María G.",
+    role: "Psicología Integral",
+    initials: "MG",
+    bgClass: "bg-purple-accent/10",
+    quoteColor: "text-purple-accent",
+    textColor: "text-purple-dark",
+    roleColor: "text-purple-dark/60",
+    avatarBg: "bg-purple-accent",
+    cardClass: "testimonial-card-rachel",
+    zIndex: "z-10",
+  },
+  {
+    quote:
+      "Contraté a la Dra. Eliana para orientación vocacional de mi sobrina y superó completamente nuestras expectativas. Su enfoque integral tuvo en cuenta aspectos que otros ignoran, logrando un diagnóstico muy acertado. Mi sobrina disfrutó cada sesión. Trabajo impecable. ¡100% recomendada!",
+    name: "Ana R.",
+    role: "Orientación Vocacional",
+    initials: "AR",
+    bgClass: "bg-blue-mist/60",
+    quoteColor: "text-blue-mist",
+    textColor: "text-purple-dark",
+    roleColor: "text-purple-dark/60",
+    avatarBg: "bg-blue-mist",
+    cardClass: "testimonial-card-ana",
+    zIndex: "z-20",
+  },
+  {
+    quote:
+      "Eliana es una excelente profesional: empática, sabe escuchar y desde el primer momento genera confianza. La conozco hace más de 10 años y sus técnicas me han ayudado a reducir la ansiedad y manejar mejor mis emociones. Totalmente recomendada para quienes buscan apoyo psicológico comprometido.",
+    name: "Laura P.",
+    role: "Psicología Integral",
+    initials: "LP",
+    bgClass: "bg-gray-lavender/25",
+    quoteColor: "text-gray-lavender",
+    textColor: "text-purple-dark",
+    roleColor: "text-purple-dark/60",
+    avatarBg: "bg-gray-lavender",
+    cardClass: "testimonial-card-laura",
+    zIndex: "z-10",
+  },
+  {
+    quote:
+      "Quiero agradecer profundamente a la psicóloga Eliana por su acompañamiento y dedicación. Me brindó herramientas para crecer, comprender mejor y afrontar desafíos con nueva perspectiva. Su profesionalismo y empatía marcaron una diferencia muy positiva en mi vida.",
+    name: "Carmen V.",
+    role: "Orientacion Psicológica",
+    initials: "CV",
+    bgClass: "bg-white",
+    quoteColor: "text-purple-accent",
+    textColor: "text-purple-dark",
+    roleColor: "text-purple-dark/60",
+    avatarBg: "bg-olive",
+    cardClass: "testimonial-card-carmen",
+    zIndex: "z-30",
+  },
+];
+---
+
+<section
+  class="testimonials-section bg-soft-bg relative overflow-visible px-6 py-28 md:px-12 md:py-36 lg:px-16 lg:py-44 xl:px-24"
+>
+  <!-- Soft ambient background glows -->
+  <div
+    class="bg-purple-accent/5 pointer-events-none absolute -top-40 -right-40 h-96 w-96 rounded-full blur-3xl"
+  >
+  </div>
+  <div
+    class="bg-blue-mist/10 pointer-events-none absolute -bottom-48 -left-48 h-96 w-96 rounded-full blur-3xl"
+  >
+  </div>
+
+  <div class="relative z-10 mx-auto">
+    <!-- Header -->
+    <div class="testimonials-header mb-20 text-center md:mb-24">
+      <div class="mb-5 flex items-center justify-center gap-3">
+        <div class="bg-purple-accent/30 h-px w-10"></div>
+        <span
+          class="font-nunito text-purple-accent text-xs font-semibold tracking-widest uppercase"
+        >
+          Testimonios
+        </span>
+        <div class="bg-purple-accent/30 h-px w-10"></div>
+      </div>
+      <h2
+        class="font-jakarta text-purple-dark mb-5 text-3xl leading-tight font-black tracking-tight md:text-4xl lg:text-5xl"
+      >
+        Historias de sanación
+        <span class="text-purple-accent block">y transformación</span>
+      </h2>
+      <p
+        class="font-nunito text-purple-dark/65 mx-auto max-w-xl text-base leading-relaxed md:text-lg"
+      >
+        Cada persona que llega a mi consulta lleva una historia única. Estas son
+        algunas voces que han encontrado en el proceso terapéutico un camino
+        hacia el bienestar.
+      </p>
+    </div>
+
+    <!-- Bento Grid — overflow visible so scattered cards aren't clipped;
+         generous padding expands the hover detection area;
+         invisible prevents the organized-to-scattered flash on load -->
+    <div
+      class="testimonials-grid grid grid-cols-1 items-start gap-6 overflow-visible p-6 invisible md:grid-cols-2 md:p-8 lg:gap-8 lg:p-10"
+    >
+      {
+        testimonials.map((t) => (
+          <article
+            class={`testimonial-card ${t.cardClass} ${t.zIndex} ${t.bgClass} shadow-purple-dark/5 relative flex flex-col rounded-3xl p-7 shadow-xl md:p-8`}
+          >
+            <QuoteIcon class={`${t.quoteColor} mb-5 h-8 w-8 shrink-0`} />
+            <p
+              class={`${t.textColor} font-nunito mb-8 flex-1 text-base leading-relaxed md:text-lg`}
+            >
+              {t.quote}
+            </p>
+            <div class="mt-auto flex items-center gap-3">
+              <div
+                class={`${t.avatarBg} flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold text-white`}
+              >
+                {t.initials}
+              </div>
+              <div>
+                <p class={`${t.textColor} font-jakarta text-sm font-bold`}>
+                  {t.name}
+                </p>
+                <p class={`${t.roleColor} font-nunito text-xs`}>{t.role}</p>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import { testimonialsAnimations } from "@/utils/animations/home/testimonialsAnimation.js";
+  testimonialsAnimations();
+</script>
