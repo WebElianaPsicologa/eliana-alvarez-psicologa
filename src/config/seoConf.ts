@@ -83,9 +83,9 @@ export type JSONLDSchema = Record<string, unknown>;
 // =============================================================================
 
 export const COMPANY_INFO: CompanyInfo = {
-  name: "Eliana Álvarez - Psicóloga Clínica",
+  name: "Eliana Álvarez - Psicóloga",
   description:
-    "Psicóloga clínica con más de 20 años de experiencia acompañando a mujeres, adolescentes y familias a sanar la ansiedad, superar duelos y reconstruir vínculos mediante una terapia integral, humana y sin fronteras.",
+    "Psicóloga con más de 20 años de experiencia acompañando a adultos, adolescentes y familias a sanar la ansiedad, superar duelos y reconstruir vínculos mediante una terapia integral, humana y sin fronteras.",
   url: "https://elianaalvarezpsicologa.com/",
   phone: "", // TODO: Verify this phone number
   email: "contacto@elianaalvarezpsicologa.com",
@@ -135,7 +135,7 @@ export const MAIN_KEYWORDS: MainKeywords = {
   ] as string[],
   tertiary: [
     "duelo migratorio",
-    "terapia online para mujeres",
+    "terapia online para adultos",
     "psicóloga para adolescentes",
     "orientación vocacional online",
     "terapia de pareja online",
