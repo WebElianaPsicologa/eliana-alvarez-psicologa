@@ -7,6 +7,8 @@ import netlify from "@astrojs/netlify";
 
 import sitemap from "@astrojs/sitemap";
 
+import partytown from "@astrojs/partytown";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://elianaalvarezpsicologa.com",
@@ -52,13 +54,11 @@ export default defineConfig({
     },
   }),
   
-  integrations: [
-    sitemap({
-      filter: (page) => ![
-        "https://elianaalvarezpsicologa.com/politica-de-privacidad/",
-        "https://elianaalvarezpsicologa.com/terminos-y-condiciones/",
-        "https://elianaalvarezpsicologa.com/404/",
-      ].includes(page),
-    }),
-  ],
+  integrations: [sitemap({
+    filter: (page) => ![
+      "https://elianaalvarezpsicologa.com/politica-de-privacidad/",
+      "https://elianaalvarezpsicologa.com/terminos-y-condiciones/",
+      "https://elianaalvarezpsicologa.com/404/",
+    ].includes(page),
+  }), partytown()],
 });
