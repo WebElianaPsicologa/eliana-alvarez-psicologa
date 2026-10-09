@@ -5,7 +5,7 @@ import { COMPANY_INFO } from "@/config/seoConf";
 
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Inicio", path: "/" },
-  { name: "Política de Privacidad", path: "/politica-de-privacidad" },
+  { name: "Política de Privacidad", path: "/politica-de-privacidad/" },
 ]);
 
 const privacySEO = generateDynamicSEO({
@@ -13,7 +13,7 @@ const privacySEO = generateDynamicSEO({
   title: "Política de Privacidad | Eliana Álvarez Psicóloga",
   description:
     "Conoce cómo Eliana Álvarez Psicóloga protege tu información personal. Transparencia total sobre el uso de datos, cookies y tus derechos según la normativa colombiana.",
-  canonical: "/politica-de-privacidad",
+  canonical: "/politica-de-privacidad/",
   noindex: true,
 });
 

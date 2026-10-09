@@ -16,12 +16,12 @@ const sortedPosts = posts.sort(
 
 const blogSeo = generateDynamicSEO({
   pageType: "blog",
-  canonical: "/blog",
+  canonical: "/blog/",
 });
 
 const breadcrumb = [
   { name: "Inicio", path: "/" },
-  { name: "Blog", path: "/blog" },
+  { name: "Blog", path: "/blog/" },
 ];
 
 const breadcrumbSchema = generateBreadcrumbSchema(breadcrumb);

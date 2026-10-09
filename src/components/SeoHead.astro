@@ -17,13 +17,26 @@ import type { JSONLDSchema } from "@/config/seoConf";
 interface Props {
   seoProps: SEOProps;
   schemas?: JSONLDSchema[];
+  notFound?: boolean;
 }
 
-const { seoProps, schemas = [] } = Astro.props;
+const { seoProps, schemas = [], notFound = false } = Astro.props;
 ---
 
-<!-- SEO Meta Tags -->
-<SEO {...seoProps} />
+<!-- SEO Meta Tags -->{
+  notFound ? (
+    // astro-seo always emits a canonical; the 404 must have none
+    <>
+      <title>{seoProps.title}</title>
+      {seoProps.description && (
+        <meta name="description" content={seoProps.description} />
+      )}
+      <meta name="robots" content="noindex, follow" />
+    </>
+  ) : (
+    <SEO {...seoProps} />
+  )
+}
 
 <!-- JSON-LD Structured Data -->
 {

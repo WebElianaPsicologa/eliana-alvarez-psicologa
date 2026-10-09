@@ -7,6 +7,7 @@ import type { SEOProps } from "astro-seo";
 import { services, type Service } from "./services";
 import { allFAQs, type FAQItem } from "./faqs";
 import { AUTHORS, getAuthorByName, type Author } from "./authorBio";
+import { siteUrl, mediaUrl } from "@/utils/url";
 
 // Re-export for convenience
 export { services, type Service };
@@ -86,7 +87,7 @@ export const COMPANY_INFO: CompanyInfo = {
   name: "Eliana Álvarez - Psicóloga",
   description:
     "Psicóloga con más de 20 años de experiencia acompañando a adultos, adolescentes y familias a sanar la ansiedad, superar duelos y reconstruir vínculos mediante una terapia integral, humana y sin fronteras.",
-  url: "https://elianaalvarezpsicologa.com/",
+  url: siteUrl("/"),
   phone: "", // TODO: Verify this phone number
   email: "contacto@elianaalvarezpsicologa.com",
   address: {
@@ -108,7 +109,8 @@ export const COMPANY_INFO: CompanyInfo = {
   socialMedia: {
     youtube: "https://www.youtube.com/@ElianaAlvarezPsicologa",
     instagram: "https://www.instagram.com/elianaalvarezpsicologa",
-    whatsapp: "https://api.whatsapp.com/send?phone=5513997283229&text=Hola%20buen%20d%C3%ADa%2C%0AEstoy%20interesado%2Fa%20en%20el%20servicio%20de%20psicolog%C3%ADa",
+    whatsapp:
+      "https://api.whatsapp.com/send?phone=5513997283229&text=Hola%20buen%20d%C3%ADa%2C%0AEstoy%20interesado%2Fa%20en%20el%20servicio%20de%20psicolog%C3%ADa",
   },
 };
 
@@ -164,7 +166,7 @@ export const DEFAULT_SEO: SEOProps = {
     basic: {
       title: `Eliana Álvarez - Terapia Online Sin Fronteras`,
       type: "website",
-      image: `${COMPANY_INFO.url}${COMPANY_INFO.image}`,
+      image: mediaUrl(COMPANY_INFO.image),
       url: COMPANY_INFO.url,
     },
     optional: {
@@ -179,11 +181,10 @@ export const DEFAULT_SEO: SEOProps = {
     creator: "@elianaalvarez",
     title: `Eliana Álvarez - Terapia Online Sin Fronteras`,
     description: COMPANY_INFO.description,
-    image: `${COMPANY_INFO.url}${COMPANY_INFO.image}`,
+    image: mediaUrl(COMPANY_INFO.image),
   },
   extend: {
     meta: [
-      { name: "robots", content: "index, follow" },
       { name: "author", content: COMPANY_INFO.name },
       { name: "theme-color", content: "#674D72" },
       { name: "msapplication-TileColor", content: "#674D72" },
@@ -213,14 +214,12 @@ export function generateDynamicSEO(options: DynamicSEOOptions): SEOProps {
   const title = options.title ?? generateDynamicTitle(options, baseVars);
   const description =
     options.description ?? generateDynamicDescription(options, baseVars);
-  const canonical = options.canonical ?? `/${options.pageType}/`;
+  const canonical = options.canonical ?? "/";
 
-  const fullUrl = canonical.startsWith("http")
-    ? canonical
-    : `${COMPANY_INFO.url}${canonical}`;
+  const fullUrl = siteUrl(canonical);
   const imageUrl = options.image
-    ? `${COMPANY_INFO.url}${options.image}`
-    : `${COMPANY_INFO.url}${COMPANY_INFO.image}`;
+    ? mediaUrl(options.image)
+    : mediaUrl(COMPANY_INFO.image);
 
   return {
     title,
@@ -251,10 +250,6 @@ export function generateDynamicSEO(options: DynamicSEOOptions): SEOProps {
     extend: {
       meta: [
         { name: "author", content: COMPANY_INFO.name },
-        {
-          name: "robots",
-          content: options.noindex ? "noindex, nofollow" : "index, follow",
-        },
         { name: "theme-color", content: "#674D72" },
         { httpEquiv: "Content-Language", content: "es" },
       ],
@@ -329,13 +324,13 @@ function generateDynamicDescription(
 export const ORGANIZATION_SCHEMA: JSONLDSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": `${COMPANY_INFO.url}#organization`,
+  "@id": siteUrl("/#organization"),
   name: COMPANY_INFO.name,
   alternateName: [],
   description: COMPANY_INFO.description,
   url: COMPANY_INFO.url,
-  logo: `${COMPANY_INFO.url}${COMPANY_INFO.logo}`,
-  image: `${COMPANY_INFO.url}${COMPANY_INFO.image}`,
+  logo: mediaUrl(COMPANY_INFO.logo),
+  image: mediaUrl(COMPANY_INFO.image),
   foundingDate: COMPANY_INFO.foundingDate,
   telephone: COMPANY_INFO.phone,
   email: COMPANY_INFO.email,
@@ -373,12 +368,12 @@ export const ORGANIZATION_SCHEMA: JSONLDSchema = {
       position: index + 1,
       itemOffered: {
         "@type": "Service",
-        "@id": `${COMPANY_INFO.url}/services/${service.slug}#service`,
+        "@id": siteUrl(`/servicios/${service.slug}#service`),
         name: service.title,
         description: service.seoDescription,
-        url: `${COMPANY_INFO.url}/services/${service.slug}`,
+        url: siteUrl(`/servicios/${service.slug}`),
         provider: {
-          "@id": `${COMPANY_INFO.url}#organization`,
+          "@id": siteUrl("/#organization"),
         },
       },
     })),
@@ -391,7 +386,7 @@ export const ORGANIZATION_SCHEMA: JSONLDSchema = {
 export const WEBSITE_SCHEMA: JSONLDSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": `${COMPANY_INFO.url}#website`,
+  "@id": siteUrl("/#website"),
   name: COMPANY_INFO.name,
   alternateName: COMPANY_INFO.name,
   description: COMPANY_INFO.description,
@@ -403,15 +398,7 @@ export const WEBSITE_SCHEMA: JSONLDSchema = {
     name: COMPANY_INFO.name,
   },
   publisher: {
-    "@id": `${COMPANY_INFO.url}#organization`,
-  },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${COMPANY_INFO.url}/search?q={search_term_string}`,
-    },
-    "query-input": "required name=search_term_string",
+    "@id": siteUrl("/#organization"),
   },
 };
 
@@ -421,16 +408,16 @@ export const WEBSITE_SCHEMA: JSONLDSchema = {
 export const BLOG_SCHEMA: JSONLDSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
-  "@id": `${COMPANY_INFO.url}/blog#blog`,
+  "@id": siteUrl("/blog#blog"),
   name: `Blog - ${COMPANY_INFO.name}`,
   description: `Artículos, guías y consejos de ${COMPANY_INFO.name}`,
-  url: `${COMPANY_INFO.url}/blog`,
+  url: siteUrl("/blog"),
   inLanguage: "es-ES",
   author: {
-    "@id": `${COMPANY_INFO.url}#organization`,
+    "@id": siteUrl("/#organization"),
   },
   publisher: {
-    "@id": `${COMPANY_INFO.url}#organization`,
+    "@id": siteUrl("/#organization"),
   },
   about: {
     "@type": "Thing",
@@ -469,13 +456,15 @@ export function generateBlogPostSchema(post: BlogPost): JSONLDSchema {
   // Create rich author schema for E-E-A-T
   const authorSchema: Record<string, unknown> = {
     "@type": "Person",
-    "@id": `${COMPANY_INFO.url}/about#${author.name.toLowerCase().replace(/\s+/g, "-")}`,
+    "@id": siteUrl(
+      `/sobre-mi#${author.name.toLowerCase().replace(/\s+/g, "-")}`,
+    ),
     name: author.name,
     description: author.bio,
     jobTitle: author.role,
     knowsAbout: author.credentials,
-    ...(author.image && { image: `${COMPANY_INFO.url}${author.image}` }),
-    ...(author.url && { url: `${COMPANY_INFO.url}${author.url}` }),
+    ...(author.image && { image: mediaUrl(author.image.src) }),
+    ...(author.url && { url: siteUrl(author.url) }),
     ...(authorSameAs.length > 0 && { sameAs: authorSameAs }),
   };
 
@@ -495,24 +484,24 @@ export function generateBlogPostSchema(post: BlogPost): JSONLDSchema {
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "@id": `${COMPANY_INFO.url}/blog/${post.id}#article`,
+    "@id": siteUrl(`/blog/${post.id}#article`),
     headline: post.title,
     description: post.description,
-    url: `${COMPANY_INFO.url}/blog/${post.id}`,
+    url: siteUrl(`/blog/${post.id}`),
     datePublished: post.publishDate.toISOString(),
     dateModified: (post.modifiedDate ?? post.publishDate).toISOString(),
     author: authorSchema,
     publisher: {
-      "@id": `${COMPANY_INFO.url}#organization`,
+      "@id": siteUrl("/#organization"),
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${COMPANY_INFO.url}/blog/${post.id}`,
+      "@id": siteUrl(`/blog/${post.id}`),
     },
     ...(post.image && {
       image: {
         "@type": "ImageObject",
-        url: `${COMPANY_INFO.url}${post.image}`,
+        url: mediaUrl(post.image),
         width: 1200,
         height: 630,
       },
@@ -520,7 +509,7 @@ export function generateBlogPostSchema(post: BlogPost): JSONLDSchema {
     keywords: post.tags?.join(", ") ?? MAIN_KEYWORDS.primary.join(", "),
     inLanguage: "es-ES",
     isPartOf: {
-      "@id": `${COMPANY_INFO.url}/blog#blog`,
+      "@id": siteUrl("/blog#blog"),
     },
     articleSection: MAIN_KEYWORDS.primary[0],
   };
@@ -557,7 +546,7 @@ export function generateBreadcrumbSchema(
       "@type": "ListItem",
       position: index + 1,
       name: crumb.name,
-      item: `${COMPANY_INFO.url}${crumb.path}`,
+      item: siteUrl(crumb.path),
     })),
   };
 }
@@ -570,12 +559,12 @@ export function generateServiceSchema(service: Service): JSONLDSchema {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": `${COMPANY_INFO.url}/services/${service.slug}#service`,
+    "@id": siteUrl(`/servicios/${service.slug}#service`),
     name: service.title,
     description: service.seoDescription,
-    url: `${COMPANY_INFO.url}/services/${service.slug}`,
+    url: siteUrl(`/servicios/${service.slug}`),
     provider: {
-      "@id": `${COMPANY_INFO.url}#organization`,
+      "@id": siteUrl("/#organization"),
     },
     areaServed: {
       "@type": "Country",
@@ -584,7 +573,7 @@ export function generateServiceSchema(service: Service): JSONLDSchema {
     ...(service.image && {
       image: {
         "@type": "ImageObject",
-        url: `${COMPANY_INFO.url}${service.image}`,
+        url: mediaUrl(service.image),
       },
     }),
     ...(service.benefits &&
@@ -605,9 +594,9 @@ export function generateServiceSchema(service: Service): JSONLDSchema {
     offers: {
       "@type": "Offer",
       availability: "https://schema.org/InStock",
-      url: `${COMPANY_INFO.url}/services/${service.slug}`,
+      url: siteUrl(`/servicios/${service.slug}`),
       seller: {
-        "@id": `${COMPANY_INFO.url}#organization`,
+        "@id": siteUrl("/#organization"),
       },
     },
   };
@@ -621,14 +610,14 @@ export function generateServiceSchema(service: Service): JSONLDSchema {
 export const LOCAL_BUSINESS_SCHEMA: JSONLDSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "@id": `${COMPANY_INFO.url}#professional-service`,
+  "@id": siteUrl("/#professional-service"),
   name: COMPANY_INFO.name,
   description: COMPANY_INFO.description,
   url: COMPANY_INFO.url,
   telephone: COMPANY_INFO.phone,
   email: COMPANY_INFO.email,
-  logo: `${COMPANY_INFO.url}${COMPANY_INFO.logo}`,
-  image: `${COMPANY_INFO.url}${COMPANY_INFO.image}`,
+  logo: mediaUrl(COMPANY_INFO.logo),
+  image: mediaUrl(COMPANY_INFO.image),
   address: {
     "@type": "PostalAddress",
     streetAddress: COMPANY_INFO.address.street,
@@ -694,14 +683,16 @@ export function generateAuthorSchema(author: Author): JSONLDSchema {
   const schema: JSONLDSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": `${COMPANY_INFO.url}/about#${author.name.toLowerCase().replace(/\s+/g, "-")}`,
+    "@id": siteUrl(
+      `/sobre-mi#${author.name.toLowerCase().replace(/\s+/g, "-")}`,
+    ),
     name: author.name,
     description: author.bio,
     jobTitle: author.role,
-    ...(author.image && { image: `${COMPANY_INFO.url}${author.image}` }),
-    ...(author.url && { url: `${COMPANY_INFO.url}${author.url}` }),
+    ...(author.image && { image: mediaUrl(author.image.src) }),
+    ...(author.url && { url: siteUrl(author.url) }),
     worksFor: {
-      "@id": `${COMPANY_INFO.url}#organization`,
+      "@id": siteUrl("/#organization"),
     },
     knowsAbout: author.credentials,
     ...(sameAs.length > 0 && { sameAs }),

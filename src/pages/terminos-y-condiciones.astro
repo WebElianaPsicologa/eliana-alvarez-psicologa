@@ -5,7 +5,7 @@ import { COMPANY_INFO } from "@/config/seoConf";
 
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Inicio", path: "/" },
-  { name: "Términos y Condiciones", path: "/terminos-y-condiciones" },
+  { name: "Términos y Condiciones", path: "/terminos-y-condiciones/" },
 ]);
 
 const terminosSEO = generateDynamicSEO({
@@ -13,7 +13,7 @@ const terminosSEO = generateDynamicSEO({
   title: "Términos y Condiciones | Eliana Álvarez Psicóloga",
   description:
     "Consulta los términos y condiciones de los servicios psicológicos de Eliana Álvarez. Políticas claras sobre atención, sesiones y responsabilidades.",
-  canonical: "/terminos-y-condiciones",
+  canonical: "/terminos-y-condiciones/",
   noindex: true,
 });
 
@@ -252,7 +252,7 @@ const today = new Date().toLocaleDateString("es-CO", {
 
           <div class="ml-14 p-6 rounded-xl bg-soft-beige border border-purple-accent/20">
             <p class="text-purple-dark font-nunito leading-relaxed">
-              El tratamiento de sus datos personales se rige por mi <a href="/politica-de-privacidad" class="font-semibold text-purple-accent hover:text-purple-dark underline transition-colors">Política de Privacidad</a>, que forma parte integral de estos Términos y Condiciones y cumple con la <strong>Ley 1581 de 2012</strong> de Colombia.
+              El tratamiento de sus datos personales se rige por mi <a href="/politica-de-privacidad/" class="font-semibold text-purple-accent hover:text-purple-dark underline transition-colors">Política de Privacidad</a>, que forma parte integral de estos Términos y Condiciones y cumple con la <strong>Ley 1581 de 2012</strong> de Colombia.
             </p>
           </div>
         </section>
