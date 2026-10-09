@@ -38,12 +38,14 @@ src/config/
 Edit `src/config/authorBio.ts`:
 
 ```typescript
+import profile from "@/assets/images/profile.webp";
+
 export const AUTHORS: Author[] = [
   {
     name: "Eliana Álvarez",  // ← MUST match CMS author name exactly
     role: "Psicóloga Clínica",
     bio: "Psicóloga clínica con más de 10 años de experiencia...",
-    image: "/images/team/eliana-alvarez.jpg",
+    image: profile,  // ← ImageMetadata imported from src/assets/images/
     credentials: [
       "Psicología Clínica",
       "Terapia Cognitivo-Conductual",
@@ -132,7 +134,7 @@ const blogSchema = generateBlogPostSchema(post);
 
   <!-- Author card with full details -->
   <div class="author-card">
-    <img src={author.image} alt={author.name} />
+    <Image src={author.image} alt={author.name} />
     <div>
       <h3>{author.name}</h3>
       <p class="role">{author.role}</p>
@@ -164,12 +166,12 @@ When you use `getAuthorByName("Eliana Álvarez")`, you get:
   name: "Eliana Álvarez",
   role: "Psicóloga Clínica",
   bio: "Psicóloga clínica con más de 10 años de experiencia...",
-  image: "/images/team/eliana-alvarez.jpg",
+  image: profile,  // ImageMetadata (src/assets/images/profile.webp)
   credentials: ["Psicología Clínica", "TCC", ...],
   yearsOfExperience: 10,
   certifications: ["Licenciada en Psicología", ...],
   socialMedia: { instagram: "...", linkedin: "..." },
-  url: "/sobre-mi"
+  url: "/sobre-mi/"
 }
 ```
 
@@ -182,7 +184,7 @@ When you use `generateBlogPostSchema(post)`, you get rich JSON-LD:
   "headline": "Post Title",
   "author": {
     "@type": "Person",
-    "@id": "https://yoursite.com/about#eliana-alvarez",
+    "@id": "https://yoursite.com/sobre-mi/#eliana-alvarez",
     "name": "Eliana Álvarez",
     "description": "Psicóloga clínica con más de 10 años...",
     "jobTitle": "Psicóloga Clínica",
@@ -364,7 +366,7 @@ const seoProps = generateDynamicSEO({
   title: post.title,
   description: post.description,
   image: post.image,
-  canonical: `/blog/${slug}`,
+  canonical: `/blog/${slug}/`,
 });
 
 // Generate schema
@@ -380,7 +382,7 @@ const schemas = [generateBlogPostSchema(post)];
       <!-- Rich author card with E-E-A-T signals -->
       <div class="author-card">
         {author.image && (
-          <img src={author.image} alt={author.name} loading="lazy" />
+          <Image src={author.image} alt={author.name} loading="lazy" />
         )}
         <div class="author-info">
           <h3>{author.name}</h3>

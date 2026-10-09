@@ -7,10 +7,7 @@ import LogoBlackLetters from "@/assets/images/logowhite256x128.png";
 import ChevronDown from "@/assets/icons/servicesDown.svg";
 
 const pathname = Astro.url.pathname;
-const currentPath =
-  pathname.endsWith("/") && pathname.length > 1
-    ? pathname.slice(0, -1)
-    : pathname;
+const currentPath = pathname.replace(/\/?$/, "/");
 ---
 
 <header class="nav-container fixed top-4 z-50 mx-auto w-full px-4 lg:px-24">
@@ -40,9 +37,9 @@ const currentPath =
           navigation
             .filter(
               (item) =>
-                item.path !== "/contacto" &&
-                item.path !== "/servicios" &&
-                item.path !== "/blog",
+                item.path !== "/contacto/" &&
+                item.path !== "/servicios/" &&
+                item.path !== "/blog/",
             )
             .map((item) => (
               <a
@@ -120,10 +117,9 @@ const currentPath =
 
         <!-- Blog link (always visible) -->
         <a
-          href="/blog"
-          class={`nav-link hover:text-soft-bg/70 text-lg transition-colors duration-200 ${currentPath === "/blog" ? "text-olive" : "text-soft-bg"}`}
-          aria-current={currentPath === "/blog" ? "page" : undefined}
-          >Blog</a
+          href="/blog/"
+          class={`nav-link hover:text-soft-bg/70 text-lg transition-colors duration-200 ${currentPath === "/blog/" ? "text-olive" : "text-soft-bg"}`}
+          aria-current={currentPath === "/blog/" ? "page" : undefined}>Blog</a
         >
       </div>
       <!-- end Desktop links -->
@@ -131,7 +127,7 @@ const currentPath =
       <!-- Contacto link (always visible) -->
       <div class="flex items-center gap-1">
         <a
-          href="/contacto"
+          href="/contacto/"
           class="nav-link text-purple-dark bg-olive hover:bg-olive/80 rounded-full px-4 py-2 font-semibold transition-colors duration-300"
           >Contacto</a
         >
@@ -171,7 +167,7 @@ const currentPath =
       </a>
       <div class="flex items-center gap-3">
         <a
-          href="/contacto"
+          href="/contacto/"
           class="text-purple-dark bg-olive hover:bg-olive/80 rounded-full px-2 py-1 text-sm font-semibold transition-colors active:scale-95"
           data-menu-link
         >
@@ -191,7 +187,7 @@ const currentPath =
     <div class="flex-1 overflow-y-auto overscroll-contain px-6 py-4">
       {
         navigation
-          .filter((item) => item.path !== "/contacto")
+          .filter((item) => item.path !== "/contacto/")
           .map((item) => (
             <a
               href={item.path}

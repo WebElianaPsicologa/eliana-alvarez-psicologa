@@ -3,11 +3,12 @@ import {
   generateDynamicSEO,
   generateBreadcrumbSchema,
   generateBlogPostSchema,
+  BLOG_SCHEMA,
 } from "@/config/seoConf";
 import MainLayout from "@/layouts/MainLayout.astro";
 import ArrowUp from "@/assets/icons/arrow-up.svg";
 import { getPosts } from "./post.api";
-import { marked } from "marked";
+import { markdown } from "@/utils/scripts/markdown";
 import { getReadingTime } from "@/utils/scripts/readingTime";
 import { getAuthorByName } from "@/config/authorBio";
 import Prose from "@/components/ui/Prose.astro";
@@ -57,7 +58,7 @@ const processVideoEmbeds = (html: string) =>
       '$1 class="video-wrapper-iframe"'
     );
 
-const postContent = processVideoEmbeds(await marked.parse(post.content));
+const postContent = processVideoEmbeds(await markdown.parse(post.content));
 
 // Parse dates for layout
 const updateDate = post.lastUpdate ? new Date(post.lastUpdate) : undefined;
@@ -73,7 +74,7 @@ const postSeo = generateDynamicSEO({
   pageType: "blog-post",
   title: post.title,
   description: post.seoDescription,
-  canonical: `/blog/${post.slug}`,
+  canonical: `/blog/${post.slug}/`,
   image: post.image?.url,
 });
 
@@ -89,12 +90,12 @@ const blogPostSchema = generateBlogPostSchema({
 
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Inicio", path: "/" },
-  { name: "Blog", path: "/blog" },
-  { name: post.title, path: `/blog/${post.slug}` },
+  { name: "Blog", path: "/blog/" },
+  { name: post.title, path: `/blog/${post.slug}/` },
 ]);
 ---
 
-<MainLayout seoProps={postSeo} schemas={[blogPostSchema, breadcrumbSchema]}>
+<MainLayout seoProps={postSeo} schemas={[blogPostSchema, BLOG_SCHEMA, breadcrumbSchema]}>
   <article class="container mx-auto mt-20 px-2 py-8 md:py-16">
     <nav class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8" aria-label="Breadcrumb">
       <ol class="flex items-center space-x-2 text-sm">
@@ -108,7 +109,7 @@ const breadcrumbSchema = generateBreadcrumbSchema([
         <li class="text-purple-accent/50">/</li>
         <li>
           <a
-            href="/blog"
+            href="/blog/"
             class="text-purple-accent/60 hover:text-purple-accent text-base transition-colors"
             >Blog</a
           >
