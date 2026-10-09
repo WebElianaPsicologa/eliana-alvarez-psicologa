@@ -22,6 +22,9 @@
 //
 // =============================================================================
 
+import type { ImageMetadata } from "astro";
+import profile from "@/assets/images/profile.webp";
+
 export interface Author {
   /** Author's full name - MUST match exactly with CMS author field */
   name: string;
@@ -32,8 +35,8 @@ export interface Author {
   /** Short bio (1-2 sentences) - enhances E-E-A-T by showing expertise */
   bio: string;
 
-  /** Author's profile image URL (optional but recommended for trust signals) */
-  image?: string;
+  /** Author's profile image (optional but recommended for trust signals) */
+  image?: ImageMetadata;
 
   /** Professional credentials - critical for E-E-A-T and schema markup */
   credentials: string[];
@@ -61,7 +64,7 @@ export const AUTHORS: Author[] = [
     name: "Eliana Alvarez",
     role: "Psicóloga",
     bio: "Psicóloga con más de 20 años de experiencia acompañando adultos, adolescentes y familias. Especialista en duelo migratorio y atención a población hispanohablante desde Brasil.",
-    image: "/images/team/eliana-alvarez.jpg",
+    image: profile,
     credentials: [
       "Terapia Cognitivo-Conductual",
       "Terapia Humanista",
@@ -80,7 +83,7 @@ export const AUTHORS: Author[] = [
       instagram: "",
       linkedin: "",
     },
-    url: "/sobre-mi",
+    url: "/sobre-mi/",
   },
   // Add more authors as your team grows
   // {

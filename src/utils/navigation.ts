@@ -2,12 +2,12 @@ import { services } from "@/config/services";
 
 export const navigation = [
   { label: "Inicio", path: "/" },
-  { label: "Sobre mí", path: "/sobre-mi" },
-  { label: "Contacto", path: "/contacto" },
-  { label: "Blog", path: "/blog" },
+  { label: "Sobre mí", path: "/sobre-mi/" },
+  { label: "Contacto", path: "/contacto/" },
+  { label: "Blog", path: "/blog/" },
 ];
 
 export const servicesNavigation = services.map((service) => ({
   name: service.title,
-  path: `/servicios/${service.slug}`,
+  path: `/servicios/${service.slug}/`,
 }));

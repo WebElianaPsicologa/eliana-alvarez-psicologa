@@ -13,6 +13,8 @@ import partytown from "@astrojs/partytown";
 export default defineConfig({
   site: "https://elianaalvarezpsicologa.com",
 
+  trailingSlash: "always",
+
   security: { csp: true },
 
   fonts: [
